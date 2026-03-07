@@ -165,29 +165,50 @@
     
     <!-- Navigation -->
     <nav class="fixed w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
-        <div class="max-w-7xl mx-auto px-6 py-4">
-            <div class="flex justify-between items-center">
-                <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 gold-bg flex items-center justify-center">
-                        <span class="text-black font-bold text-lg">RN</span>
-                    </div>
-                    <div>
-                        <h1 class="text-xl font-bold tracking-wider">RADO NASOLO</h1>
-                        <p class="text-xs text-gray-400 tracking-widest uppercase">Retoucheur Photo - Modeleur 3D </p>
-                    </div>
-                </div>
-                <div class="hidden md:flex gap-8 text-sm tracking-wider">
-                    <a href="#services" class="nav-link hover:gold-text transition-colors">Services</a>
-                    <a href="#portfolio" class="nav-link hover:gold-text transition-colors">Portfolio</a>
-                    <a href="#before-after" class="nav-link hover:gold-text transition-colors">Avant/Après</a>
-                    <a href="#contact" class="nav-link hover:gold-text transition-colors">Contact</a>
-                </div>
-                <button class="md:hidden" onclick="toggleMenu()">
-                    <i data-lucide="menu" class="w-6 h-6"></i>
-                </button>
-            </div>
+  <div class="max-w-7xl mx-auto px-6 py-4">
+    <div class="flex justify-between items-center">
+      
+      <!-- Logo -->
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 gold-bg flex items-center justify-center">
+          <span class="text-black font-bold text-lg">RN</span>
         </div>
-    </nav>
+        <div>
+          <h1 class="text-xl font-bold tracking-wider">RADO NASOLO</h1>
+          <p class="text-xs text-gray-400 tracking-widest uppercase">Retoucheur Photo - Modeleur 3D</p>
+        </div>
+      </div>
+
+      <!-- Menu Desktop -->
+      <div class="hidden md:flex gap-8 text-sm tracking-wider">
+        <a href="#services" class="nav-link hover:gold-text transition-colors">Services</a>
+        <a href="#portfolio" class="nav-link hover:gold-text transition-colors">Portfolio</a>
+        <a href="#before-after" class="nav-link hover:gold-text transition-colors">Avant/Après</a>
+        <a href="#contact" class="nav-link hover:gold-text transition-colors">Contact</a>
+      </div>
+
+      <!-- Bouton Menu Mobile -->
+      <button class="md:hidden text-white" onclick="toggleMenu()">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+
+    </div>
+  </div>
+
+  <!-- MENU MOBILE (Overlay) -->
+  <div id="mobile-menu" class="fixed inset-0 bg-black/95 z-40 hidden flex-col items-center justify-center">
+    <button class="absolute top-6 right-6 text-white" onclick="toggleMenu()">
+      <i data-lucide="x" class="w-8 h-8"></i>
+    </button>
+    <div class="flex flex-col gap-8 text-center">
+      <a href="#services" onclick="toggleMenu()" class="text-2xl font-bold tracking-wider hover:text-yellow-500 transition-colors">Services</a>
+      <a href="#portfolio" onclick="toggleMenu()" class="text-2xl font-bold tracking-wider hover:text-yellow-500 transition-colors">Portfolio</a>
+      <a href="#before-after" onclick="toggleMenu()" class="text-2xl font-bold tracking-wider hover:text-yellow-500 transition-colors">Avant/Après</a>
+      <a href="#contact" onclick="toggleMenu()" class="text-2xl font-bold tracking-wider hover:text-yellow-500 transition-colors">Contact</a>
+    </div>
+  </div>
+
+</nav>
 
     <!-- Hero Section -->
     <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -816,6 +837,7 @@
 </body>
 
 </html>
+
 
 
 
