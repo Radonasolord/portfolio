@@ -181,8 +181,8 @@
 
       <!-- Menu Desktop -->
       <div class="hidden md:flex gap-8 text-sm tracking-wider">
-        <a href="#services" class="nav-link hover:gold-text transition-colors">Services</a>
         <a href="#portfolio" class="nav-link hover:gold-text transition-colors">Portfolio</a>
+        <a href="#services" class="nav-link hover:gold-text transition-colors">Services</a>
         <a href="#before-after" class="nav-link hover:gold-text transition-colors">Avant/Après</a>
         <a href="#contact" class="nav-link hover:gold-text transition-colors">Contact</a>
       </div>
@@ -229,6 +229,78 @@
         
         <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
             <i data-lucide="chevron-down" class="w-6 h-6 gold-text"></i>
+        </div>
+    </section>
+<!-- Portfolio Gallery -->
+    <section id="portfolio" class="py-24 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <p class="gold-text tracking-[0.3em] text-sm mb-4 uppercase">Sélection</p>
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Portfolio Récent</h2>
+                <div class="flex justify-center gap-4 mt-8">
+                    <button onclick="filterGallery('all')" class="filter-btn active px-6 py-2 border border-gold gold-text text-sm uppercase tracking-wider hover:gold-bg hover:text-black transition-all" data-filter="all">Tous</button>
+                    <button onclick="filterGallery('portrait')" class="filter-btn px-6 py-2 border border-white/20 text-sm uppercase tracking-wider hover:border-gold hover:gold-text transition-all" data-filter="portrait">Portrait</button>
+                    <button onclick="filterGallery('product')" class="filter-btn px-6 py-2 border border-white/20 text-sm uppercase tracking-wider hover:border-gold hover:gold-text transition-all" data-filter="product">Produit</button>
+                    <button onclick="filterGallery('jewelry')" class="filter-btn px-6 py-2 border border-white/20 text-sm uppercase tracking-wider hover:border-gold hover:gold-text transition-all" data-filter="jewelry">Joaillerie</button>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="gallery-grid">
+                <div class="gallery-item aspect-[4/5]" data-category="portrait">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600&q=80" alt="Portrait" class="w-full h-full object-cover">
+                    <div class="gallery-overlay">
+                        <div>
+                            <h4 class="text-lg font-bold">Portrait Studio</h4>
+                            <p class="text-sm text-gray-300">Retouche beauté</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item aspect-[4/5]" data-category="product">
+                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&q=80" alt="Produit" class="w-full h-full object-cover">
+                    <div class="gallery-overlay">
+                        <div>
+                            <h4 class="text-lg font-bold">E-commerce Chaussures</h4>
+                            <p class="text-sm text-gray-300">Détourage & mise en scène</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item aspect-[4/5]" data-category="jewelry">
+                    <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=600&q=80" alt="Joaillerie" class="w-full h-full object-cover">
+                    <div class="gallery-overlay">
+                        <div>
+                            <h4 class="text-lg font-bold">Bague Diamant</h4>
+                            <p class="text-sm text-gray-300">Focus stacking</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item aspect-[4/5]" data-category="portrait">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80" alt="Portrait" class="w-full h-full object-cover">
+                    <div class="gallery-overlay">
+                        <div>
+                            <h4 class="text-lg font-bold">Portrait Homme</h4>
+                            <p class="text-sm text-gray-300">Correction teint</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item aspect-[4/5]" data-category="product">
+                    <img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=600&q=80" alt="Produit" class="w-full h-full object-cover">
+                    <div class="gallery-overlay">
+                        <div>
+                            <h4 class="text-lg font-bold">Cosmétiques</h4>
+                            <p class="text-sm text-gray-300">Packshot</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item aspect-[4/5]" data-category="jewelry">
+                    <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600&q=80" alt="Joaillerie" class="w-full h-full object-cover">
+                    <div class="gallery-overlay">
+                        <div>
+                            <h4 class="text-lg font-bold">Montre de Luxe</h4>
+                            <p class="text-sm text-gray-300">Rendu métal</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -513,79 +585,7 @@
         </div>
     </section>
 
-    <!-- Portfolio Gallery -->
-    <section id="portfolio" class="py-24 px-6">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <p class="gold-text tracking-[0.3em] text-sm mb-4 uppercase">Sélection</p>
-                <h2 class="text-4xl md:text-5xl font-bold mb-6">Portfolio Récent</h2>
-                <div class="flex justify-center gap-4 mt-8">
-                    <button onclick="filterGallery('all')" class="filter-btn active px-6 py-2 border border-gold gold-text text-sm uppercase tracking-wider hover:gold-bg hover:text-black transition-all" data-filter="all">Tous</button>
-                    <button onclick="filterGallery('portrait')" class="filter-btn px-6 py-2 border border-white/20 text-sm uppercase tracking-wider hover:border-gold hover:gold-text transition-all" data-filter="portrait">Portrait</button>
-                    <button onclick="filterGallery('product')" class="filter-btn px-6 py-2 border border-white/20 text-sm uppercase tracking-wider hover:border-gold hover:gold-text transition-all" data-filter="product">Produit</button>
-                    <button onclick="filterGallery('jewelry')" class="filter-btn px-6 py-2 border border-white/20 text-sm uppercase tracking-wider hover:border-gold hover:gold-text transition-all" data-filter="jewelry">Joaillerie</button>
-                </div>
-            </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="gallery-grid">
-                <div class="gallery-item aspect-[4/5]" data-category="portrait">
-                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600&q=80" alt="Portrait" class="w-full h-full object-cover">
-                    <div class="gallery-overlay">
-                        <div>
-                            <h4 class="text-lg font-bold">Portrait Studio</h4>
-                            <p class="text-sm text-gray-300">Retouche beauté</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="gallery-item aspect-[4/5]" data-category="product">
-                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&q=80" alt="Produit" class="w-full h-full object-cover">
-                    <div class="gallery-overlay">
-                        <div>
-                            <h4 class="text-lg font-bold">E-commerce Chaussures</h4>
-                            <p class="text-sm text-gray-300">Détourage & mise en scène</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="gallery-item aspect-[4/5]" data-category="jewelry">
-                    <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=600&q=80" alt="Joaillerie" class="w-full h-full object-cover">
-                    <div class="gallery-overlay">
-                        <div>
-                            <h4 class="text-lg font-bold">Bague Diamant</h4>
-                            <p class="text-sm text-gray-300">Focus stacking</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="gallery-item aspect-[4/5]" data-category="portrait">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80" alt="Portrait" class="w-full h-full object-cover">
-                    <div class="gallery-overlay">
-                        <div>
-                            <h4 class="text-lg font-bold">Portrait Homme</h4>
-                            <p class="text-sm text-gray-300">Correction teint</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="gallery-item aspect-[4/5]" data-category="product">
-                    <img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=600&q=80" alt="Produit" class="w-full h-full object-cover">
-                    <div class="gallery-overlay">
-                        <div>
-                            <h4 class="text-lg font-bold">Cosmétiques</h4>
-                            <p class="text-sm text-gray-300">Packshot</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="gallery-item aspect-[4/5]" data-category="jewelry">
-                    <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600&q=80" alt="Joaillerie" class="w-full h-full object-cover">
-                    <div class="gallery-overlay">
-                        <div>
-                            <h4 class="text-lg font-bold">Montre de Luxe</h4>
-                            <p class="text-sm text-gray-300">Rendu métal</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
+    
 
     <!-- Contact Section -->
     <section id="contact" class="py-24 px-6">
@@ -822,6 +822,7 @@
 </body>
 
 </html>
+
 
 
 
