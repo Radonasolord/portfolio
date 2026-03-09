@@ -303,6 +303,105 @@
             </div>
         </div>
     </section>
+    
+<!-- Interactive Before/After Section -->
+    <section id="before-after" class="py-24 bg-neutral-900">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <p class="gold-text tracking-[0.3em] text-sm mb-4 uppercase">Qualité de Travail</p>
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Avant / Après</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">
+                    Faites glisser le curseur pour comparer l'image originale et la version retouchée
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Comparison 1: Portrait -->
+                <div class="space-y-4">
+                    <div class="comparison-container h-[500px] rounded-lg" id="compare1">
+                        <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=800&q=80" 
+                             class="comparison-image" alt="Après retouche">
+                        <div class="comparison-overlay" id="overlay1">
+                            <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=800&q=80&sat=-100&con=1.2" 
+                                 class="comparison-image" style="filter: grayscale(30%) contrast(1.1) brightness(0.9);" alt="Avant retouche">
+                        </div>
+                        <div class="slider-handle" id="handle1">
+                            <i data-lucide="move-horizontal" class="w-5 h-5 text-black"></i>
+                        </div>
+                        <span class="absolute top-4 left-4 bg-black/70 px-3 py-1 text-xs uppercase tracking-wider">Avant</span>
+                        <span class="absolute top-4 right-4 gold-bg text-black px-3 py-1 text-xs uppercase tracking-wider font-bold">Après</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-xl font-bold">Portrait Beauté</h3>
+                        <span class="text-sm text-gray-500">Skin retouching • Color grading</span>
+                    </div>
+                </div>
+
+                <!-- Comparison 2: Product -->
+                <div class="space-y-4">
+                    <div class="comparison-container h-[500px] rounded-lg" id="compare2">
+                        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&q=80" 
+                             class="comparison-image" alt="Après retouche">
+                        <div class="comparison-overlay" id="overlay2">
+                            <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&q=80&blur=2&con=0.8" 
+                                 class="comparison-image" style="filter: contrast(0.8) brightness(1.1) saturate(0.8);" alt="Avant retouche">
+                        </div>
+                        <div class="slider-handle" id="handle2">
+                            <i data-lucide="move-horizontal" class="w-5 h-5 text-black"></i>
+                        </div>
+                        <span class="absolute top-4 left-4 bg-black/70 px-3 py-1 text-xs uppercase tracking-wider">Avant</span>
+                        <span class="absolute top-4 right-4 gold-bg text-black px-3 py-1 text-xs uppercase tracking-wider font-bold">Après</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-xl font-bold">Produit E-commerce</h3>
+                        <span class="text-sm text-gray-500">Détourage • Netteté • Fond blanc</span>
+                    </div>
+                </div>
+
+                <!-- Comparison 3: Jewelry -->
+                <div class="space-y-4">
+                    <div class="comparison-container h-[500px] rounded-lg" id="compare3">
+                        <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&q=80" 
+                             class="comparison-image" alt="Après retouche">
+                        <div class="comparison-overlay" id="overlay3">
+                            <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&q=80&blur=1&con=0.9" 
+                                 class="comparison-image" style="filter: contrast(0.9) brightness(0.95) blur(0.5px);" alt="Avant retouche">
+                        </div>
+                        <div class="slider-handle" id="handle3">
+                            <i data-lucide="move-horizontal" class="w-5 h-5 text-black"></i>
+                        </div>
+                        <span class="absolute top-4 left-4 bg-black/70 px-3 py-1 text-xs uppercase tracking-wider">Avant</span>
+                        <span class="absolute top-4 right-4 gold-bg text-black px-3 py-1 text-xs uppercase tracking-wider font-bold">Après</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-xl font-bold">Joaillerie</h3>
+                        <span class="text-sm text-gray-500">Focus stacking • Brillance • Netteté</span>
+                    </div>
+                </div>
+
+                <!-- Comparison 4: Fashion -->
+                <div class="space-y-4">
+                    <div class="comparison-container h-[500px] rounded-lg" id="compare4">
+                        <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=800&q=80" 
+                             class="comparison-image" alt="Après retouche">
+                        <div class="comparison-overlay" id="overlay4">
+                            <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=800&q=80&sat=-50&con=0.9" 
+                                 class="comparison-image" style="filter: saturate(0.6) contrast(0.9);" alt="Avant retouche">
+                        </div>
+                        <div class="slider-handle" id="handle4">
+                            <i data-lucide="move-horizontal" class="w-5 h-5 text-black"></i>
+                        </div>
+                        <span class="absolute top-4 left-4 bg-black/70 px-3 py-1 text-xs uppercase tracking-wider">Avant</span>
+                        <span class="absolute top-4 right-4 gold-bg text-black px-3 py-1 text-xs uppercase tracking-wider font-bold">Après</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-xl font-bold">Mode & Fashion</h3>
+                        <span class="text-sm text-gray-500">Color grading • Texture tissu • Lumière</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Services Section -->
     <section id="services" class="py-24 px-6">
@@ -486,105 +585,7 @@
         </div>
     </section>
 
-    <!-- Interactive Before/After Section -->
-    <section id="before-after" class="py-24 bg-neutral-900">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <p class="gold-text tracking-[0.3em] text-sm mb-4 uppercase">Qualité de Travail</p>
-                <h2 class="text-4xl md:text-5xl font-bold mb-6">Avant / Après</h2>
-                <p class="text-gray-400 max-w-2xl mx-auto">
-                    Faites glisser le curseur pour comparer l'image originale et la version retouchée
-                </p>
-            </div>
-
-            <div class="grid lg:grid-cols-2 gap-12">
-                <!-- Comparison 1: Portrait -->
-                <div class="space-y-4">
-                    <div class="comparison-container h-[500px] rounded-lg" id="compare1">
-                        <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=800&q=80" 
-                             class="comparison-image" alt="Après retouche">
-                        <div class="comparison-overlay" id="overlay1">
-                            <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=800&q=80&sat=-100&con=1.2" 
-                                 class="comparison-image" style="filter: grayscale(30%) contrast(1.1) brightness(0.9);" alt="Avant retouche">
-                        </div>
-                        <div class="slider-handle" id="handle1">
-                            <i data-lucide="move-horizontal" class="w-5 h-5 text-black"></i>
-                        </div>
-                        <span class="absolute top-4 left-4 bg-black/70 px-3 py-1 text-xs uppercase tracking-wider">Avant</span>
-                        <span class="absolute top-4 right-4 gold-bg text-black px-3 py-1 text-xs uppercase tracking-wider font-bold">Après</span>
-                    </div>
-                    <div class="flex justify-between items-center">
-                        <h3 class="text-xl font-bold">Portrait Beauté</h3>
-                        <span class="text-sm text-gray-500">Skin retouching • Color grading</span>
-                    </div>
-                </div>
-
-                <!-- Comparison 2: Product -->
-                <div class="space-y-4">
-                    <div class="comparison-container h-[500px] rounded-lg" id="compare2">
-                        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&q=80" 
-                             class="comparison-image" alt="Après retouche">
-                        <div class="comparison-overlay" id="overlay2">
-                            <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&q=80&blur=2&con=0.8" 
-                                 class="comparison-image" style="filter: contrast(0.8) brightness(1.1) saturate(0.8);" alt="Avant retouche">
-                        </div>
-                        <div class="slider-handle" id="handle2">
-                            <i data-lucide="move-horizontal" class="w-5 h-5 text-black"></i>
-                        </div>
-                        <span class="absolute top-4 left-4 bg-black/70 px-3 py-1 text-xs uppercase tracking-wider">Avant</span>
-                        <span class="absolute top-4 right-4 gold-bg text-black px-3 py-1 text-xs uppercase tracking-wider font-bold">Après</span>
-                    </div>
-                    <div class="flex justify-between items-center">
-                        <h3 class="text-xl font-bold">Produit E-commerce</h3>
-                        <span class="text-sm text-gray-500">Détourage • Netteté • Fond blanc</span>
-                    </div>
-                </div>
-
-                <!-- Comparison 3: Jewelry -->
-                <div class="space-y-4">
-                    <div class="comparison-container h-[500px] rounded-lg" id="compare3">
-                        <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&q=80" 
-                             class="comparison-image" alt="Après retouche">
-                        <div class="comparison-overlay" id="overlay3">
-                            <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&q=80&blur=1&con=0.9" 
-                                 class="comparison-image" style="filter: contrast(0.9) brightness(0.95) blur(0.5px);" alt="Avant retouche">
-                        </div>
-                        <div class="slider-handle" id="handle3">
-                            <i data-lucide="move-horizontal" class="w-5 h-5 text-black"></i>
-                        </div>
-                        <span class="absolute top-4 left-4 bg-black/70 px-3 py-1 text-xs uppercase tracking-wider">Avant</span>
-                        <span class="absolute top-4 right-4 gold-bg text-black px-3 py-1 text-xs uppercase tracking-wider font-bold">Après</span>
-                    </div>
-                    <div class="flex justify-between items-center">
-                        <h3 class="text-xl font-bold">Joaillerie</h3>
-                        <span class="text-sm text-gray-500">Focus stacking • Brillance • Netteté</span>
-                    </div>
-                </div>
-
-                <!-- Comparison 4: Fashion -->
-                <div class="space-y-4">
-                    <div class="comparison-container h-[500px] rounded-lg" id="compare4">
-                        <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=800&q=80" 
-                             class="comparison-image" alt="Après retouche">
-                        <div class="comparison-overlay" id="overlay4">
-                            <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=800&q=80&sat=-50&con=0.9" 
-                                 class="comparison-image" style="filter: saturate(0.6) contrast(0.9);" alt="Avant retouche">
-                        </div>
-                        <div class="slider-handle" id="handle4">
-                            <i data-lucide="move-horizontal" class="w-5 h-5 text-black"></i>
-                        </div>
-                        <span class="absolute top-4 left-4 bg-black/70 px-3 py-1 text-xs uppercase tracking-wider">Avant</span>
-                        <span class="absolute top-4 right-4 gold-bg text-black px-3 py-1 text-xs uppercase tracking-wider font-bold">Après</span>
-                    </div>
-                    <div class="flex justify-between items-center">
-                        <h3 class="text-xl font-bold">Mode & Fashion</h3>
-                        <span class="text-sm text-gray-500">Color grading • Texture tissu • Lumière</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
+    
     
 
     <!-- Contact Section -->
