@@ -220,9 +220,29 @@
                     Voir le Portfolio
                     <i data-lucide="arrow-down" class="w-4 h-4"></i>
                 </a>
-                 <a href="#contact" class="px-8 py-3 border border-white/30 hover:border-gold hover:gold-text transition-all uppercase tracking-wider text-sm">
-                    Demander un Devis
-                </a>
+            
+    
+    
+<!-- Formulaire Formspree -->
+    <form action="https://formspree.io/f/xwlkpjzw" method="POST" class="mt-8 flex flex-col gap-4 max-w-xl mx-auto text-left">
+        <div class="flex flex-col sm:flex-row gap-4">
+            <input type="text" name="name" placeholder="Votre nom" required class="w-full px-4 py-3 border border-white/30 bg-transparent text-white text-sm outline-none focus:border-gold">
+            <input type="email" name="email" placeholder="Votre email" required class="w-full px-4 py-3 border border-white/30 bg-transparent text-white text-sm outline-none focus:border-gold">
+        </div>
+        
+        <select name="project_type" class="px-4 py-3 border border-white/30 bg-neutral-900 text-white text-sm outline-none focus:border-gold">
+            <option value="Portrait / Beauté">Portrait / Beauté</option>
+            <option value="E-commerce">E-commerce</option>
+            <option value="Modélisation 3D">Modélisation 3D</option>
+            <option value="Autre">Autre</option>
+        </select>
+
+        <textarea name="message" rows="4" placeholder="Votre message..." required class="px-4 py-3 border border-white/30 bg-transparent text-white text-sm outline-none focus:border-gold"></textarea>
+        
+        <button type="submit" class="px-8 py-3 border border-white/30 hover:border-gold hover:gold-text transition-all uppercase tracking-wider text-sm bg-transparent text-white w-full sm:w-auto self-center">
+            Envoyer la demande
+        </button>
+    </form>
                <!-- demande de devis ENCOURS --> 
             </div>
         </div>
@@ -259,7 +279,7 @@
                     </div>
                 </div>
                 <div class="gallery-item aspect-[4/5]" data-category="portrait">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80" alt="Portrait" class="w-full h-full object-cover">
+                    <img src="https://raw.githubusercontent.com/portfolio/Radonasolord/portfolio/main//Portrait/3.jpg" alt="Portrait" class="w-full h-full object-cover">
                     <div class="gallery-overlay">
                         <div>
                             <h4 class="text-lg font-bold">Portrait Homme</h4>
