@@ -385,25 +385,79 @@
 
             <div class="grid lg:grid-cols-2 gap-12">
                 <!-- Comparison 1: Portrait -->
-                <div class="space-y-4">
-                    <div class="comparison-container h-[500px] rounded-lg" id="compare1">
-                        <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=800&q=80" 
-                             class="comparison-image" alt="Après retouche">
-                        <div class="comparison-overlay" id="overlay1">
-                            <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=800&q=80&sat=-100&con=1.2" 
-                                 class="comparison-image" style="filter: grayscale(30%) contrast(1.1) brightness(0.9);" alt="Avant retouche">
-                        </div>
-                        <div class="slider-handle" id="handle1">
-                            <i data-lucide="move-horizontal" class="w-5 h-5 text-black"></i>
-                        </div>
-                        <span class="absolute top-4 left-4 bg-black/70 px-3 py-1 text-xs uppercase tracking-wider">Avant</span>
-                        <span class="absolute top-4 right-4 gold-bg text-black px-3 py-1 text-xs uppercase tracking-wider font-bold">Après</span>
-                    </div>
-                    <div class="flex justify-between items-center">
-                        <h3 class="text-xl font-bold">Portrait Beauté</h3>
-                        <span class="text-sm text-gray-500">Skin retouching • Color grading</span>
-                    </div>
-                </div>
+                <div class="relative w-full max-w-4xl mx-auto overflow-hidden select-none rounded-lg shadow-xl group" id="comparison-container">
+    <!-- Image du dessous : APRÈS (servira de fond) -->
+    <img src="https://raw.githubusercontent.com/Radonasolord/portfolio/main/Portrait/2.jpg" alt="Image après retouche" class="w-full h-auto block object-cover">
+
+    <!-- Image du dessus : AVANT (découpée dynamiquement) -->
+    <div id="comparison-overlay" class="absolute inset-0 w-1/2 overflow-hidden pointer-events-none">
+        <img src="https://raw.githubusercontent.com/Radonasolord/portfolio/main/Portrait/1.jpg" alt="Image avant retouche" class="absolute inset-0 w-full h-full max-w-none object-cover" style="width: 100%; height: 100%;">
+    </div>
+
+    <!-- Le curseur de séparation (barre verticale) -->
+    <div id="comparison-slider" class="absolute inset-y-0 w-1 bg-white cursor-ew-resize shadow-lg" style="left: 50%;">
+        <!-- La poignée centrale avec les flèches -->
+        <div class="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-10 h-10 bg-white rounded-full shadow-2xl flex items-center justify-center text-black text-lg ring-2 ring-black/10 hover:scale-105 transition-transform">
+            ↔
+        </div>
+    </div>
+
+    <!-- Étiquettes (Optionnel) -->
+    <div class="absolute top-4 left-4 bg-black/50 text-white px-3 py-1 rounded-full text-xs font-medium tracking-wider pointer-events-none">AVANT</div>
+    <div class="absolute top-4 right-4 bg-black/50 text-white px-3 py-1 rounded-full text-xs font-medium tracking-wider pointer-events-none">APRÈS</div>
+</div>
+
+<script>
+    const container = document.getElementById('comparison-container');
+    const overlay = document.getElementById('comparison-overlay');
+    const slider = document.getElementById('comparison-slider');
+
+    // Fonction qui met à jour la position du curseur et de l'overlay
+    function moveSlider(e) {
+        // Récupérer les coordonnées du conteneur par rapport à la page
+        const rect = container.getBoundingClientRect();
+        
+        // Calculer la position horizontale de la souris (en pixels)
+        let offsetX = e.clientX - rect.left;
+
+        // Empêcher le curseur de sortir du cadre
+        if (offsetX < 0) offsetX = 0;
+        if (offsetX > rect.width) offsetX = rect.width;
+
+        // Convertir cette position en pourcentage
+        const percentage = (offsetX / rect.width) * 100;
+
+        // Appliquer le pourcentage à la largeur de l'overlay "Avant"
+        // et à la position du curseur
+        overlay.style.width = percentage + '%';
+        slider.style.left = percentage + '%';
+    }
+
+    // Événement principal : dès que la souris bouge DANS le conteneur
+    container.addEventListener('mousemove', moveSlider);
+
+    // Support pour les appareils tactiles (Glisser avec le doigt)
+    container.addEventListener('touchmove', (e) => {
+        // Empêche le défilement de la page pendant qu'on glisse
+        e.preventDefault(); 
+        if (e.touches.length > 0) {
+            // On utilise le premier doigt détecté
+            moveSlider(e.touches[0]);
+        }
+    }, { passive: false });
+    
+    // Optionnel : Pour que le curseur suive la souris même quand elle sort un peu du conteneur
+    window.addEventListener('mousemove', (e) => {
+        // Vérifie si la souris est à l'intérieur du conteneur
+        const rect = container.getBoundingClientRect();
+        const isInside = (e.clientX >= rect.left && e.clientX <= rect.right && e.clientY >= rect.top && e.clientY <= rect.bottom);
+        
+        if (isInside) {
+           // Appelle la fonction de déplacement
+           moveSlider(e);
+        }
+    });
+</script>
 
                 <!-- Comparison 2: Product -->
                 <div class="space-y-4">
