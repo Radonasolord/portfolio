@@ -233,18 +233,16 @@
     </section>
     
 <!-- Portfolio Gallery -->
-    <section id="portfolio" class="py-24 px-6">
+              <section id="portfolio" class="py-24 px-6">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16">
                 <p class="gold-text tracking-[0.3em] text-sm mb-4 uppercase">Sélection</p>
                 <h2 class="text-4xl md:text-5xl font-bold mb-6">Portfolio Récent</h2>
-                <div class="flex flex-col md:flex-row justify-center items-center md:items-start gap-3 md:gap-4 mt-8">
+                <div class="flex justify-center gap-4 mt-8">
                     <button onclick="filterGallery('all')" class="filter-btn active px-6 py-2 border border-gold gold-text text-sm uppercase tracking-wider hover:gold-bg hover:text-black transition-all" data-filter="all">Tous</button>
                     <button onclick="filterGallery('portrait')" class="filter-btn px-6 py-2 border border-white/20 text-sm uppercase tracking-wider hover:border-gold hover:gold-text transition-all" data-filter="portrait">Portrait</button>
-                    <button onclick="filterGallery('e-commerce')" class="filter-btn px-6 py-2 border border-white/20 text-sm uppercase tracking-wider hover:border-gold hover:gold-text transition-all" data-filter="product">E-commerce</button>
+                    <button onclick="filterGallery('product')" class="filter-btn px-6 py-2 border border-white/20 text-sm uppercase tracking-wider hover:border-gold hover:gold-text transition-all" data-filter="product">Produit</button>
                     <button onclick="filterGallery('jewelry')" class="filter-btn px-6 py-2 border border-white/20 text-sm uppercase tracking-wider hover:border-gold hover:gold-text transition-all" data-filter="jewelry">Joaillerie</button>
-                    <button onclick="filterGallery('Modélisation3D')" class="filter-btn px-6 py-2 border border-white/20 text-sm uppercase tracking-wider hover:border-gold hover:gold-text transition-all" data-filter="jewelry">Modélisation 3D</button>
-                    <button onclick="filterGallery('architecture')" class="filter-btn px-6 py-2 border border-white/20 text-sm uppercase tracking-wider hover:border-gold hover:gold-text transition-all" data-filter="jewelry">Architecture visualisation</button>
                 </div>
             </div>
 
@@ -253,82 +251,71 @@
                     <img src="https://raw.githubusercontent.com/Radonasolord/portfolio/main/Portrait/2.jpg" alt="Portrait" class="w-full h-full object-cover">
                     <div class="gallery-overlay">
                         <div>
-                            <h4 class="text-lg font-bold">Portrait</h4>
+                            <h4 class="text-lg font-bold">Portrait Studio</h4>
                             <p class="text-sm text-gray-300">Retouche photo et montage photo</p>
                         </div>
                     </div>
                 </div>
                 <div class="gallery-item aspect-[4/5]" data-category="portrait">
-                    <img src="https://raw.github.com/Radonasolord/portfolio/main/Ecommerce/Détourage+retouche.jpg" alt="Portrait" class="w-full h-full object-cover">
-                    <div class="gallery-overlay">
-                        <div>
-                            <h4 class="text-lg font-bold">Détourage et retouche</h4>
-                            <p class="text-sm text-gray-300">avec fond blanc et ombre</p>
-                        </div>
-                    </div>
-                </div>
-                 <div class="gallery-item aspect-[4/5]" data-category="portrait">
                     <img src="https://raw.github.com/Radonasolord/portfolio/main/Portrait/3.jpg" alt="Portrait" class="w-full h-full object-cover">
                     <div class="gallery-overlay">
                         <div>
-                            <h4 class="text-lg font-bold">Retouche portrait</h4>
+                            <h4 class="text-lg font-bold">Portrait Studio</h4>
                             <p class="text-sm text-gray-300">Enlever un objet et correction des visage, etc</p>
                         </div>
                     </div>
                 </div>
-                 <div class="gallery-item aspect-[4/5]" data-category="portrait">
+                <div class="gallery-item aspect-[4/5]" data-category="portrait">
                     <img src="https://raw.github.com/Radonasolord/portfolio/Portrait/4.jpg" alt="Portrait" class="w-full h-full object-cover">
                     <div class="gallery-overlay">
                         <div>
-                            <h4 class="text-lg font-bold">Retouche portrait</h4>
-                            <p class="text-sm text-gray-300">Nettoyage et suppression d'éléments,Nettoyage du sol</p>
+                            <h4 class="text-lg font-bold">Portrait Studio</h4>
+                            <p class="text-sm text-gray-300">Retouche beauté</p>
                         </div>
                     </div>
-                      <div class="gallery-item aspect-[4/5]" data-category="portrait">
+                </div>
+                <div class="gallery-item aspect-[4/5]" data-category="portrait">
                     <img src="https://raw.github.com/Radonasolord/portfolio/Portrait/5.jpg" alt="Portrait" class="w-full h-full object-cover">
                     <div class="gallery-overlay">
                         <div>
-                            <h4 class="text-lg font-bold">Retouche portrait</h4>
+                            <h4 class="text-lg font-bold">Portrait Studio</h4>
                             <p class="text-sm text-gray-300">Nettoyage et suppression de fond et enfond blanc</p>
                         </div>
                     </div>
                 </div>
-                <div class="gallery-item aspect-[4/5]" data-category="e-commerce">
-                    <img src="https://raw.githubusercontent.com/Radonasolord/portfolio/main/Ecommerce/Montage1.jpg" alt="Montage ghost" class="w-full h-full object-cover">
+                <div class="gallery-item aspect-[4/5]" data-category="product">
+                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&q=80" alt="Produit" class="w-full h-full object-cover">
                     <div class="gallery-overlay">
                         <div>
-                            <h4 class="text-lg font-bold">Montage photo ghost</h4>
-                            <p class="text-sm text-gray-300">Détourage & fond blanc</p>
+                            <h4 class="text-lg font-bold">E-commerce Chaussures</h4>
+                            <p class="text-sm text-gray-300">Détourage & mise en scène</p>
                         </div>
                     </div>
                 </div>
-                
-            
-                <div class="gallery-item aspect-[4/5]" data-category="e-commerce">
-                    <img src="https://raw.githubusercontent.com/Radonasolord/portfolio/main/Ecommerce/Montage2.jpg" alt="Montage ghost" class="w-full h-full object-cover">
+                <div class="gallery-item aspect-[4/5]" data-category="jewelry">
+                    <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=600&q=80" alt="Joaillerie" class="w-full h-full object-cover">
                     <div class="gallery-overlay">
                         <div>
-                            <h4 class="text-lg font-bold">Montage photo ghost</h4>
-                            <p class="text-sm text-gray-300">Détourage & fond blanc</p>
+                            <h4 class="text-lg font-bold">Bague Diamant</h4>
+                            <p class="text-sm text-gray-300">Focus stacking</p>
                         </div>
                     </div>
                 </div>
-        
-                <div class="gallery-item aspect-[4/5]" data-category="e-commerce">
-                    <img src="https://raw.githubusercontent.com/Radonasolord/portfolio/main/Ecommerce/Montage3.jpg" alt="Montage ghost" class="w-full h-full object-cover">
+                <div class="gallery-item aspect-[4/5]" data-category="portrait">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80" alt="Portrait" class="w-full h-full object-cover">
                     <div class="gallery-overlay">
                         <div>
-                            <h4 class="text-lg font-bold">Montage photo ghost</h4>
-                            <p class="text-sm text-gray-300">Détourage & fond blanc</p>
+                            <h4 class="text-lg font-bold">Portrait Homme</h4>
+                            <p class="text-sm text-gray-300">Correction teint</p>
                         </div>
                     </div>
                 </div>
-                <div class="gallery-item aspect-[4/5]" data-category="e-commerce">
-                    <img src="https://raw.githubusercontent.com/Radonasolord/portfolio/main/Ecommerce/détourage + retouche.jpg" alt="retouche" class="w-full h-full object-cover">
+                <div class="gallery-item aspect-[4/5]" data-category="product">
+                    <img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=600&q=80" alt="Produit" class="w-full h-full object-cover">
                     <div class="gallery-overlay">
                         <div>
-                            <h4 class="text-lg font-bold">Retouche photo produit</h4>
-                            <p class="text-sm text-gray-300">Détourage & retouche photo</p>
+                            <h4 class="text-lg font-bold">Cosmétiques</h4>
+                            <p class="text-sm text-gray-300">Packshot</p>
                         </div>
                     </div>
                 </div>
@@ -341,47 +328,43 @@
                         </div>
                     </div>
                 </div>
-                <div class="gallery-item aspect-[4/5]" data-category="jewelry">
-                    <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=600&q=80" alt="Joaillerie" class="w-full h-full object-cover">
-                    <div class="gallery-overlay">
-                        <div>
-                            <h4 class="text-lg font-bold">Bague Diamant</h4>
-                            <p class="text-sm text-gray-300">Focus stacking</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="gallery-item aspect-[4/5]" data-category="Modélisation3D">
-                    <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=600&q=80" alt="Joaillerie" class="w-full h-full object-cover">
-                    <div class="gallery-overlay">
-                        <div>
-                            <h4 class="text-lg font-bold">Bague Diamant</h4>
-                            <p class="text-sm text-gray-300">Focus stacking</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="gallery-item aspect-[4/5]" data-category="architecture">
-                    <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=600&q=80" alt="Joaillerie" class="w-full h-full object-cover">
-                    <div class="gallery-overlay">
-                        <div>
-                            <h4 class="text-lg font-bold">Bague Diamant</h4>
-                            <p class="text-sm text-gray-300">Focus stacking</p>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
+
     
 <!-- Interactive Before/After Section -->
-        <section id="before-after" class="py-24 bg-neutral-900">
-            <div class="max-w-7xl mx-auto px-6">
-                    <div class="text-center mb-16">
-                        <p class="gold-text tracking-[0.3em] text-sm mb-4 uppercase">Qualité de Travail</p>
-                        <h2 class="text-4xl md:text-5xl font-bold mb-6">Avant / Après</h2>
-                        <p class="text-gray-400 max-w-2xl mx-auto">
+      <section id="before-after" class="py-24 bg-neutral-900">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <p class="gold-text tracking-[0.3em] text-sm mb-4 uppercase">Qualité de Travail</p>
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Avant / Après</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">
                     Faites glisser le curseur pour comparer l'image originale et la version retouchée
-                        </p>
+                </p>
             </div>
+
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Comparison 1: Portrait -->
+                <div class="space-y-4">
+                    <div class="comparison-container h-[500px] rounded-lg" id="compare1">
+                        <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=800&q=80" 
+                             class="comparison-image" alt="Après retouche">
+                        <div class="comparison-overlay" id="overlay1">
+                            <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=800&q=80&sat=-100&con=1.2" 
+                                 class="comparison-image" style="filter: grayscale(30%) contrast(1.1) brightness(0.9);" alt="Avant retouche">
+                        </div>
+                        <div class="slider-handle" id="handle1">
+                            <i data-lucide="move-horizontal" class="w-5 h-5 text-black"></i>
+                        </div>
+                        <span class="absolute top-4 left-4 bg-black/70 px-3 py-1 text-xs uppercase tracking-wider">Avant</span>
+                        <span class="absolute top-4 right-4 gold-bg text-black px-3 py-1 text-xs uppercase tracking-wider font-bold">Après</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-xl font-bold">Portrait Beauté</h3>
+                        <span class="text-sm text-gray-500">Skin retouching • Color grading</span>
+                    </div>
+                </div>
 
                 <!-- Comparison 2: Product -->
                 <div class="space-y-4">
