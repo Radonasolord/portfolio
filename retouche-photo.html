@@ -5,40 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Retouche Photo — Rado Nasolo</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style type="text/tailwindcss">
         @layer base {
-            :root { --gold: #D4AF37; --dark: #0a0a0a; }
-            body { font-family: 'Inter', sans-serif; background: #0a0a0a; color: white; }
+            :root { --gold: #D4AF37; --dark: #070707; }
+            html { scroll-behavior: smooth; }
+            body { font-family: 'Inter', sans-serif; background: #070707; color: white; }
             h1, h2 { font-family: 'Playfair Display', serif; }
         }
         .gold-text { color: var(--gold); }
         .gold-bg { background-color: var(--gold); }
-        .nav-link { position: relative; }
-        .nav-link::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background: var(--gold); transition: width 0.3s; }
-        .nav-link:hover::after { width: 100%; }
-        .gallery-item { position: relative; overflow: hidden; }
-        .gallery-item img { transition: transform 0.5s ease; }
-        .gallery-item:hover img { transform: scale(1.05); }
-        .gallery-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); opacity: 0; transition: 0.3s; display: flex; align-items: flex-end; padding: 1.5rem; }
-        .gallery-item:hover .gallery-overlay { opacity: 1; }
-        .filter-btn.active { border-color: #D4AF37; color: #D4AF37; }
+        .back-btn {
+            display:inline-flex; align-items:center; gap:0.5rem;
+            padding:0.75rem 1.5rem; border-radius:9999px; border:1px solid rgba(255,255,255,0.15);
+            transition:all 0.3s ease; color:inherit; text-decoration:none;
+        }
+        .back-btn:hover { border-color:var(--gold); color:var(--gold); background:rgba(212,175,55,0.05); }
+        .gallery-item { position:relative; overflow:hidden; border-radius:0.75rem; }
+        .gallery-item img { transition:transform 0.5s ease; }
+        .gallery-item:hover img { transform:scale(1.08); }
+        .gallery-overlay {
+            position:absolute; inset:0;
+            background:linear-gradient(to top, rgba(0,0,0,0.92), transparent);
+            opacity:0; transition:0.4s; display:flex; align-items:flex-end; padding:1.5rem;
+        }
+        .gallery-item:hover .gallery-overlay { opacity:1; }
+        .filter-btn { transition:all 0.3s ease; }
+        .filter-btn.active { border-color:#D4AF37; color:#D4AF37; background:rgba(212,175,55,0.05); }
     </style>
 </head>
 <body class="antialiased">
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
+    <nav class="fixed w-full z-50 bg-black/60 backdrop-blur-xl border-b border-white/5">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="index.html" class="flex items-center gap-3">
-                <div class="w-8 h-8 gold-bg flex items-center justify-center"><span class="text-black font-bold">RN</span></div>
-                <span class="font-bold tracking-wider">RADO NASOLO</span>
+            <a href="index.html" class="back-btn">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                Retour à l'accueil
             </a>
             <div class="hidden md:flex gap-8 text-sm tracking-wider">
-                <a href="index.html" class="nav-link hover:gold-text">Accueil</a>
-                <a href="retouche-photo.html" class="nav-link gold-text">Retouche Photo</a>
-                <a href="modelisation-3d.html" class="nav-link hover:gold-text">Modélisation 3D</a>
-                <a href="index.html#contact" class="nav-link hover:gold-text">Contact</a>
+                <a href="retouche-photo.html" class="gold-text">Retouche Photo</a>
+                <a href="modelisation-3d.html" class="hover:gold-text transition-colors">Modélisation 3D</a>
             </div>
         </div>
     </nav>
@@ -46,68 +53,72 @@
     <main class="pt-28 pb-24 px-6">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16">
-                <p class="gold-text tracking-[0.3em] text-sm mb-4 uppercase">Portfolio</p>
+                <p class="gold-text tracking-[0.3em] text-xs mb-4 uppercase">Portfolio</p>
                 <h1 class="text-4xl md:text-5xl font-bold mb-6">Retouche Photo</h1>
-                <p class="text-gray-400 max-w-2xl mx-auto">Portraits, e-commerce, joaillerie, détourage, montages — images optimisées et sublimées.</p>
+                <p class="text-gray-400 max-w-2xl mx-auto">Portraits, e-commerce, joaillerie, détourage — chaque image optimisée avec soin.</p>
             </div>
 
             <!-- Filtres -->
             <div class="flex flex-wrap justify-center gap-3 mb-12">
-                <button class="filter-btn active px-5 py-2 border border-gold gold-text text-sm uppercase tracking-wider" data-filter="all">Tous</button>
-                <button class="filter-btn px-5 py-2 border border-white/20 text-sm uppercase tracking-wider hover:border-gold hover:gold-text" data-filter="portrait">Portrait</button>
-                <button class="filter-btn px-5 py-2 border border-white/20 text-sm uppercase tracking-wider hover:border-gold hover:gold-text" data-filter="ecommerce">E-commerce</button>
-                <button class="filter-btn px-5 py-2 border border-white/20 text-sm uppercase tracking-wider hover:border-gold hover:gold-text" data-filter="joaillerie">Joaillerie</button>
-                <button class="filter-btn px-5 py-2 border border-white/20 text-sm uppercase tracking-wider hover:border-gold hover:gold-text" data-filter="detourage">Détourage</button>
+                <button class="filter-btn active px-5 py-2 border rounded-full text-sm uppercase tracking-wider" data-filter="all">Tous</button>
+                <button class="filter-btn px-5 py-2 border border-white/10 rounded-full text-sm uppercase tracking-wider hover:border-gold hover:gold-text" data-filter="portrait">Portrait</button>
+                <button class="filter-btn px-5 py-2 border border-white/10 rounded-full text-sm uppercase tracking-wider hover:border-gold hover:gold-text" data-filter="ecommerce">E-commerce</button>
+                <button class="filter-btn px-5 py-2 border border-white/10 rounded-full text-sm uppercase tracking-wider hover:border-gold hover:gold-text" data-filter="joaillerie">Joaillerie</button>
+                <button class="filter-btn px-5 py-2 border border-white/10 rounded-full text-sm uppercase tracking-wider hover:border-gold hover:gold-text" data-filter="detourage">Détourage</button>
             </div>
 
             <!-- Galerie -->
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="gallery">
                 <!-- Portrait -->
                 <div class="gallery-item aspect-[4/5]" data-cat="portrait">
-                    <img src="https://raw.githubusercontent.com/Radonasolord/portfolio/main/Portrait/2.jpg" alt="Portrait">
-                    <div class="gallery-overlay"><div><h4 class="font-bold">Portrait</h4><p class="text-sm text-gray-300">Retouche et montage</p></div></div>
+                    <img src="https://raw.githubusercontent.com/Radonasolord/portfolio/main/Portrait/2.jpg" alt="Portrait" class="w-full h-full object-cover">
+                    <div class="gallery-overlay"><div><h4 class="font-bold text-lg">Portrait</h4><p class="text-sm text-gray-300 mt-1">Retouche et montage</p></div></div>
                 </div>
                 <div class="gallery-item aspect-[4/5]" data-cat="portrait">
-                    <img src="https://raw.githubusercontent.com/Radonasolord/portfolio/main/Portrait/3.jpg" alt="Portrait">
-                    <div class="gallery-overlay"><div><h4 class="font-bold">Portrait</h4><p class="text-sm text-gray-300">Suppression d'objets et correction</p></div></div>
+                    <img src="https://raw.githubusercontent.com/Radonasolord/portfolio/main/Portrait/3.jpg" alt="Portrait" class="w-full h-full object-cover">
+                    <div class="gallery-overlay"><div><h4 class="font-bold text-lg">Portrait</h4><p class="text-sm text-gray-300 mt-1">Suppression d'objets et correction</p></div></div>
                 </div>
                 <div class="gallery-item aspect-[4/5]" data-cat="portrait">
-                    <img src="https://raw.githubusercontent.com/Radonasolord/portfolio/main/Portrait/4.jpg" alt="Portrait">
-                    <div class="gallery-overlay"><div><h4 class="font-bold">Portrait Beauté</h4><p class="text-sm text-gray-300">Lissage, nettoyage, harmonisation</p></div></div>
+                    <img src="https://raw.githubusercontent.com/Radonasolord/portfolio/main/Portrait/4.jpg" alt="Portrait" class="w-full h-full object-cover">
+                    <div class="gallery-overlay"><div><h4 class="font-bold text-lg">Portrait Beauté</h4><p class="text-sm text-gray-300 mt-1">Lissage, harmonisation</p></div></div>
                 </div>
                 <div class="gallery-item aspect-[4/5]" data-cat="portrait">
-                    <img src="https://raw.githubusercontent.com/Radonasolord/portfolio/main/Portrait/5.jpg" alt="Portrait">
-                    <div class="gallery-overlay"><div><h4 class="font-bold">Fond & Nettoyage</h4><p class="text-sm text-gray-300">Suppression fond, fond blanc</p></div></div>
+                    <img src="https://raw.githubusercontent.com/Radonasolord/portfolio/main/Portrait/5.jpg" alt="Portrait" class="w-full h-full object-cover">
+                    <div class="gallery-overlay"><div><h4 class="font-bold text-lg">Fond & Nettoyage</h4><p class="text-sm text-gray-300 mt-1">Suppression fond, fond blanc</p></div></div>
                 </div>
 
                 <!-- E-commerce -->
                 <div class="gallery-item aspect-[4/5]" data-cat="ecommerce">
-                    <img src="https://raw.githubusercontent.com/Radonasolord/portfolio/main/Ecommerce/Montage1.jpg" alt="Produit">
-                    <div class="gallery-overlay"><div><h4 class="font-bold">Ghost Mannequin</h4><p class="text-sm text-gray-300">Détourage, montage, fond blanc</p></div></div>
+                    <img src="https://raw.githubusercontent.com/Radonasolord/portfolio/main/Ecommerce/Montage1.jpg" alt="Produit" class="w-full h-full object-cover">
+                    <div class="gallery-overlay"><div><h4 class="font-bold text-lg">Ghost Mannequin</h4><p class="text-sm text-gray-300 mt-1">Détourage, montage, fond blanc</p></div></div>
                 </div>
                 <div class="gallery-item aspect-[4/5]" data-cat="ecommerce">
-                    <img src="https://raw.githubusercontent.com/Radonasolord/portfolio/main/Ecommerce/Montage2.jpg" alt="Produit">
-                    <div class="gallery-overlay"><div><h4 class="font-bold">Ghost Mannequin</h4><p class="text-sm text-gray-300">Recadrage et uniformisation</p></div></div>
+                    <img src="https://raw.githubusercontent.com/Radonasolord/portfolio/main/Ecommerce/Montage2.jpg" alt="Produit" class="w-full h-full object-cover">
+                    <div class="gallery-overlay"><div><h4 class="font-bold text-lg">Ghost Mannequin</h4><p class="text-sm text-gray-300 mt-1">Recadrage et uniformisation</p></div></div>
                 </div>
                 <div class="gallery-item aspect-[4/5]" data-cat="ecommerce">
-                    <img src="https://raw.githubusercontent.com/Radonasolord/portfolio/main/Ecommerce/Montage3.jpg" alt="Produit">
-                    <div class="gallery-overlay"><div><h4 class="font-bold">Ghost Mannequin</h4><p class="text-sm text-gray-300">Assemblage et rendu final</p></div></div>
+                    <img src="https://raw.githubusercontent.com/Radonasolord/portfolio/main/Ecommerce/Montage3.jpg" alt="Produit" class="w-full h-full object-cover">
+                    <div class="gallery-overlay"><div><h4 class="font-bold text-lg">Ghost Mannequin</h4><p class="text-sm text-gray-300 mt-1">Assemblage et rendu final</p></div></div>
                 </div>
 
                 <!-- Joaillerie -->
                 <div class="gallery-item aspect-[4/5]" data-cat="joaillerie">
-                    <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&q=80" alt="Bijou">
-                    <div class="gallery-overlay"><div><h4 class="font-bold">Bague — Focus Stacking</h4><p class="text-sm text-gray-300">Netteté totale, rendu des pierres</p></div></div>
+                    <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&q=80" alt="Bijou" class="w-full h-full object-cover">
+                    <div class="gallery-overlay"><div><h4 class="font-bold text-lg">Bague — Focus Stacking</h4><p class="text-sm text-gray-300 mt-1">Netteté totale, rendu des pierres</p></div></div>
                 </div>
 
                 <!-- Détourage -->
                 <div class="gallery-item aspect-[4/5]" data-cat="detourage">
-                    <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&q=80" alt="Produit">
-                    <div class="gallery-overlay"><div><h4 class="font-bold">Détourage & Fond Blanc</h4><p class="text-sm text-gray-300">Contours précis, ombre portée</p></div></div>
+                    <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&q=80" alt="Produit" class="w-full h-full object-cover">
+                    <div class="gallery-overlay"><div><h4 class="font-bold text-lg">Détourage & Fond Blanc</h4><p class="text-sm text-gray-300 mt-1">Contours précis, ombre portée</p></div></div>
                 </div>
             </div>
         </div>
     </main>
+
+    <footer class="border-t border-white/5 py-8 text-center text-sm text-gray-500">
+        <p>© 2026 Rado Nasolo — Retouche Photo & Modélisation 3D</p>
+    </footer>
 
     <script>
         lucide.createIcons();
@@ -119,10 +130,10 @@
                 const filter = btn.dataset.filter;
                 btns.forEach(b => {
                     b.classList.remove('active','border-gold','gold-text');
-                    b.classList.add('border-white/20');
+                    b.classList.add('border-white/10');
                 });
                 btn.classList.add('active','border-gold','gold-text');
-                btn.classList.remove('border-white/20');
+                btn.classList.remove('border-white/10');
                 items.forEach(item => {
                     item.style.display = (filter === 'all' || item.dataset.cat === filter) ? 'block' : 'none';
                 });

@@ -7,56 +7,137 @@
     <meta name="keywords" content="Rado Nasolo, retouche photo, modélisation 3D, 2D vers 3D, Madagascar, portfolio">
     <title>Rado Nasolo | Retouche Photo — Modélisation 3D</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style type="text/tailwindcss">
         @layer base {
             :root {
                 --gold: #D4AF37;
                 --gold-light: #F4E8C1;
-                --dark: #0a0a0a;
-                --charcoal: #1a1a1a;
+                --dark: #070707;
+                --card: #111111;
+                --card-hover: #181818;
             }
-            body { font-family: 'Inter', sans-serif; background-color: var(--dark); color: white; }
-            h1, h2, h3, .serif { font-family: 'Playfair Display', serif; }
+            html { scroll-behavior: smooth; }
+            body { 
+                font-family: 'Inter', sans-serif; 
+                background-color: var(--dark); 
+                color: white; 
+            }
+            h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
         }
         @layer components {
             .gold-text { color: var(--gold); }
             .gold-bg { background-color: var(--gold); }
             .gold-border { border-color: var(--gold); }
-            .service-card {
-                background: linear-gradient(135deg, rgba(26,26,26,0.9) 0%, rgba(10,10,10,0.9) 100%);
-                border: 1px solid rgba(212,175,55,0.2);
-                transition: all 0.4s ease;
+            .gradient-text {
+                background: linear-gradient(135deg, #D4AF37 0%, #F4E8C1 50%, #D4AF37 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
             }
-            .service-card:hover { border-color: var(--gold); transform: translateY(-5px); box-shadow: 0 20px 40px rgba(212,175,55,0.1); }
-            .nav-link { position: relative; }
+            .nav-link {
+                position: relative;
+                @apply px-1 py-2 transition-colors;
+            }
             .nav-link::after {
-                content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px;
-                background: var(--gold); transition: width 0.3s ease;
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 0;
+                height: 1px;
+                background: var(--gold);
+                transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             }
             .nav-link:hover::after { width: 100%; }
-            .gallery-item { position: relative; overflow: hidden; }
-            .gallery-item img { transition: transform 0.6s ease; }
-            .gallery-item:hover img { transform: scale(1.05); }
+            .nav-link:hover { @apply gold-text; }
+            .card-hover {
+                background: linear-gradient(145deg, rgba(20,20,20,0.9), rgba(10,10,10,0.95));
+                border: 1px solid rgba(212,175,55,0.12);
+                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                backdrop-filter: blur(10px);
+            }
+            .card-hover:hover {
+                border-color: rgba(212,175,55,0.4);
+                transform: translateY(-6px);
+                box-shadow: 0 25px 50px rgba(212,175,55,0.08), 0 0 0 1px rgba(212,175,55,0.05);
+            }
+            .btn-primary {
+                background: linear-gradient(135deg, #D4AF37 0%, #B8941F 100%);
+                color: black;
+                font-weight: 600;
+                padding: 0.875rem 2.25rem;
+                border-radius: 9999px;
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                text-transform: uppercase;
+                letter-spacing: 0.15em;
+                font-size: 0.875rem;
+                box-shadow: 0 4px 15px rgba(212,175,55,0.2);
+            }
+            .btn-primary:hover {
+                transform: translateY(-2px) scale(1.02);
+                box-shadow: 0 12px 30px rgba(212,175,55,0.35);
+            }
+            .btn-outline {
+                border-radius: 9999px;
+                border: 1px solid rgba(255,255,255,0.2);
+                padding: 0.875rem 2.25rem;
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                text-transform: uppercase;
+                letter-spacing: 0.15em;
+                font-size: 0.875rem;
+            }
+            .btn-outline:hover {
+                border-color: var(--gold);
+                color: var(--gold);
+                background: rgba(212,175,55,0.05);
+                transform: translateY(-2px);
+            }
+            .gallery-item {
+                position: relative;
+                overflow: hidden;
+                border-radius: 0.75rem;
+            }
+            .gallery-item img {
+                transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+            .gallery-item:hover img { transform: scale(1.08); }
             .gallery-overlay {
-                position: absolute; inset: 0;
-                background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
-                opacity: 0; transition: opacity 0.3s ease;
-                display: flex; align-items: flex-end; padding: 1.5rem;
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);
+                opacity: 0;
+                transition: opacity 0.4s ease;
+                display: flex;
+                align-items: flex-end;
+                padding: 1.5rem;
             }
             .gallery-item:hover .gallery-overlay { opacity: 1; }
-            .btn-primary {
-                background: linear-gradient(135deg, var(--gold) 0%, #B8941F 100%);
-                color: black; font-weight: 600; padding: 0.875rem 2rem; border-radius: 0;
-                transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.875rem;
+            .section-divider {
+                width: 60px;
+                height: 2px;
+                background: linear-gradient(90deg, transparent, #D4AF37, transparent);
+                margin: 0 auto;
             }
-            .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(212,175,55,0.3); }
-            .text-reveal { animation: fadeInUp 0.8s ease forwards; opacity: 0; transform: translateY(30px); }
-            @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+            .text-reveal {
+                opacity: 0;
+                transform: translateY(30px);
+                transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+            .text-reveal.active {
+                opacity: 1;
+                transform: translateY(0);
+            }
             .grain {
-                position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-                pointer-events: none; z-index: 1000; opacity: 0.03;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                pointer-events: none;
+                z-index: 1000;
+                opacity: 0.03;
                 background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
             }
         }
@@ -66,22 +147,24 @@
     <div class="grain"></div>
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
+    <nav class="fixed w-full z-50 bg-black/60 backdrop-blur-xl border-b border-white/5">
         <div class="max-w-7xl mx-auto px-6 py-4">
             <div class="flex justify-between items-center">
-                <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 gold-bg flex items-center justify-center"><span class="text-black font-bold text-lg">RN</span></div>
-                    <div>
-                        <h1 class="text-xl font-bold tracking-wider">RADO NASOLO</h1>
-                        <p class="text-xs text-gray-400 tracking-widest uppercase">Retoucheur Photo — Modéleur 3D</p>
+                <a href="index.html" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 gold-bg flex items-center justify-center rounded-full group-hover:scale-110 transition-transform duration-300">
+                        <span class="text-black font-bold text-lg">RN</span>
                     </div>
-                </div>
-                <div class="hidden md:flex gap-8 text-sm tracking-wider">
-                    <a href="#accueil" class="nav-link hover:gold-text transition-colors">Accueil</a>
-                    <a href="retouche-photo.html" class="nav-link hover:gold-text transition-colors">Retouche Photo</a>
-                    <a href="modelisation-3d.html" class="nav-link hover:gold-text transition-colors">Modélisation 3D</a>
-                    <a href="#services" class="nav-link hover:gold-text transition-colors">Services</a>
-                    <a href="#contact" class="nav-link hover:gold-text transition-colors">Contact</a>
+                    <div>
+                        <h1 class="text-lg font-bold tracking-wider">RADO NASOLO</h1>
+                        <p class="text-xs text-gray-400 tracking-widest">RETouche — 3D</p>
+                    </div>
+                </a>
+                <div class="hidden md:flex items-center gap-8 text-sm tracking-wider">
+                    <a href="index.html" class="nav-link gold-text">Accueil</a>
+                    <a href="retouche-photo.html" class="nav-link">Retouche Photo</a>
+                    <a href="modelisation-3d.html" class="nav-link">Modélisation 3D</a>
+                    <a href="#services" class="nav-link">Services</a>
+                    <a href="#contact" class="nav-link">Contact</a>
                 </div>
             </div>
         </div>
@@ -90,117 +173,180 @@
     <!-- Hero Section -->
     <section id="accueil" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
         <div class="absolute inset-0 z-0">
-            <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/70 to-black z-10"></div>
-            <img src="https://raw.githubusercontent.com/Radonasolord/portfolio/main/Portrait/5.jpg" alt="Portrait" class="w-full h-full object-cover opacity-80">
+            <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/75 to-black z-10"></div>
+            <img src="https://raw.githubusercontent.com/Radonasolord/portfolio/main/Portrait/5.jpg" 
+                 alt="Portrait" 
+                 class="w-full h-full object-cover opacity-70">
         </div>
-        <div class="relative z-20 text-center px-6 max-w-5xl mx-auto">
-            <p class="text-reveal gold-text tracking-[0.3em] text-sm mb-6 uppercase" style="animation-delay: 0.1s">Expertise visuelle complète</p>
-            <h1 class="text-reveal text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight" style="animation-delay: 0.2s">
-                L'Art de la<br><span class="gold-text italic">Perfection</span>
-            </h1>
-            <p class="text-reveal text-gray-300 text-lg md:text-xl max-w-2xl mx-auto mb-10 font-light" style="animation-delay: 0.3s">
-                Retouche haut de gamme et modélisation 3D photoréaliste. Basé à Madagascar — clients internationaux.
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(212,175,55,0.08)_0%,transparent_60%)] z-10"></div>
+        
+        <div class="relative z-20 text-center px-6 max-w-6xl mx-auto">
+            <p class="text-reveal gold-text tracking-[0.3em] text-xs mb-6 uppercase" style="transition-delay: 0.1s">
+                Expertise visuelle complète
             </p>
-            <div class="text-reveal flex flex-col sm:flex-row gap-4 justify-center" style="animation-delay: 0.4s">
-                <a href="retouche-photo.html" class="btn-primary">Portfolio Retouche Photo</a>
-                <a href="modelisation-3d.html" class="px-8 py-3 border border-white/30 hover:border-gold hover:gold-text transition-all uppercase tracking-wider text-sm">Portfolio 3D</a>
+            <h1 class="text-reveal text-5xl md:text-7xl lg:text-8xl font-bold mb-8 leading-tight" style="transition-delay: 0.2s">
+                Donnez vie à vos images<br>
+                <span class="gradient-text">avec perfection</span>
+            </h1>
+            <p class="text-reveal text-gray-300 text-lg md:text-xl max-w-2xl mx-auto mb-10 font-light leading-relaxed" style="transition-delay: 0.3s">
+                Retouche haut de gamme et modélisation 3D photoréaliste. Basé à Madagascar — collaborons depuis le monde entier.
+            </p>
+            <div class="text-reveal flex flex-col sm:flex-row gap-4 justify-center" style="transition-delay: 0.4s">
+                <a href="retouche-photo.html" class="btn-primary">
+                    Retouche Photo
+                </a>
+                <a href="modelisation-3d.html" class="btn-outline">
+                    Modélisation 3D
+                </a>
             </div>
+        </div>
+        
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+            <a href="#domaines" class="gold-text">
+                <i data-lucide="chevron-down" class="w-6 h-6"></i>
+            </a>
         </div>
     </section>
 
-    <!-- Présentation des deux domaines -->
-    <section class="py-24 px-6">
+    <!-- Domaines -->
+    <section id="domaines" class="py-28 px-6">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16">
-                <p class="gold-text tracking-[0.3em] text-sm mb-4 uppercase">Deux spécialités complémentaires</p>
-                <h2 class="text-4xl md:text-5xl font-bold mb-6">Savoir-Faire</h2>
+                <p class="gold-text tracking-[0.3em] text-xs mb-4 uppercase">Deux expertises complémentaires</p>
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Ce que je fais</h2>
+                <div class="section-divider"></div>
             </div>
-            <div class="grid md:grid-cols-2 gap-12">
+            
+            <div class="grid md:grid-cols-2 gap-8 lg:gap-12">
                 <!-- Carte Retouche Photo -->
-                <a href="retouche-photo.html" class="service-card p-8 block group">
-                    <div class="w-16 h-16 gold-bg/10 rounded-full flex items-center justify-center mb-6 group-hover:gold-bg transition-all duration-300">
+                <a href="retouche-photo.html" class="card-hover p-8 rounded-2xl block group">
+                    <div class="w-16 h-16 rounded-full gold-bg/10 flex items-center justify-center mb-6 group-hover:gold-bg transition-all duration-300">
                         <i data-lucide="image" class="w-8 h-8 gold-text group-hover:text-black"></i>
                     </div>
                     <h3 class="text-2xl font-bold mb-3">Retouche Photo</h3>
-                    <p class="text-gray-400 mb-4">Portraits, e-commerce, joaillerie, détourage, montages et restauration. Amélioration naturelle et précision professionnelle.</p>
-                    <span class="gold-text inline-flex items-center gap-2">Voir le portfolio <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
+                    <p class="text-gray-400 mb-6 leading-relaxed">Portraits, e-commerce, joaillerie, détourage et photomontages. Amélioration naturelle et précision professionnelle.</p>
+                    <span class="gold-text inline-flex items-center gap-2 text-sm font-medium">
+                        Voir le portfolio
+                        <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                    </span>
                 </a>
                 <!-- Carte Modélisation 3D -->
-                <a href="modelisation-3d.html" class="service-card p-8 block group">
-                    <div class="w-16 h-16 gold-bg/10 rounded-full flex items-center justify-center mb-6 group-hover:gold-bg transition-all duration-300">
+                <a href="modelisation-3d.html" class="card-hover p-8 rounded-2xl block group">
+                    <div class="w-16 h-16 rounded-full gold-bg/10 flex items-center justify-center mb-6 group-hover:gold-bg transition-all duration-300">
                         <i data-lucide="box" class="w-8 h-8 gold-text group-hover:text-black"></i>
                     </div>
                     <h3 class="text-2xl font-bold mb-3">Modélisation 3D & 2D→3D</h3>
-                    <p class="text-gray-400 mb-4">Création d'actifs 3D complets ou transformation de photos en modèles 3D. Rendu photoréaliste, texturage PBR, éclairage studio.</p>
-                    <span class="gold-text inline-flex items-center gap-2">Voir le portfolio <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
+                    <p class="text-gray-400 mb-6 leading-relaxed">Création d'actifs 3D ou transformation de photos en modèles 3D. Rendu photoréaliste, textures PBR, éclairage studio.</p>
+                    <span class="gold-text inline-flex items-center gap-2 text-sm font-medium">
+                        Voir le portfolio
+                        <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                    </span>
                 </a>
             </div>
         </div>
     </section>
 
     <!-- Services -->
-    <section id="services" class="py-24 px-6 bg-neutral-900">
+    <section id="services" class="py-28 px-6 bg-neutral-900/40">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16">
-                <p class="gold-text tracking-[0.3em] text-sm mb-4 uppercase">Prestations</p>
+                <p class="gold-text tracking-[0.3em] text-xs mb-4 uppercase">Prestations</p>
                 <h2 class="text-4xl md:text-5xl font-bold mb-6">Mes Services</h2>
-                <div class="w-24 h-0.5 gold-bg mx-auto"></div>
+                <div class="section-divider"></div>
             </div>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="service-card p-8">
-                    <h3 class="text-xl font-bold mb-3">Portrait & Beauté</h3>
-                    <p class="text-gray-400 text-sm">Lissage naturel, correction, harmonisation lumière/couleur.</p>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="card-hover p-7 rounded-xl">
+                    <h3 class="text-lg font-bold mb-3">Portrait & Beauté</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Lissage naturel, correction, harmonisation lumière et couleur — sans dénaturer.</p>
                 </div>
-                <div class="service-card p-8">
-                    <h3 class="text-xl font-bold mb-3">E-commerce</h3>
-                    <p class="text-gray-400 text-sm">Détourage, fond blanc, ombres, ghost mannequin, colorimétrie fidèle.</p>
+                <div class="card-hover p-7 rounded-xl">
+                    <h3 class="text-lg font-bold mb-3">E-commerce</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Détourage, fond blanc, ombres, ghost mannequin, couleurs fidèles aux produits.</p>
                 </div>
-                <div class="service-card p-8">
-                    <h3 class="text-xl font-bold mb-3">Joaillerie</h3>
-                    <p class="text-gray-400 text-sm">Focus stacking, rendu métaux et pierres, suppression reflets parasites.</p>
+                <div class="card-hover p-7 rounded-xl">
+                    <h3 class="text-lg font-bold mb-3">Joaillerie</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Focus stacking, rendu métaux et pierres, suppression des reflets parasites.</p>
                 </div>
-                <div class="service-card p-8">
-                    <h3 class="text-xl font-bold mb-3">Détourage & Montage</h3>
-                    <p class="text-gray-400 text-sm">Contours précis, cheveux, fonds transparents, photomontages créatifs.</p>
+                <div class="card-hover p-7 rounded-xl">
+                    <h3 class="text-lg font-bold mb-3">Détourage & Montage</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Contours précis, cheveux, fonds transparents, photomontages créatifs.</p>
                 </div>
-                <div class="service-card p-8">
-                    <h3 class="text-xl font-bold mb-3">Modélisation 3D</h3>
-                    <p class="text-gray-400 text-sm">Blender / 3ds Max — modèles, textures, éclairage, rendu haute résolution.</p>
+                <div class="card-hover p-7 rounded-xl">
+                    <h3 class="text-lg font-bold mb-3">Modélisation 3D</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Blender / 3ds Max — modèles complets, textures, éclairage, rendu haute définition.</p>
                 </div>
-                <div class="service-card p-8">
-                    <h3 class="text-xl font-bold mb-3">2D vers 3D</h3>
-                    <p class="text-gray-400 text-sm">Transformation de photos ou plans en objets 3D exploitables et rendus.</p>
+                <div class="card-hover p-7 rounded-xl">
+                    <h3 class="text-lg font-bold mb-3">2D vers 3D</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Transformation de photos ou plans en objets 3D exploitables et rendus.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact -->
-    <section id="contact" class="py-24 px-6">
+    <section id="contact" class="py-28 px-6">
         <div class="max-w-7xl mx-auto">
             <div class="grid lg:grid-cols-2 gap-16">
                 <div>
-                    <p class="gold-text tracking-[0.3em] text-sm mb-4 uppercase">Contact</p>
+                    <p class="gold-text tracking-[0.3em] text-xs mb-4 uppercase">Contact</p>
                     <h2 class="text-4xl md:text-5xl font-bold mb-6">Travaillons Ensemble</h2>
-                    <p class="text-gray-400 mb-8">Disponible pour projets ponctuels ou réguliers — collaboration à distance dans le monde entier.</p>
-                    <div class="space-y-4 text-gray-300">
-                        <p><strong>Email :</strong> sarobidinrado@gmail.com</p>
-                        <p><strong>Localisation :</strong> Antananarivo, Madagascar (GMT+3)</p>
-                        <p><strong>Disponibilité :</strong> Lundi–Samedi, 8h–18h</p>
+                    <p class="text-gray-400 mb-8 leading-relaxed">Disponible pour projets ponctuels ou réguliers. Collaboration à distance dans le monde entier.</p>
+                    
+                    <div class="space-y-5">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-full gold-bg/10 flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="mail" class="w-5 h-5 gold-text"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-gray-500">Email</div>
+                                <div class="font-medium">sarobidinrado@gmail.com</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-full gold-bg/10 flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="map-pin" class="w-5 h-5 gold-text"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-gray-500">Localisation</div>
+                                <div class="font-medium">Antananarivo, Madagascar (GMT+3)</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-full gold-bg/10 flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="clock" class="w-5 h-5 gold-text"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-gray-500">Disponibilité</div>
+                                <div class="font-medium">Lun – Sam : 8h – 18h</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="service-card p-8">
-                    <form action="https://formspree.io/f/xwlkpjzw" method="POST" class="space-y-4">
-                        <input type="text" name="name" placeholder="Nom" required class="w-full bg-black/50 border border-white/10 px-4 py-3 focus:border-gold outline-none">
-                        <input type="email" name="email" placeholder="Email" required class="w-full bg-black/50 border border-white/10 px-4 py-3 focus:border-gold outline-none">
-                        <select name="projet" class="w-full bg-black/50 border border-white/10 px-4 py-3 focus:border-gold outline-none">
-                            <option>Retouche Photo</option>
-                            <option>Modélisation 3D</option>
-                            <option>2D vers 3D</option>
-                            <option>Autre</option>
-                        </select>
-                        <textarea name="message" rows="5" placeholder="Votre projet..." required class="w-full bg-black/50 border border-white/10 px-4 py-3 focus:border-gold outline-none"></textarea>
-                        <button type="submit" class="btn-primary w-full">Envoyer</button>
+                <div class="card-hover p-8 rounded-2xl">
+                    <form action="https://formspree.io/f/xwlkpjzw" method="POST" class="space-y-5">
+                        <div>
+                            <label class="block text-sm mb-2 text-gray-400">Nom</label>
+                            <input type="text" name="name" required class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:border-gold focus:outline-none transition-colors" placeholder="Votre nom">
+                        </div>
+                        <div>
+                            <label class="block text-sm mb-2 text-gray-400">Email</label>
+                            <input type="email" name="email" required class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:border-gold focus:outline-none transition-colors" placeholder="votre@email.com">
+                        </div>
+                        <div>
+                            <label class="block text-sm mb-2 text-gray-400">Type de projet</label>
+                            <select name="projet" class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:border-gold focus:outline-none transition-colors">
+                                <option value="Retouche Photo">Retouche Photo</option>
+                                <option value="Modélisation 3D">Modélisation 3D</option>
+                                <option value="2D vers 3D">2D vers 3D</option>
+                                <option value="Autre">Autre</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm mb-2 text-gray-400">Message</label>
+                            <textarea name="message" rows="5" required class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:border-gold focus:outline-none transition-colors" placeholder="Décrivez votre projet..."></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary w-full">Envoyer la Demande</button>
                     </form>
                 </div>
             </div>
@@ -208,12 +354,29 @@
     </section>
 
     <!-- Footer -->
-    <footer class="border-t border-white/10 py-8 text-center text-sm text-gray-500">
-        <p>© 2026 Rado Nasolo — Retouche Photo & Modélisation 3D. Tous droits réservés.</p>
+    <footer class="border-t border-white/5 py-10">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+            <a href="index.html" class="flex items-center gap-3">
+                <div class="w-8 h-8 gold-bg flex items-center justify-center rounded-full">
+                    <span class="text-black font-bold text-sm">RN</span>
+                </div>
+                <span class="font-bold tracking-wider">RADO NASOLO</span>
+            </a>
+            <p class="text-sm text-gray-500">© 2026 — Retouche Photo & Modélisation 3D. Tous droits réservés.</p>
+        </div>
     </footer>
 
     <script>
         lucide.createIcons();
+        
+        // Animation au défilement
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.text-reveal').forEach(el => observer.observe(el));
+        
         // Scroll fluide
         document.querySelectorAll('a[href^="#"]').forEach(a => {
             a.addEventListener('click', e => {

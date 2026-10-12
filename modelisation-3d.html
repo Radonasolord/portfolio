@@ -5,36 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modélisation 3D & 2D→3D — Rado Nasolo</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style type="text/tailwindcss">
         @layer base {
-            :root { --gold: #D4AF37; --dark: #0a0a0a; }
-            body { font-family: 'Inter', sans-serif; background: #0a0a0a; color: white; }
+            :root { --gold: #D4AF37; --dark: #070707; }
+            html { scroll-behavior: smooth; }
+            body { font-family: 'Inter', sans-serif; background: #070707; color: white; }
             h1, h2 { font-family: 'Playfair Display', serif; }
         }
         .gold-text { color: var(--gold); }
         .gold-bg { background-color: var(--gold); }
-        .nav-link { position: relative; }
-        .nav-link::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background: var(--gold); transition: width 0.3s; }
-        .nav-link:hover::after { width: 100%; }
-        .card { background: linear-gradient(135deg, rgba(26,26,26,0.9), rgba(10,10,10,0.9)); border: 1px solid rgba(212,175,55,0.2); transition: 0.3s; }
-        .card:hover { border-color: #D4AF37; transform: translateY(-5px); }
+        .back-btn {
+            display:inline-flex; align-items:center; gap:0.5rem;
+            padding:0.75rem 1.5rem; border-radius:9999px; border:1px solid rgba(255,255,255,0.15);
+            transition:all 0.3s ease; color:inherit; text-decoration:none;
+        }
+        .back-btn:hover { border-color:var(--gold); color:var(--gold); background:rgba(212,175,55,0.05); }
+        .card {
+            background: linear-gradient(145deg, rgba(20,20,20,0.9), rgba(10,10,10,0.95));
+            border: 1px solid rgba(212,175,55,0.12);
+            border-radius: 1rem;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(10px);
+        }
+        .card:hover {
+            border-color: rgba(212,175,55,0.4);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(212,175,55,0.08);
+        }
     </style>
 </head>
 <body class="antialiased">
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
+    <nav class="fixed w-full z-50 bg-black/60 backdrop-blur-xl border-b border-white/5">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="index.html" class="flex items-center gap-3">
-                <div class="w-8 h-8 gold-bg flex items-center justify-center"><span class="text-black font-bold">RN</span></div>
-                <span class="font-bold tracking-wider">RADO NASOLO</span>
+            <a href="index.html" class="back-btn">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                Retour à l'accueil
             </a>
             <div class="hidden md:flex gap-8 text-sm tracking-wider">
-                <a href="index.html" class="nav-link hover:gold-text">Accueil</a>
-                <a href="retouche-photo.html" class="nav-link hover:gold-text">Retouche Photo</a>
-                <a href="modelisation-3d.html" class="nav-link gold-text">Modélisation 3D</a>
-                <a href="index.html#contact" class="nav-link hover:gold-text">Contact</a>
+                <a href="retouche-photo.html" class="hover:gold-text transition-colors">Retouche Photo</a>
+                <a href="modelisation-3d.html" class="gold-text">Modélisation 3D</a>
             </div>
         </div>
     </nav>
@@ -42,72 +54,57 @@
     <main class="pt-28 pb-24 px-6">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16">
-                <p class="gold-text tracking-[0.3em] text-sm mb-4 uppercase">Portfolio</p>
+                <p class="gold-text tracking-[0.3em] text-xs mb-4 uppercase">Portfolio</p>
                 <h1 class="text-4xl md:text-5xl font-bold mb-6">Modélisation 3D</h1>
                 <p class="text-gray-400 max-w-2xl mx-auto">Création d'actifs 3D et transformation d'images 2D en modèles 3D — rendus photoréalistes.</p>
             </div>
 
             <!-- Deux rubriques -->
-            <div class="grid md:grid-cols-2 gap-12 mb-20">
+            <div class="grid md:grid-cols-2 gap-8 mb-20">
                 <div class="card p-8">
                     <i data-lucide="cube" class="w-10 h-10 gold-text mb-4"></i>
                     <h2 class="text-2xl font-bold mb-3">Modélisation 3D</h2>
                     <p class="text-gray-400 mb-4">Création complète depuis zéro :</p>
-                    <ul class="text-sm text-gray-300 space-y-2 mb-6">
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Modélisation sur mesure</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Texturage PBR réaliste</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Éclairage studio & rendu</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Blender / 3ds Max</li>
+                    <ul class="text-sm text-gray-300 space-y-3 mb-6">
+                        <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 gold-text flex-shrink-0"></i>Modélisation sur mesure</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 gold-text flex-shrink-0"></i>Texturage PBR réaliste</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 gold-text flex-shrink-0"></i>Éclairage studio & rendu</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 gold-text flex-shrink-0"></i>Blender / 3ds Max</li>
                     </ul>
-                    <p class="text-xs text-gray-500 italic">Exemples à venir — contactez-moi pour voir des réalisations</p>
+                    <p class="text-xs text-gray-500 italic">Exemples visuels à venir — contactez-moi pour découvrir mes réalisations</p>
                 </div>
                 <div class="card p-8">
                     <i data-lucide="layers" class="w-10 h-10 gold-text mb-4"></i>
                     <h2 class="text-2xl font-bold mb-3">2D → 3D</h2>
                     <p class="text-gray-400 mb-4">À partir de photos, croquis ou plans :</p>
-                    <ul class="text-sm text-gray-300 space-y-2 mb-6">
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Reconstruction de volume</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Cartes de hauteur / déplacement</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Application des textures d'origine</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Modèle exploitable en production</li>
+                    <ul class="text-sm text-gray-300 space-y-3 mb-6">
+                        <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 gold-text flex-shrink-0"></i>Reconstruction de volume</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 gold-text flex-shrink-0"></i>Cartes de hauteur / déplacement</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 gold-text flex-shrink-0"></i>Application des textures d'origine</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 gold-text flex-shrink-0"></i>Modèle exploitable en production</li>
                     </ul>
                     <p class="text-xs text-gray-500 italic">Réalisations sur demande</p>
                 </div>
             </div>
 
-            <!-- Réalisations -->
+            <!-- Aperçu -->
             <section>
-                <h2 class="text-2xl font-bold mb-8 text-center">Exemples de Réalisations</h2>
-                <div class="grid md:grid-cols-3 gap-6">
-                    <div class="card p-6 text-center">
-                        <div class="w-full aspect-square bg-neutral-800/50 flex items-center justify-center mb-4 rounded">
-                            <i data-lucide="cube" class="w-16 h-16 text-gray-600"></i>
-                        </div>
-                        <h3 class="font-bold">Produit — Modèle complet</h3>
-                        <p class="text-sm text-gray-400 mt-2">Modélisation + textures + rendu</p>
-                    </div>
-                    <div class="card p-6 text-center">
-                        <div class="w-full aspect-square bg-neutral-800/50 flex items-center justify-center mb-4 rounded">
-                            <i data-lucide="image-up" class="w-16 h-16 text-gray-600"></i>
-                        </div>
-                        <h3 class="font-bold">Objet — 2D vers 3D</h3>
-                        <p class="text-sm text-gray-400 mt-2">Reconstruction depuis photo</p>
-                    </div>
-                    <div class="card p-6 text-center">
-                        <div class="w-full aspect-square bg-neutral-800/50 flex items-center justify-center mb-4 rounded">
-                            <i data-lucide="gem" class="w-16 h-16 text-gray-600"></i>
-                        </div>
-                        <h3 class="font-bold">Bijou — Rendu 3D</h3>
-                        <p class="text-sm text-gray-400 mt-2">Matériaux précieux & éclairage</p>
-                    </div>
+                <h2 class="text-2xl font-bold mb-8 text-center">En savoir plus</h2>
+                <p class="text-center text-gray-400 max-w-2xl mx-auto mb-10">
+                    Mes créations en modélisation 3D sont variées : produits, objets, bijoux... Chaque projet bénéficie d'un rendu soigné, fidèle aux matières et aux lumières souhaitées.
+                </p>
+                <div class="text-center">
+                    <a href="index.html#contact" class="inline-flex items-center gap-2 px-8 py-3 rounded-full gold-bg text-black font-semibold hover:opacity-90 transition-opacity">
+                        <i data-lucide="mail" class="w-4 h-4"></i>
+                        Demander des exemples
+                    </a>
                 </div>
-                <p class="text-center text-gray-500 mt-8">Pour découvrir mes réalisations en modélisation 3D, <a href="index.html#contact" class="gold-text underline">contactez-moi</a> pour obtenir des exemples adaptés à votre besoin.</p>
             </section>
         </div>
     </main>
 
-    <footer class="border-t border-white/10 py-8 text-center text-sm text-gray-500">
-        <p>© 2026 Rado Nasolo — Retouche Photo & Modélisation 3D. Tous droits réservés.</p>
+    <footer class="border-t border-white/5 py-8 text-center text-sm text-gray-500">
+        <p>© 2026 Rado Nasolo — Retouche Photo & Modélisation 3D</p>
     </footer>
 
     <script>
