@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Modélisation 3D — Rendu photoréaliste, Produits, Architecture par Rado Nasolo.">
-    <meta name="keywords" content="modélisation 3D, rendu 3D, produit, architecture, Blender, Madagascar">
-    <title>Modélisation 3D | Rado Nasolo Rd</title>
+    <meta name="description" content="Rendu ArchiViz — Transformation de plans 2D en modèles 3D, visualisation architecturale par Rado Nasolo.">
+    <meta name="keywords" content="rendu archiviz, plan 2D vers 3D, architecture, visualisation, perspective, Madagascar">
+    <title>Rendu ArchiViz — Plan 2D → 3D | Rado Nasolo Rd</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -122,7 +122,7 @@
 <body class="antialiased">
     <div class="grain"></div>
     
-    <!-- Navigation identique à la page d'accueil -->
+    <!-- Navigation identique aux autres pages -->
     <nav class="fixed w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
         <div class="max-w-7xl mx-auto px-6 py-4">
             <div class="flex justify-between items-center">
@@ -133,7 +133,7 @@
                     </div>
                     <div>
                         <h1 class="text-xl font-bold tracking-wider">RADO NASOLO</h1>
-                        <p class="text-xs text-gray-400 tracking-widest uppercase">Modéleur 3D</p>
+                        <p class="text-xs text-gray-400 tracking-widest uppercase">ArchiViz</p>
                     </div>
                 </a>
                 
@@ -141,7 +141,8 @@
                 <div class="hidden md:flex gap-8 text-sm tracking-wider">
                     <a href="index.html" class="nav-link hover:gold-text transition-colors">Accueil</a>
                     <a href="retouche-photo.html" class="nav-link hover:gold-text transition-colors">Retouche Photo</a>
-                    <a href="modelisation-3d.html" class="nav-link active gold-text">Modélisation 3D</a>
+                    <a href="modelisation-3d.html" class="nav-link hover:gold-text transition-colors">Modélisation 3D</a>
+                    <a href="rendu-archiviz.html" class="nav-link active gold-text">Rendu ArchiViz</a>
                     <a href="#contact" class="nav-link hover:gold-text transition-colors">Contact</a>
                 </div>
                 
@@ -165,7 +166,8 @@
         <nav class="flex flex-col gap-5 text-lg tracking-wider">
             <a href="index.html" class="py-2 border-b border-white/5 hover:gold-text transition-colors">Accueil</a>
             <a href="retouche-photo.html" class="py-2 border-b border-white/5 hover:gold-text transition-colors">Retouche Photo</a>
-            <a href="modelisation-3d.html" class="py-2 border-b border-white/5 gold-text font-medium">Modélisation 3D</a>
+            <a href="modelisation-3d.html" class="py-2 border-b border-white/5 hover:gold-text transition-colors">Modélisation 3D</a>
+            <a href="rendu-archiviz.html" class="py-2 border-b border-white/5 gold-text font-medium">Rendu ArchiViz</a>
             <a href="#contact" class="py-2 hover:gold-text transition-colors">Contact</a>
         </nav>
     </div>
@@ -173,150 +175,150 @@
     <!-- Section Hero -->
     <section class="pt-36 pb-20 px-6">
         <div class="max-w-5xl mx-auto text-center">
-            <p class="text-reveal gold-text tracking-[0.3em] text-sm mb-4 uppercase" style="animation-delay: 0.1s">Expertise 02</p>
+            <p class="text-reveal gold-text tracking-[0.3em] text-sm mb-4 uppercase" style="animation-delay: 0.1s">Expertise 03</p>
             <h1 class="text-reveal text-4xl md:text-6xl font-bold mb-6" style="animation-delay: 0.2s">
-                Modélisation <span class="gold-text italic">3D</span>
+                Plan 2D <span class="gold-text">→</span> 3D
             </h1>
             <p class="text-reveal text-gray-300 text-lg max-w-2xl mx-auto" style="animation-delay: 0.3s">
-                Produits — Visualisation — Architecture — Rendu photoréaliste.<br>
-                Création de modèles et d'images de synthèse de haute qualité.
+                Transformez vos plans, croquis ou documents en visualisation 3D réaliste.<br>
+                Intérieur — Extérieur — Perspective — Ambiance jour & nuit.
             </p>
         </div>
     </section>
     
-    <!-- Galerie Portfolio -->
+    <!-- Galerie Réalisations -->
     <section class="pb-24 px-6">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-12">
-                <p class="gold-text tracking-[0.3em] text-sm mb-4 uppercase">Réalisations</p>
-                <h2 class="text-3xl md:text-4xl font-bold mb-6">Mes Travaux 3D</h2>
+                <p class="gold-text tracking-[0.3em] text-sm mb-4 uppercase">Réalisations ArchiViz</p>
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">De la feuille au rendu final</h2>
                 <div class="flex flex-wrap justify-center gap-3 mt-8">
                     <button onclick="filterGallery('all')" class="filter-btn active px-6 py-2 border border-gold gold-text text-sm uppercase tracking-wider hover:gold-bg hover:text-black transition-all" data-filter="all">Tous</button>
-                    <button onclick="filterGallery('produit')" class="filter-btn px-6 py-2 border border-white/20 text-sm uppercase tracking-wider hover:border-gold hover:gold-text transition-all" data-filter="produit">Produit</button>
-                    <button onclick="filterGallery('architecture')" class="filter-btn px-6 py-2 border border-white/20 text-sm uppercase tracking-wider hover:border-gold hover:gold-text transition-all" data-filter="architecture">Architecture</button>
-                    <button onclick="filterGallery('objet')" class="filter-btn px-6 py-2 border border-white/20 text-sm uppercase tracking-wider hover:border-gold hover:gold-text transition-all" data-filter="objet">Objet divers</button>
-                    <button onclick="filterGallery('rendu')" class="filter-btn px-6 py-2 border border-white/20 text-sm uppercase tracking-wider hover:border-gold hover:gold-text transition-all" data-filter="rendu">Rendu</button>
+                    <button onclick="filterGallery('interieur')" class="filter-btn px-6 py-2 border border-white/20 text-sm uppercase tracking-wider hover:border-gold hover:gold-text transition-all" data-filter="interieur">Intérieur</button>
+                    <button onclick="filterGallery('exterieur')" class="filter-btn px-6 py-2 border border-white/20 text-sm uppercase tracking-wider hover:border-gold hover:gold-text transition-all" data-filter="exterieur">Extérieur</button>
+                    <button onclick="filterGallery('maison')" class="filter-btn px-6 py-2 border border-white/20 text-sm uppercase tracking-wider hover:border-gold hover:gold-text transition-all" data-filter="maison">Maison / Villa</button>
+                    <button onclick="filterGallery('renovation')" class="filter-btn px-6 py-2 border border-white/20 text-sm uppercase tracking-wider hover:border-gold hover:gold-text transition-all" data-filter="renovation">Rénovation</button>
                 </div>
             </div>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="gallery-grid">
                 <!-- Image 1 → Remplace après upload GitHub -->
-                <div class="gallery-item aspect-[4/5]" data-category="produit">
-                    <img src="https://raw.github.com/Radonasolord/portfolio/main/3D/NOM_DU_FICHIER_1.jpg" alt="Modèle produit 3D" class="w-full h-full object-cover">
+                <div class="gallery-item aspect-[4/5]" data-category="interieur">
+                    <img src="https://raw.github.com/Radonasolord/portfolio/main/archiviz/NOM_DU_FICHIER_1.jpg" alt="Plan 2D transformé en intérieur 3D" class="w-full h-full object-cover">
                     <div class="gallery-overlay">
                         <div>
-                            <h4 class="text-lg font-bold">Nom du projet</h4>
-                            <p class="text-sm text-gray-300">Description courte</p>
+                            <h4 class="text-lg font-bold">Aménagement Intérieur</h4>
+                            <p class="text-sm text-gray-300">Plan → rendu réaliste</p>
                         </div>
                     </div>
                 </div>
                 <!-- Image 2 → Remplace après upload GitHub -->
-                <div class="gallery-item aspect-[4/5]" data-category="architecture">
-                    <img src="https://raw.github.com/Radonasolord/portfolio/main/3D/NOM_DU_FICHIER_2.jpg" alt="Visualisation 3D" class="w-full h-full object-cover">
+                <div class="gallery-item aspect-[4/5]" data-category="exterieur">
+                    <img src="https://raw.github.com/Radonasolord/portfolio/main/archiviz/NOM_DU_FICHIER_2.jpg" alt="Façade 3D depuis plan" class="w-full h-full object-cover">
                     <div class="gallery-overlay">
                         <div>
-                            <h4 class="text-lg font-bold">Nom du projet</h4>
-                            <p class="text-sm text-gray-300">Description courte</p>
+                            <h4 class="text-lg font-bold">Façade / Extérieur</h4>
+                            <p class="text-sm text-gray-300">Perspective depuis plan masse</p>
                         </div>
                     </div>
                 </div>
                 <!-- Image 3 → Remplace après upload GitHub -->
-                <div class="gallery-item aspect-[4/5]" data-category="rendu">
-                    <img src="https://raw.github.com/Radonasolord/portfolio/main/3D/NOM_DU_FICHIER_3.jpg" alt="Rendu 3D" class="w-full h-full object-cover">
+                <div class="gallery-item aspect-[4/5]" data-category="maison">
+                    <img src="https://raw.github.com/Radonasolord/portfolio/main/archiviz/NOM_DU_FICHIER_3.jpg" alt="Projet maison 3D" class="w-full h-full object-cover">
                     <div class="gallery-overlay">
                         <div>
-                            <h4 class="text-lg font-bold">Nom du projet</h4>
-                            <p class="text-sm text-gray-300">Description courte</p>
+                            <h4 class="text-lg font-bold">Projet Maison</h4>
+                            <p class="text-sm text-gray-300">Vue d'ensemble jour & nuit</p>
                         </div>
                     </div>
                 </div>
-                <!-- Duplique le bloc ci-dessus pour ajouter d'autres images -->
+                <!-- Duplique ce bloc pour ajouter d'autres images -->
             </div>
         </div>
     </section>
     
-    <!-- Section Services -->
+    <!-- Prestations & Processus -->
     <section class="py-24 px-6 bg-neutral-900/50">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16">
-                <p class="gold-text tracking-[0.3em] text-sm mb-4 uppercase">Prestations</p>
-                <h2 class="text-4xl md:text-5xl font-bold mb-6">Ce que je réalise</h2>
+                <p class="gold-text tracking-[0.3em] text-sm mb-4 uppercase">Savoir-faire</p>
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Plan 2D vers 3D — Le Processus</h2>
                 <div class="w-24 h-0.5 gold-bg mx-auto"></div>
             </div>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Modélisation Produit -->
+                <!-- Étape 1 : Réception & Analyse -->
                 <div class="service-card p-8 group">
                     <div class="w-14 h-14 gold-bg/10 rounded-full flex items-center justify-center mb-6 group-hover:gold-bg transition-all duration-300">
-                        <i data-lucide="box" class="w-7 h-7 gold-text group-hover:text-black"></i>
+                        <i data-lucide="file-text" class="w-7 h-7 gold-text group-hover:text-black"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-3">Modélisation Produit</h3>
+                    <h3 class="text-2xl font-bold mb-3">1. Réception du projet</h3>
                     <p class="text-gray-400 mb-4 leading-relaxed">
-                        Création de modèles 3D fidèles à partir de photos, croquis ou plans. Rendu studio pour vos fiches produit.
+                        Étude de vos documents : plans PDF, croquis annotés, photos, ou descriptions. Je clarifie les détails et les matériaux souhaités.
                     </p>
                     <ul class="text-sm text-gray-500 space-y-2">
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Modélisation sur mesure</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Texturage réaliste</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Rendu haute résolution</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Plans DWG / PDF / image</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Croquis ou notes manuscrites acceptés</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Validation des dimensions</li>
                     </ul>
                 </div>
-                <!-- Visualisation Architecturale -->
+                <!-- Étape 2 : Modélisation -->
                 <div class="service-card p-8 group">
                     <div class="w-14 h-14 gold-bg/10 rounded-full flex items-center justify-center mb-6 group-hover:gold-bg transition-all duration-300">
-                        <i data-lucide="building-2" class="w-7 h-7 gold-text group-hover:text-black"></i>
+                        <i data-lucide="cube" class="w-7 h-7 gold-text group-hover:text-black"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-3">Visualisation Architecture</h3>
+                    <h3 class="text-2xl font-bold mb-3">2. Modélisation 3D</h3>
                     <p class="text-gray-400 mb-4 leading-relaxed">
-                        Mise en valeur de projets immobiliers et d'espaces. Rendu intérieur/extérieur avec ambiance lumineuse.
+                        Mise en volume fidèle aux plans. Murs, ouvertures, hauteur, distribution des pièces — tout est conforme à votre projet.
                     </p>
                     <ul class="text-sm text-gray-500 space-y-2">
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Plans → rendu image</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Ambiance jour & nuit</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Perspectives réalistes</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Structure conforme aux plans</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Aménagement intérieur / mobilier</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Maquette pour validation</li>
                     </ul>
                 </div>
-                <!-- Rendu Photoréaliste -->
+                <!-- Étape 3 : Texturage & Ambiance -->
+                <div class="service-card p-8 group">
+                    <div class="w-14 h-14 gold-bg/10 rounded-full flex items-center justify-center mb-6 group-hover:gold-bg transition-all duration-300">
+                        <i data-lucide="palette" class="w-7 h-7 gold-text group-hover:text-black"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">3. Matériaux & Lumière</h3>
+                    <p class="text-gray-400 mb-4 leading-relaxed">
+                        Choix des revêtements, couleurs, éclairage naturel et artificiel. Création d'une ambiance chaleureuse et réaliste.
+                    </p>
+                    <ul class="text-sm text-gray-500 space-y-2">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Matériaux fidèles à vos choix</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Éclairage jour & nuit</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Perspectives personnalisées</li>
+                    </ul>
+                </div>
+                <!-- Étape 4 : Rendu & Livraison -->
                 <div class="service-card p-8 group">
                     <div class="w-14 h-14 gold-bg/10 rounded-full flex items-center justify-center mb-6 group-hover:gold-bg transition-all duration-300">
                         <i data-lucide="camera" class="w-7 h-7 gold-text group-hover:text-black"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-3">Rendu Photoréaliste</h3>
+                    <h3 class="text-2xl font-bold mb-3">4. Rendu & Livraison</h3>
                     <p class="text-gray-400 mb-4 leading-relaxed">
-                        Éclairage studio, matériaux PBR, post-traitement pour un rendu indiscernable d'une photo.
+                        Rendu haute définition + post-traitement. Vous recevez des images prêtes à présenter ou à partager.
                     </p>
                     <ul class="text-sm text-gray-500 space-y-2">
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Lumières & ombres naturelles</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Métal, verre, plastique, tissu</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Arrière-plan personnalisé</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Images HD / 4K</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Plusieurs angles de vue</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Fichiers livrés sans attente</li>
                     </ul>
                 </div>
-                <!-- Post-production -->
+                <!-- Pour qui ? -->
                 <div class="service-card p-8 group">
                     <div class="w-14 h-14 gold-bg/10 rounded-full flex items-center justify-center mb-6 group-hover:gold-bg transition-all duration-300">
-                        <i data-lucide="image" class="w-7 h-7 gold-text group-hover:text-black"></i>
+                        <i data-lucide="users" class="w-7 h-7 gold-text group-hover:text-black"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-3">Post-production</h3>
+                    <h3 class="text-2xl font-bold mb-3">Pour qui ?</h3>
                     <p class="text-gray-400 mb-4 leading-relaxed">
-                        Amélioration des rendus 3D : netteté, contraste, ambiance, correction colorimétrique.
+                        Particuliers, architectes, promoteurs, agences immobilières — pour valider un projet avant réalisation.
                     </p>
                     <ul class="text-sm text-gray-500 space-y-2">
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Harmonisation des couleurs</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Ajout d'effets atmosphériques</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Lot d'images homogènes</li>
-                    </ul>
-                </div>
-                <!-- Logiciels -->
-                <div class="service-card p-8 group">
-                    <div class="w-14 h-14 gold-bg/10 rounded-full flex items-center justify-center mb-6 group-hover:gold-bg transition-all duration-300">
-                        <i data-lucide="code-2" class="w-7 h-7 gold-text group-hover:text-black"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-3">Logiciels</h3>
-                    <p class="text-gray-400 mb-4 leading-relaxed">
-                        Maîtrise des outils professionnels pour une qualité constante et des fichiers exploitables.
-                    </p>
-                    <ul class="text-sm text-gray-500 space-y-2">
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Blender</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>3ds Max</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Photoshop / GIMP</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Projet de construction</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Rénovation / extension</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Présentation client</li>
                     </ul>
                 </div>
                 <!-- Devis -->
@@ -326,7 +328,7 @@
                     </div>
                     <h3 class="text-2xl font-bold mb-3">Demander un Devis</h3>
                     <p class="text-gray-400 mb-4 leading-relaxed">
-                        Tarif selon la complexité, la durée et le nombre d'images. Réponse rapide.
+                        Tarif selon la surface, le niveau de détail et le nombre de vues. Réponse rapide et claire.
                     </p>
                     <a href="#contact" class="btn-primary inline-block text-center w-full mt-2">
                         Me Contacter
@@ -344,7 +346,7 @@
                     <p class="gold-text tracking-[0.3em] text-sm mb-4 uppercase">Contact</p>
                     <h2 class="text-4xl md:text-5xl font-bold mb-6">Parlons de Votre Projet</h2>
                     <p class="text-gray-400 mb-8 leading-relaxed">
-                        Vous avez un produit à modéliser, un espace à visualiser ou un rendu à réaliser ? Décrivez-moi votre besoin.
+                        Vous avez un plan, un croquis ou un projet immobilier à visualiser ? Envoyez-moi vos documents, je vous accompagne de la feuille au rendu final.
                     </p>
                     
                     <div class="space-y-6">
@@ -383,15 +385,15 @@
                         <div>
                             <label class="block text-sm mb-2 text-gray-400">Type de projet</label>
                             <select name="project_type" class="w-full bg-black/50 border border-white/10 px-4 py-3 focus:border-gold focus:outline-none transition-colors">
-                                <option value="Modélisation Produit">Modélisation Produit</option>
-                                <option value="Architecture">Architecture</option>
-                                <option value="Rendu 3D">Rendu 3D</option>
+                                <option value="Plan 2D → 3D Intérieur">Plan 2D → 3D Intérieur</option>
+                                <option value="Plan 2D → 3D Extérieur">Plan 2D → 3D Extérieur</option>
+                                <option value="Projet Maison / Villa">Projet Maison / Villa</option>
                                 <option value="Autre" selected>Autre</option>
                             </select>
                         </div>
                         <div>
                             <label class="block text-sm mb-2 text-gray-400">Message</label>
-                            <textarea name="message" rows="4" required class="w-full bg-black/50 border border-white/10 px-4 py-3 focus:border-gold focus:outline-none transition-colors" placeholder="Décrivez votre projet 3D..."></textarea>
+                            <textarea name="message" rows="4" required class="w-full bg-black/50 border border-white/10 px-4 py-3 focus:border-gold focus:outline-none transition-colors" placeholder="Décrivez votre projet, surface, documents disponibles..."></textarea>
                         </div>
                         <button type="submit" id="submitBtn" class="btn-primary w-full flex justify-center items-center gap-2">
                             Envoyer la Demande
@@ -414,7 +416,7 @@
                 <span class="font-bold tracking-wider">RADO NASOLO RD</span>
             </a>
             <div class="text-sm text-gray-500">
-                © 2026 Modélisation 3D — Tous droits réservés.
+                © 2026 Rendu ArchiViz — Tous droits réservés.
             </div>
         </div>
     </footer>
