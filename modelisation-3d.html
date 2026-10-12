@@ -11,7 +11,46 @@
         @layer base {
             :root { --gold: #D4AF37; --dark: #070707; }
             html { scroll-behavior: smooth; }
-            body { font-family: 'Inter', sans-serif; background: #070707; color: white; }
+            body { font-family: 'Inter', sans-serif; background: #070707; color: white; }<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Modélisation 3D — Objets, Intérieurs, Plan 2D vers 3D par Rado Nasolo Randrianarimanana.">
+    <meta name="keywords" content="modélisation 3D, design d'intérieur, rendu photoréaliste, plan 2D vers 3D, Blender, 3ds Max, Madagascar">
+    <title>Modélisation 3D | Rado Nasolo Randrianarimanana</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style type="text/tailwindcss">
+        @layer base {
+            :root { --gold: #D4AF37; --dark: #070707; }
+            html { scroll-behavior: smooth; }
+            body { font-family: 'Inter', sans-serif; background-color: var(--dark); color: white; }
+            h1, h2, h3 { font-family: 'Playfair Display', serif; }
+        }
+        @layer components {
+            .gold-text { color: var(--gold); }
+            .gold-bg { background-color: var(--gold); }
+            .btn-primary {
+                background: linear-gradient(135deg, #D4AF37 0%, #B8941F 100%);
+                color: black; font-weight: 600; padding: 0.75rem 2rem; border-radius: 9999px;
+                transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 0.15em; font-size: 0.8rem;
+            }
+            .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(212,175,55,0.35); }
+            .btn-outline {
+                border-radius: 9999px; border: 1px solid rgba(255,255,255,0.3); padding: 0.75rem 2rem;
+                transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 0.15em; font-size: 0.8rem; background: transparent;
+            }
+            .btn-outline:hover { border-color: var(--gold); color: var(--gold); background: rgba(212,175,55,0.05); }
+            .nav-link { position: relative; @apply px-2 py-2 transition-colors; }
+            .nav-link::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px; background: var(--gold); transition: width 0.3s ease; }
+            .nav-link:hover::after { width: 100%; }
+            .nav-link:hover, .nav-link.active { @apply gold-text; }
+            .mobile-menu { transform: translateX(100%); transition: transform 0.3s ease; }
+            .mobile-menu.open { transform: translateX(0); }
+            .gallery-item {
+                overflow: hidden; border-radius: 0.75rem; background: #111; border: 1px solid rgba(255,255,255,0.1); transition
             h1, h2 { font-family: 'Playfair Display', serif; }
         }
         .gold-text { color: var(--gold); }
