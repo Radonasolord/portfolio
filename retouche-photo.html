@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Retouche Photo — Portraits, E-commerce, Joaillerie par Rado Nasolo Randrianarimanana.">
-    <meta name="keywords" content="retouche photo, portrait, e-commerce, joaillerie, montage photo, Madagascar">
+    <meta name="description" content="Retouche Photo — Amélioration, nettoyage et mise en valeur par Rado Nasolo.">
+    <meta name="keywords" content="retouche photo, amélioration, nettoyage, photos, Madagascar">
     <title>Retouche Photo | Rado Nasolo Rd</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -126,7 +126,6 @@
     <nav class="fixed w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
         <div class="max-w-7xl mx-auto px-6 py-4">
             <div class="flex justify-between items-center">
-                <!-- Logo -->
                 <a href="index.html" class="flex items-center gap-3">
                     <div class="w-10 h-10 gold-bg flex items-center justify-center">
                         <span class="text-black font-bold text-lg">RN</span>
@@ -137,15 +136,14 @@
                     </div>
                 </a>
                 
-                <!-- Menu Desktop -->
                 <div class="hidden md:flex gap-8 text-sm tracking-wider">
                     <a href="index.html" class="nav-link hover:gold-text transition-colors">Accueil</a>
                     <a href="retouche-photo.html" class="nav-link active gold-text">Retouche Photo</a>
                     <a href="modelisation-3d.html" class="nav-link hover:gold-text transition-colors">Modélisation 3D</a>
+                    <a href="rendu-archiviz.html" class="nav-link hover:gold-text transition-colors">Rendu ArchiViz</a>
                     <a href="#contact" class="nav-link hover:gold-text transition-colors">Contact</a>
                 </div>
                 
-                <!-- Bouton Menu Mobile -->
                 <button id="menuToggle" class="md:hidden w-10 h-10 flex items-center justify-center border border-white/20 hover:border-gold hover:gold-text transition-colors">
                     <i data-lucide="menu" class="w-5 h-5"></i>
                 </button>
@@ -166,11 +164,12 @@
             <a href="index.html" class="py-2 border-b border-white/5 hover:gold-text transition-colors">Accueil</a>
             <a href="retouche-photo.html" class="py-2 border-b border-white/5 gold-text font-medium">Retouche Photo</a>
             <a href="modelisation-3d.html" class="py-2 border-b border-white/5 hover:gold-text transition-colors">Modélisation 3D</a>
+            <a href="rendu-archiviz.html" class="py-2 border-b border-white/5 hover:gold-text transition-colors">Rendu ArchiViz</a>
             <a href="#contact" class="py-2 hover:gold-text transition-colors">Contact</a>
         </nav>
     </div>
 
-    <!-- Hero Section -->
+    <!-- Section Hero -->
     <section class="pt-36 pb-20 px-6">
         <div class="max-w-5xl mx-auto text-center">
             <p class="text-reveal gold-text tracking-[0.3em] text-sm mb-4 uppercase" style="animation-delay: 0.1s">Expertise 01</p>
@@ -178,13 +177,13 @@
                 Retouche <span class="gold-text italic">Photo</span>
             </h1>
             <p class="text-reveal text-gray-300 text-lg max-w-2xl mx-auto" style="animation-delay: 0.3s">
-                Portraits — E-commerce — Joaillerie — Montage photo — Détourage.<br>
-                Retouche haut de gamme depuis 2015.
+                Amélioration — Nettoyage — Harmonisation — Mise en valeur.<br>
+                Donnez à vos images la qualité qu'elles méritent.
             </p>
         </div>
     </section>
     
-    <!-- Portfolio Gallery -->
+    <!-- Galerie Portfolio -->
     <section class="pb-24 px-6">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-12">
@@ -193,116 +192,48 @@
                 <div class="flex flex-wrap justify-center gap-3 mt-8">
                     <button onclick="filterGallery('all')" class="filter-btn active px-6 py-2 border border-gold gold-text text-sm uppercase tracking-wider hover:gold-bg hover:text-black transition-all" data-filter="all">Tous</button>
                     <button onclick="filterGallery('portrait')" class="filter-btn px-6 py-2 border border-white/20 text-sm uppercase tracking-wider hover:border-gold hover:gold-text transition-all" data-filter="portrait">Portrait</button>
-                    <button onclick="filterGallery('ecommerce')" class="filter-btn px-6 py-2 border border-white/20 text-sm uppercase tracking-wider hover:border-gold hover:gold-text transition-all" data-filter="ecommerce">E-commerce</button>
-                    <button onclick="filterGallery('joaillerie')" class="filter-btn px-6 py-2 border border-white/20 text-sm uppercase tracking-wider hover:border-gold hover:gold-text transition-all" data-filter="joaillerie">Joaillerie</button>
-                    <button onclick="filterGallery('detourage')" class="filter-btn px-6 py-2 border border-white/20 text-sm uppercase tracking-wider hover:border-gold hover:gold-text transition-all" data-filter="detourage">Détourage</button>
+                    <button onclick="filterGallery('produit')" class="filter-btn px-6 py-2 border border-white/20 text-sm uppercase tracking-wider hover:border-gold hover:gold-text transition-all" data-filter="produit">Produit</button>
+                    <button onclick="filterGallery('paysage')" class="filter-btn px-6 py-2 border border-white/20 text-sm uppercase tracking-wider hover:border-gold hover:gold-text transition-all" data-filter="paysage">Paysage</button>
+                    <button onclick="filterGallery('restauration')" class="filter-btn px-6 py-2 border border-white/20 text-sm uppercase tracking-wider hover:border-gold hover:gold-text transition-all" data-filter="restauration">Restauration</button>
                 </div>
             </div>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="gallery-grid">
+                <!-- Image 1 → Remplace après upload GitHub -->
                 <div class="gallery-item aspect-[4/5]" data-category="portrait">
-                    <img src="https://raw.github.com/Radonasolord/portfolio/main/Portrait/2.jpg" alt="Portrait" class="w-full h-full object-cover">
+                    <img src="https://raw.github.com/Radonasolord/portfolio/main/retouche/NOM_DU_FICHIER_1.jpg" alt="Portrait retouché" class="w-full h-full object-cover">
                     <div class="gallery-overlay">
                         <div>
                             <h4 class="text-lg font-bold">Portrait</h4>
-                            <p class="text-sm text-gray-300">Retouche et mise en valeur</p>
+                            <p class="text-sm text-gray-300">Lissage, lumière, couleurs</p>
                         </div>
                     </div>
                 </div>
-                <div class="gallery-item aspect-[4/5]" data-category="portrait">
-                    <img src="https://raw.github.com/Radonasolord/portfolio/main/Portrait/3.jpg" alt="Portrait" class="w-full h-full object-cover">
+                <!-- Image 2 → Remplace après upload GitHub -->
+                <div class="gallery-item aspect-[4/5]" data-category="produit">
+                    <img src="https://raw.github.com/Radonasolord/portfolio/main/retouche/NOM_DU_FICHIER_2.jpg" alt="Photo produit retouchée" class="w-full h-full object-cover">
                     <div class="gallery-overlay">
                         <div>
-                            <h4 class="text-lg font-bold">Portrait</h4>
-                            <p class="text-sm text-gray-300">Correction et nettoyage</p>
+                            <h4 class="text-lg font-bold">Photo Produit</h4>
+                            <p class="text-sm text-gray-300">Fond nettoyé, rendu professionnel</p>
                         </div>
                     </div>
                 </div>
-                <div class="gallery-item aspect-[4/5]" data-category="portrait">
-                    <img src="https://raw.github.com/Radonasolord/portfolio/main/Portrait/4.jpg" alt="Portrait" class="w-full h-full object-cover">
+                <!-- Image 3 → Remplace après upload GitHub -->
+                <div class="gallery-item aspect-[4/5]" data-category="restauration">
+                    <img src="https://raw.github.com/Radonasolord/portfolio/main/retouche/NOM_DU_FICHIER_3.jpg" alt="Photo restaurée" class="w-full h-full object-cover">
                     <div class="gallery-overlay">
                         <div>
-                            <h4 class="text-lg font-bold">Portrait Beauté</h4>
-                            <p class="text-sm text-gray-300">Lissage naturel et harmonisation</p>
+                            <h4 class="text-lg font-bold">Restauration</h4>
+                            <p class="text-sm text-gray-300">Réparation et amélioration</p>
                         </div>
                     </div>
                 </div>
-                <div class="gallery-item aspect-[4/5]" data-category="portrait">
-                    <img src="https://raw.github.com/Radonasolord/portfolio/main/Portrait/5.jpg" alt="Portrait" class="w-full h-full object-cover">
-                    <div class="gallery-overlay">
-                        <div>
-                            <h4 class="text-lg font-bold">Fond Blanc</h4>
-                            <p class="text-sm text-gray-300">Suppression de fond et uniformisation</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="gallery-item aspect-[4/5]" data-category="ecommerce">
-                    <img src="https://raw.github.com/Radonasolord/portfolio/main/Ecommerce/Détourage+retouche.jpg" alt="Produit" class="w-full h-full object-cover">
-                    <div class="gallery-overlay">
-                        <div>
-                            <h4 class="text-lg font-bold">Mannequin + Fond Blanc</h4>
-                            <p class="text-sm text-gray-300">Détourage et retouche</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="gallery-item aspect-[4/5]" data-category="ecommerce">
-                    <img src="https://raw.github.com/Radonasolord/portfolio/main/Ecommerce/Montage1.jpg" alt="Produit" class="w-full h-full object-cover">
-                    <div class="gallery-overlay">
-                        <div>
-                            <h4 class="text-lg font-bold">Montage Ghost</h4>
-                            <p class="text-sm text-gray-300">Détourage et composition</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="gallery-item aspect-[4/5]" data-category="ecommerce">
-                    <img src="https://raw.github.com/Radonasolord/portfolio/main/Ecommerce/Montage3.jpg" alt="Produit" class="w-full h-full object-cover">
-                    <div class="gallery-overlay">
-                        <div>
-                            <h4 class="text-lg font-bold">Montage Ghost</h4>
-                            <p class="text-sm text-gray-300">Assemblage et fond blanc</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="gallery-item aspect-[4/5]" data-category="ecommerce">
-                    <img src="https://raw.github.com/Radonasolord/portfolio/main/Ecommerce/Montage2.jpg" alt="Produit" class="w-full h-full object-cover">
-                    <div class="gallery-overlay">
-                        <div>
-                            <h4 class="text-lg font-bold">Montage Ghost</h4>
-                            <p class="text-sm text-gray-300">Recadrage et harmonisation</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="gallery-item aspect-[4/5]" data-category="ecommerce">
-                    <img src="https://raw.github.com/Radonasolord/portfolio/main/Ecommerce/Virage%20couleur%20et%20retouche.jpg" alt="Produit" class="w-full h-full object-cover">
-                    <div class="gallery-overlay">
-                        <div>
-                            <h4 class="text-lg font-bold">Virage Couleur</h4>
-                            <p class="text-sm text-gray-300">Correction et retouche</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="gallery-item aspect-[4/5]" data-category="detourage">
-                    <img src="https://raw.github.com/Radonasolord/portfolio/main/Ecommerce/détourage%20+%20retouche.jpg" alt="Produit" class="w-full h-full object-cover">
-                    <div class="gallery-overlay">
-                        <div>
-                            <h4 class="text-lg font-bold">Détourage + Ombre</h4>
-                            <p class="text-sm text-gray-300">Extraction et création d'ombre réaliste</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="gallery-item aspect-[4/5]" data-category="joaillerie">
-                    <img src="https://raw.github.com/Radonasolord/portfolio/main/Joaillerie%20/Jouaillerie.jpg" alt="Joaillerie" class="w-full h-full object-cover">
-                    <div class="gallery-overlay">
-                        <div>
-                            <h4 class="text-lg font-bold">Bague Diamant</h4>
-                            <p class="text-sm text-gray-300">Focus stacking et netteté</p>
-                        </div>
-                    </div>
-                </div>
+                <!-- Duplique pour ajouter d'autres images -->
             </div>
         </div>
     </section>
     
-    <!-- Services Section -->
+    <!-- Section Services -->
     <section class="py-24 px-6 bg-neutral-900/50">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16">
@@ -312,79 +243,79 @@
             </div>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Portrait -->
+                <!-- Amélioration Générale -->
+                <div class="service-card p-8 group">
+                    <div class="w-14 h-14 gold-bg/10 rounded-full flex items-center justify-center mb-6 group-hover:gold-bg transition-all duration-300">
+                        <i data-lucide="sun" class="w-7 h-7 gold-text group-hover:text-black"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Amélioration Générale</h3>
+                    <p class="text-gray-400 mb-4 leading-relaxed">
+                        Correction de l'exposition, contraste, saturation et netteté pour une image éclatante.
+                    </p>
+                    <ul class="text-sm text-gray-500 space-y-2">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Luminosité & contraste</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Couleurs naturelles</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Netteté & clarté</li>
+                    </ul>
+                </div>
+                <!-- Retouche Portrait -->
                 <div class="service-card p-8 group">
                     <div class="w-14 h-14 gold-bg/10 rounded-full flex items-center justify-center mb-6 group-hover:gold-bg transition-all duration-300">
                         <i data-lucide="user" class="w-7 h-7 gold-text group-hover:text-black"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-3">Portrait & Beauté</h3>
+                    <h3 class="text-2xl font-bold mb-3">Retouche Portrait</h3>
                     <p class="text-gray-400 mb-4 leading-relaxed">
-                        Retouche haut de gamme : lissage de peau naturel, correction des teintes, mise en valeur des visages.
+                        Mise en valeur tout en conservant le naturel. Légèreté et authenticité.
                     </p>
                     <ul class="text-sm text-gray-500 space-y-2">
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Amélioration sans dénaturer</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Suppression d'objets indésirables</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Harmonisation lumière & couleurs</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Atténuation discrète</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Harmonisation du teint</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Yeux & regard mis en valeur</li>
                     </ul>
                 </div>
-                <!-- E-commerce -->
+                <!-- Nettoyage & Isolation -->
                 <div class="service-card p-8 group">
                     <div class="w-14 h-14 gold-bg/10 rounded-full flex items-center justify-center mb-6 group-hover:gold-bg transition-all duration-300">
-                        <i data-lucide="shopping-bag" class="w-7 h-7 gold-text group-hover:text-black"></i>
+                        <i data-lucide="eraser" class="w-7 h-7 gold-text group-hover:text-black"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-3">E-commerce</h3>
+                    <h3 class="text-2xl font-bold mb-3">Nettoyage & Fond</h3>
                     <p class="text-gray-400 mb-4 leading-relaxed">
-                        Images prêtes pour la vente : fond blanc, détourage précis, couleurs fidèles au produit.
+                        Suppression d'éléments indésirables, fond transparent ou uni pour un rendu professionnel.
                     </p>
                     <ul class="text-sm text-gray-500 space-y-2">
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Fond blanc standardisé</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Montage "Ghost mannequin"</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Recadrage homogène par lot</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Suppression d'objets</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Fond blanc ou transparent</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Détourage précis</li>
                     </ul>
                 </div>
-                <!-- Joaillerie -->
+                <!-- Restauration -->
                 <div class="service-card p-8 group">
                     <div class="w-14 h-14 gold-bg/10 rounded-full flex items-center justify-center mb-6 group-hover:gold-bg transition-all duration-300">
-                        <i data-lucide="gem" class="w-7 h-7 gold-text group-hover:text-black"></i>
+                        <i data-lucide="image-plus" class="w-7 h-7 gold-text group-hover:text-black"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-3">Joaillerie</h3>
+                    <h3 class="text-2xl font-bold mb-3">Restauration Photo</h3>
                     <p class="text-gray-400 mb-4 leading-relaxed">
-                        Mise en valeur de bijoux : netteté parfaite, reflets contrôlés, rendu des métaux et pierres.
+                        Réparation de photos anciennes : rayures, décoloration, parties abîmées.
                     </p>
                     <ul class="text-sm text-gray-500 space-y-2">
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Focus stacking</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Suppression des reflets parasites</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Fond blanc & ombre réaliste</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Réparation des dégâts</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Passage en couleurs</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Haute définition</li>
                     </ul>
                 </div>
-                <!-- Détourage -->
+                <!-- Logiciels -->
                 <div class="service-card p-8 group">
                     <div class="w-14 h-14 gold-bg/10 rounded-full flex items-center justify-center mb-6 group-hover:gold-bg transition-all duration-300">
-                        <i data-lucide="scissors" class="w-7 h-7 gold-text group-hover:text-black"></i>
+                        <i data-lucide="code-2" class="w-7 h-7 gold-text group-hover:text-black"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-3">Détourage</h3>
+                    <h3 class="text-2xl font-bold mb-3">Logiciels</h3>
                     <p class="text-gray-400 mb-4 leading-relaxed">
-                        Extraction précise de sujets sur fond transparent — contours complexes, cheveux fins, textures délicates.
+                        Outils professionnels pour un rendu fidèle et des fichiers exploitables.
                     </p>
                     <ul class="text-sm text-gray-500 space-y-2">
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Détourage simple & complexe</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Masques de fusion</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Création d'ombres naturelles</li>
-                    </ul>
-                </div>
-                <!-- Montage Photo -->
-                <div class="service-card p-8 group">
-                    <div class="w-14 h-14 gold-bg/10 rounded-full flex items-center justify-center mb-6 group-hover:gold-bg transition-all duration-300">
-                        <i data-lucide="image" class="w-7 h-7 gold-text group-hover:text-black"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-3">Montage Photo</h3>
-                    <p class="text-gray-400 mb-4 leading-relaxed">
-                        Assemblage d'éléments, création de scènes, remplacement de fond pour des communications visuelles percutantes.
-                    </p>
-                    <ul class="text-sm text-gray-500 space-y-2">
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Composition multi-images</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Harmonisation des lumières</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Intégration réaliste</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Photoshop</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Lightroom / Darktable</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>GIMP</li>
                     </ul>
                 </div>
                 <!-- Devis -->
@@ -394,7 +325,7 @@
                     </div>
                     <h3 class="text-2xl font-bold mb-3">Demander un Devis</h3>
                     <p class="text-gray-400 mb-4 leading-relaxed">
-                        Tarif adapté selon la complexité et la quantité. Réponse rapide sous 24h.
+                        Tarif selon la complexité et le nombre d'images. Réponse rapide et claire.
                     </p>
                     <a href="#contact" class="btn-primary inline-block text-center w-full mt-2">
                         Me Contacter
@@ -404,7 +335,7 @@
         </div>
     </section>
     
-    <!-- Contact Section -->
+    <!-- Section Contact -->
     <section id="contact" class="py-24 px-6">
         <div class="max-w-7xl mx-auto">
             <div class="grid lg:grid-cols-2 gap-16">
@@ -412,7 +343,7 @@
                     <p class="gold-text tracking-[0.3em] text-sm mb-4 uppercase">Contact</p>
                     <h2 class="text-4xl md:text-5xl font-bold mb-6">Parlons de Votre Projet</h2>
                     <p class="text-gray-400 mb-8 leading-relaxed">
-                        Vous avez des photos à retoucher, des produits à mettre en valeur ou un montage à réaliser ? Décrivez-moi votre besoin.
+                        Vous avez une photo à améliorer, à nettoyer ou à restaurer ? Envoyez-moi votre image et je vous propose une solution adaptée.
                     </p>
                     
                     <div class="space-y-6">
@@ -451,17 +382,15 @@
                         <div>
                             <label class="block text-sm mb-2 text-gray-400">Type de projet</label>
                             <select name="project_type" class="w-full bg-black/50 border border-white/10 px-4 py-3 focus:border-gold focus:outline-none transition-colors">
-                                <option value="Portrait / Beauté" selected>Portrait / Beauté</option>
-                                <option value="E-commerce">E-commerce</option>
-                                <option value="Joaillerie">Joaillerie</option>
-                                <option value="Montage photo">Montage photo</option>
-                                <option value="Détourage">Détourage</option>
-                                <option value="Autre">Autre</option>
+                                <option value="Amélioration photo">Amélioration photo</option>
+                                <option value="Retouche portrait">Retouche portrait</option>
+                                <option value="Restauration">Restauration</option>
+                                <option value="Autre" selected>Autre</option>
                             </select>
                         </div>
                         <div>
                             <label class="block text-sm mb-2 text-gray-400">Message</label>
-                            <textarea name="message" rows="4" required class="w-full bg-black/50 border border-white/10 px-4 py-3 focus:border-gold focus:outline-none transition-colors" placeholder="Décrivez vos photos, le type de retouche souhaité..."></textarea>
+                            <textarea name="message" rows="4" required class="w-full bg-black/50 border border-white/10 px-4 py-3 focus:border-gold focus:outline-none transition-colors" placeholder="Décrivez votre besoin..."></textarea>
                         </div>
                         <button type="submit" id="submitBtn" class="btn-primary w-full flex justify-center items-center gap-2">
                             Envoyer la Demande
@@ -474,7 +403,7 @@
         </div>
     </section>
     
-    <!-- Footer -->
+    <!-- Pied de page -->
     <footer class="border-t border-white/10 py-12 px-6">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
             <a href="index.html" class="flex items-center gap-3">
@@ -492,7 +421,6 @@
     <script>
         lucide.createIcons();
         
-        // Menu Mobile
         const menuToggle = document.getElementById('menuToggle');
         const closeMenu = document.getElementById('closeMenu');
         const mobileMenu = document.getElementById('mobileMenu');
@@ -513,7 +441,6 @@
         menuOverlay.addEventListener('click', closeMenuFn);
         mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenuFn));
         
-        // Filtre Galerie
         function filterGallery(category) {
             const items = document.querySelectorAll('.gallery-item');
             const buttons = document.querySelectorAll('.filter-btn');
@@ -545,7 +472,6 @@
             });
         }
         
-        // Formulaire
         document.getElementById('contactForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             const btn = document.getElementById('submitBtn');
@@ -553,14 +479,12 @@
             btn.innerHTML = 'Envoi en cours...';
             
             const formData = new FormData(this);
-            
             try {
                 const response = await fetch(this.action, {
                     method: 'POST',
                     body: formData,
                     headers: { 'Accept': 'application/json' }
                 });
-                
                 if (response.ok) {
                     status.textContent = "Message envoyé avec succès ! Je vous répondrai rapidement.";
                     status.style.color = "#d4af37";
@@ -569,23 +493,20 @@
                     status.textContent = "Une erreur est survenue, veuillez réessayer.";
                     status.style.color = "red";
                 }
-            } catch (error) {
+            } catch {
                 status.textContent = "Erreur de connexion.";
                 status.style.color = "red";
             } finally {
                 btn.innerHTML = 'Envoyer la Demande <i data-lucide="send" class="w-4 h-4"></i>';
-                if (window.lucide) lucide.createIcons();
+                lucide.createIcons();
             }
         });
         
-        // Scroll fluide
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
         });
     </script>
