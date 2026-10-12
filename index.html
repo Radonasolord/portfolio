@@ -36,7 +36,7 @@
             }
             .nav-link {
                 position: relative;
-                @apply px-2 py-2 transition-colors text-sm;
+                @apply px-2 py-2 transition-colors;
             }
             .nav-link::after {
                 content: '';
@@ -104,22 +104,23 @@
                 opacity: 1;
                 transform: translateY(0);
             }
-            /* === DIAPORAMA STYLE BUNKR — FORMAT RECTANGULAIRE === */
+            /* === DIAPORAMA === */
             .slider-bunkr { position: relative; overflow: hidden; }
-            .slider-track { display: flex; transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
+            .slider-track { display: flex; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); } /* 3s total */
             .slider-slide { flex-shrink: 0; width: 100%; }
             .slide-card {
                 position: relative;
-                aspect-ratio: 16 / 9; /* Format rectangulaire */
+                aspect-ratio: 16 / 9;
                 overflow: hidden;
                 border-radius: 0.75rem;
                 background: #111;
+                display: block;
             }
             .slide-card img {
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
-                transition: transform 0.7s ease;
+                transition: transform 0.5s ease;
             }
             .slide-card:hover img { transform: scale(1.05); }
             .slide-overlay {
@@ -135,203 +136,224 @@
             .slider-dot.active { background: var(--gold); width: 2rem; }
             .skill-icon { transition: transform 0.3s ease; filter: grayscale(30%) brightness(0.9); }
             .skill-icon:hover { transform: scale(1.15); filter: grayscale(0%) brightness(1.1); }
+            /* Menu mobile */
+            .mobile-menu {
+                transform: translateX(100%);
+                transition: transform 0.3s ease;
+            }
+            .mobile-menu.open { transform: translateX(0); }
         }
     </style>
 </head>
 <body class="antialiased">
 
-    <!-- Navigation — TOUJOURS VISIBLE SUR MOBILE -->
+    <!-- Navigation avec Menu Burger -->
     <nav class="fixed w-full z-50 bg-black/70 backdrop-blur-xl border-b border-white/5">
-        <div class="max-w-7xl mx-auto px-3 py-3">
-            <div class="flex justify-between items-center gap-2">
-                <a href="index.html" class="flex items-center gap-2 shrink-0">
-                    <div class="w-8 h-8 gold-bg flex items-center justify-center rounded-full">
-                        <span class="text-black font-bold text-sm">RN</span>
-                    </div>
-                    <div class="hidden sm:block">
-                        <h1 class="text-sm font-bold tracking-wider">RADO NASOLO</h1>
-                    </div>
-                </a>
-                <div class="flex items-center gap-1 sm:gap-4 text-xs sm:text-sm tracking-wider">
-                    <a href="#accueil" class="nav-link gold-text px-1">Accueil</a>
-                    <a href="#apropos" class="nav-link px-1">À propos</a>
-                    <a href="retouche-photo.html" class="nav-link gold-text font-medium px-2">Retouche Photo</a>
-                    <a href="modelisation-3d.html" class="nav-link font-medium px-2">Modélisation 3D</a>
-                    <a href="#contact" class="nav-link px-1 hidden sm:inline">Contact</a>
+        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center gap-2">
+                <div class="w-8 h-8 gold-bg flex items-center justify-center rounded-full">
+                    <span class="text-black font-bold text-sm">RN</span>
                 </div>
+                <span class="font-bold tracking-wider text-sm hidden sm:inline">RADO NASOLO</span>
+            </a>
+
+            <!-- Liens bureau -->
+            <div class="hidden md:flex items-center gap-6 text-sm tracking-wider">
+                <a href="#accueil" class="nav-link gold-text">Accueil</a>
+                <a href="#portfolio" class="nav-link">Portfolio</a>
+                <a href="retouche-photo.html" class="nav-link gold-text font-medium">Retouche Photo</a>
+                <a href="modelisation-3d.html" class="nav-link font-medium">Modélisation 3D</a>
+                <a href="#contact" class="nav-link">Contact</a>
             </div>
+
+            <!-- Bouton Burger Mobile -->
+            <button id="menuToggle" class="md:hidden w-10 h-10 flex items-center justify-center border border-white/20 rounded-full hover:border-gold hover:text-gold transition-colors">
+                <i data-lucide="menu" class="w-5 h-5"></i>
+            </button>
+        </div>
+
+        <!-- Menu déroulant Mobile -->
+        <div id="mobileMenu" class="mobile-menu fixed top-0 right-0 h-screen w-4/5 max-w-xs bg-black/95 backdrop-blur-2xl border-l border-white/10 z-50 p-6 md:hidden">
+            <div class="flex justify-between items-center mb-8">
+                <span class="font-bold tracking-wider gold-text">Menu</span>
+                <button id="closeMenu" class="w-8 h-8 flex items-center justify-center hover:text-gold transition-colors">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+            <nav class="flex flex-col gap-5 text-lg tracking-wider">
+                <a href="#accueil" class="py-2 border-b border-white/5 hover:gold-text transition-colors">Accueil</a>
+                <a href="#portfolio" class="py-2 border-b border-white/5 hover:gold-text transition-colors">Portfolio</a>
+                <a href="retouche-photo.html" class="py-2 border-b border-white/5 gold-text font-medium">Retouche Photo</a>
+                <a href="modelisation-3d.html" class="py-2 border-b border-white/5 hover:gold-text transition-colors">Modélisation 3D</a>
+                <a href="#contact" class="py-2 hover:gold-text transition-colors">Contact</a>
+            </nav>
         </div>
     </nav>
 
-    <!-- 🎠 HERO + DIAPORAMA RECTANGULAIRE -->
-    <section id="accueil" class="pt-24 pb-20 px-4 sm:px-6">
-        <div class="max-w-7xl mx-auto">
-            <!-- Titre principal -->
-            <div class="mb-10 text-reveal">
-                <p class="gold-text tracking-[0.3em] text-xs mb-3 uppercase">
-                    Post Production 3D / Modélisateur 3D / Retoucheur Photo
-                </p>
-                <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight">
-                    Rado Nasolo<br>
-                    <span class="gradient-text">Randrianarimanana</span>
-                </h1>
-                <p class="text-gray-400 text-base md:text-lg max-w-2xl">
-                    Donnez vie à vos images et vos espaces — de la retouche photo à la modélisation 3D complète.
-                </p>
+    <!-- Overlay fond sombre quand menu ouvert -->
+    <div id="menuOverlay" class="fixed inset-0 bg-black/60 z-40 hidden md:hidden"></div>
+
+    <!-- HERO — Votre version conservée -->
+    <section id="accueil" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
+       
+        
+        <div class="relative z-20 text-center px-6 max-w-5xl mx-auto">
+            <p class="text-reveal gold-text tracking-[0.3em] text-sm mb-6 uppercase" style="transition-delay: 0.1s">
+                Retoucheur d’images, Modéleur 3d et Postproduction 2D/3D
+            </p>
+            <h1 class="text-reveal text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight" style="transition-delay: 0.2s">
+                L'Art de la<br>
+                <span class="gold-text italic">Perfection</span>
+            </h1>
+            <p class="text-reveal text-gray-300 text-lg md:text-xl max-w-2xl mx-auto mb-10 font-light" style="transition-delay: 0.3s">
+                Retouche haut de gamme pour portraits, e-commerce, joaillerie, Montage photo et modélisation 3D. 
+                Basé à Madagascar, travail avec des clients internationaux.
+            </p>
+            <div class="text-reveal flex flex-col sm:flex-row gap-4 justify-center" style="transition-delay: 0.4s">
+                <a href="#portfolio" class="btn-primary inline-flex items-center gap-2">
+                    Voir le Portfolio
+                    <i data-lucide="arrow-down" class="w-4 h-4"></i>
+                </a>
+                <a href="#contact" class="px-8 py-3 border border-white/30 hover:border-gold hover:gold-text transition-all uppercase tracking-wider text-sm">
+                    Demander un Devis
+                </a>
             </div>
-
-            <!-- Diaporama rectangulaire style Bunkr -->
-            <div class="slider-bunkr mb-8">
-                <div class="slider-track" id="sliderTrack">
-                    <!-- Diapositive 1 — Retouche Photo -->
-                    <div class="slider-slide px-1">
-                        <a href="retouche-photo.html" class="block slide-card">
-                            <img src="https://raw.githubusercontent.com/Radonasolord/portfolio/main/Portrait/2.jpg" 
-                                 alt="Retouche Photo — Portraits, E-commerce, Joaillerie"
-                                 loading="lazy">
-                            <div class="slide-overlay">
-                                <p class="text-xs uppercase tracking-widest text-gray-400 mb-2">Expertise 01</p>
-                                <h3 class="text-2xl md:text-3xl font-bold mb-2">Retouche Photo</h3>
-                                <p class="text-gray-300 mb-4 max-w-md">Portraits — E-commerce — Joaillerie — Montage photo — Détourage</p>
-                                <span class="gold-text inline-flex items-center gap-2 text-sm font-medium">
-                                    Voir le portfolio <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                                </span>
-                            </div>
-                        </a>
-                    </div>
-
-                    <!-- Diapositive 2 — Modélisation 3D -->
-                    <div class="slider-slide px-1">
-                        <a href="modelisation-3d.html" class="block slide-card">
-                            <img src="https://raw.githubusercontent.com/Radonasolord/portfolio/main/Portrait/3.jpg" 
-                                 alt="Modélisation 3D — Objets, Intérieurs, Rendu"
-                                 loading="lazy">
-                            <div class="slide-overlay">
-                                <p class="text-xs uppercase tracking-widest text-gray-400 mb-2">Expertise 02</p>
-                                <h3 class="text-2xl md:text-3xl font-bold mb-2">Modélisation 3D</h3>
-                                <p class="text-gray-300 mb-4 max-w-md">Objets — Décors — Espaces architecturaux — Design d'intérieur — Rendu photoréaliste</p>
-                                <span class="gold-text inline-flex items-center gap-2 text-sm font-medium">
-                                    Découvrir <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                                </span>
-                            </div>
-                        </a>
-                    </div>
-
-                    <!-- Diapositive 3 — Plan 2D → 3D -->
-                    <div class="slider-slide px-1">
-                        <a href="modelisation-3d.html#transformation" class="block slide-card">
-                            <img src="https://raw.githubusercontent.com/Radonasolord/portfolio/main/Ecommerce/Montage1.jpg" 
-                                 alt="Transformation Plan 2D vers 3D"
-                                 loading="lazy">
-                            <div class="slide-overlay">
-                                <p class="text-xs uppercase tracking-widest text-gray-400 mb-2">Expertise 03</p>
-                                <h3 class="text-2xl md:text-3xl font-bold mb-2">Plan 2D → 3D</h3>
-                                <p class="text-gray-300 mb-4 max-w-md">Transformation de photos, croquis ou plans en modèles 3D exploitables — Rendu final</p>
-                                <span class="gold-text inline-flex items-center gap-2 text-sm font-medium">
-                                    En savoir plus <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                                </span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Contrôles du diaporama -->
-            <div class="flex items-center justify-between">
-                <button id="prevSlide" class="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center hover:border-gold hover:text-gold transition-colors">
-                    <i data-lucide="chevron-left" class="w-5 h-5"></i>
-                </button>
-                <div class="flex gap-2" id="sliderDots">
-                    <button class="slider-dot active w-6 h-1.5 rounded-full bg-white/40" data-index="0"></button>
-                    <button class="slider-dot w-1.5 h-1.5 rounded-full bg-white/40" data-index="1"></button>
-                    <button class="slider-dot w-1.5 h-1.5 rounded-full bg-white/40" data-index="2"></button>
-                </div>
-                <button id="nextSlide" class="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center hover:border-gold hover:text-gold transition-colors">
-                    <i data-lucide="chevron-right" class="w-5 h-5"></i>
-                </button>
-            </div>
+        </div>
+        
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+            <a href="#portfolio" class="gold-text">
+                <i data-lucide="chevron-down" class="w-6 h-6"></i>
+            </a>
         </div>
     </section>
 
-    <!-- 👤 SECTION À PROPOS -->
-    <section id="apropos" class="py-20 bg-[#1A2421]">
+    <!-- 🎠 DIAPORAMA RECTANGULAIRE -->
+    <section id="portfolio" class="py-20 px-4 sm:px-6 max-w-7xl mx-auto">
+        <div class="text-center mb-10">
+            <p class="gold-text tracking-[0.3em] text-xs mb-3 uppercase">Mes Expertises</p>
+            <h2 class="text-3xl md:text-5xl font-bold">Découvrir mon travail</h2>
+        </div>
+
+        <div class="slider-bunkr">
+            <div class="slider-track" id="sliderTrack">
+                <!-- Diapositive 1 — Retouche Photo -->
+                <div class="slider-slide px-1">
+                    <a href="retouche-photo.html" class="slide-card">
+                        <img src="https://raw.githubusercontent.com/Radonasolord/portfolio/main/Portrait/2.jpg" 
+                             alt="Retouche Photo — Portraits, E-commerce, Joaillerie"
+                             loading="lazy">
+                        <div class="slide-overlay">
+                            <p class="text-xs uppercase tracking-widest text-gray-400 mb-2">Expertise 01</p>
+                            <h3 class="text-2xl md:text-3xl font-bold mb-2">Retouche Photo</h3>
+                            <p class="text-gray-300 mb-4 max-w-md">Portraits — E-commerce — Joaillerie — Montage photo — Détourage</p>
+                            <span class="gold-text inline-flex items-center gap-2 text-sm font-medium">
+                                Voir le portfolio <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Diapositive 2 — Modélisation 3D -->
+                <div class="slider-slide px-1">
+                    <a href="modelisation-3d.html" class="slide-card">
+                        <img src="https://raw.githubusercontent.com/Radonasolord/portfolio/main/Portrait/3.jpg" 
+                             alt="Modélisation 3D — Objets, Intérieurs, Rendu"
+                             loading="lazy">
+                        <div class="slide-overlay">
+                            <p class="text-xs uppercase tracking-widest text-gray-400 mb-2">Expertise 02</p>
+                            <h3 class="text-2xl md:text-3xl font-bold mb-2">Modélisation 3D</h3>
+                            <p class="text-gray-300 mb-4 max-w-md">Objets — Décors — Espaces architecturaux — Design d'intérieur — Rendu photoréaliste</p>
+                            <span class="gold-text inline-flex items-center gap-2 text-sm font-medium">
+                                Découvrir <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Diapositive 3 — Plan 2D → 3D -->
+                <div class="slider-slide px-1">
+                    <a href="modelisation-3d.html#transformation" class="slide-card">
+                        <img src="https://raw.githubusercontent.com/Radonasolord/portfolio/main/Ecommerce/Montage1.jpg" 
+                             alt="Transformation Plan 2D vers 3D"
+                             loading="lazy">
+                        <div class="slide-overlay">
+                            <p class="text-xs uppercase tracking-widest text-gray-400 mb-2">Expertise 03</p>
+                            <h3 class="text-2xl md:text-3xl font-bold mb-2">Plan 2D → 3D</h3>
+                            <p class="text-gray-300 mb-4 max-w-md">Transformation de photos, croquis ou plans en modèles 3D exploitables — Rendu final</p>
+                            <span class="gold-text inline-flex items-center gap-2 text-sm font-medium">
+                                En savoir plus <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contrôles du diaporama -->
+        <div class="flex items-center justify-between mt-6">
+            <button id="prevSlide" class="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center hover:border-gold hover:text-gold transition-colors">
+                <i data-lucide="chevron-left" class="w-5 h-5"></i>
+            </button>
+            <div class="flex gap-2" id="sliderDots">
+                <button class="slider-dot active w-6 h-1.5 rounded-full bg-white/40" data-index="0"></button>
+                <button class="slider-dot w-1.5 h-1.5 rounded-full bg-white/40" data-index="1"></button>
+                <button class="slider-dot w-1.5 h-1.5 rounded-full bg-white/40" data-index="2"></button>
+            </div>
+            <button id="nextSlide" class="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center hover:border-gold hover:text-gold transition-colors">
+                <i data-lucide="chevron-right" class="w-5 h-5"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- À propos -->
+    <section class="py-20 bg-[#1A2421]">
         <div class="max-w-7xl mx-auto px-4 sm:px-6">
             <div class="grid md:grid-cols-5 gap-8 md:gap-12 items-start">
                 <div class="md:col-span-2 text-reveal">
                     <div class="relative rounded-xl overflow-hidden shadow-2xl">
                         <img src="https://raw.githubusercontent.com/Radonasolord/portfolio/main/Portrait/5.jpg" 
-                             alt="Rado Nasolo Randrianarimanana — Modélisateur 3D & Retoucheur Photo" 
+                             alt="Rado Nasolo Randrianarimanana" 
                              class="w-full h-auto object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent pointer-events-none"></div>
                     </div>
                 </div>
-
                 <div class="md:col-span-3 text-reveal">
                     <h2 class="text-3xl md:text-5xl font-bold mb-6 text-[#D4AF37]">À propos de moi</h2>
-                    
                     <p class="text-gray-300 text-base md:text-lg leading-relaxed mb-6">
-                        Je suis <strong class="text-white">Rado Nasolo Randrianarimanana</strong>, spécialiste en <strong>modélisation 3D</strong> et <strong>design d'intérieur</strong>. Je crée des assets 3D, conçois des intérieurs réalistes et assure la post-production des rendus sur Photoshop pour des visuels propres et professionnels.
+                        Je suis <strong class="text-white">Rado Nasolo Randrianarimanana</strong>, spécialiste en <strong>modélisation 3D</strong> et <strong>design d'intérieur</strong>. Je crée des assets 3D, conçois des intérieurs réalistes et assure la post-production des rendus sur Photoshop.
                     </p>
-                    
                     <p class="text-gray-300 text-base md:text-lg leading-relaxed mb-8">
                         Mon objectif est de <strong class="text-[#D4AF37]">transformer vos idées en projets 3D précis et esthétiques</strong>.
                     </p>
-
                     <h3 class="text-xl md:text-2xl font-bold mb-4 text-white">Expérience</h3>
                     <ul class="space-y-3 mb-8 text-gray-300 text-sm md:text-base">
                         <li class="flex flex-col sm:flex-row gap-1 sm:gap-3">
                             <span class="text-[#D4AF37] font-semibold whitespace-nowrap">2015 – Présent</span>
-                            <div>
-                                <strong class="text-white">Retoucheur photo</strong>
-                                <p class="text-sm text-gray-400">E-commerce, portrait, montage photo</p>
-                            </div>
+                            <div><strong class="text-white">Retoucheur photo</strong><p class="text-sm text-gray-400">E-commerce, portrait, montage photo</p></div>
                         </li>
                         <li class="flex flex-col sm:flex-row gap-1 sm:gap-3">
                             <span class="text-[#D4AF37] font-semibold whitespace-nowrap">2019 – Présent</span>
-                            <div>
-                                <strong class="text-white">Post-production 3D</strong>
-                                <p class="text-sm text-gray-400">Montage photo et intégration de personnages 2D pour rendu 3D brut</p>
-                            </div>
+                            <div><strong class="text-white">Post-production 3D</strong><p class="text-sm text-gray-400">Intégration de personnages 2D pour rendu 3D</p></div>
                         </li>
                         <li class="flex flex-col sm:flex-row gap-1 sm:gap-3">
                             <span class="text-[#D4AF37] font-semibold whitespace-nowrap">2020 – Présent</span>
-                            <div>
-                                <strong class="text-white">Modélisateur d'assets 3D</strong>
-                                <p class="text-sm text-gray-400">Modélisation détaillée d'objets, décors et espaces architecturaux</p>
-                            </div>
+                            <div><strong class="text-white">Modélisateur d'assets 3D</strong><p class="text-sm text-gray-400">Objets, décors, espaces architecturaux</p></div>
                         </li>
                         <li class="flex flex-col sm:flex-row gap-1 sm:gap-3">
                             <span class="text-[#D4AF37] font-semibold whitespace-nowrap">2020 – Présent</span>
-                            <div>
-                                <strong class="text-white">Design d'intérieur</strong>
-                                <p class="text-sm text-gray-400">Conception et visualisation d'espaces de vie</p>
-                            </div>
+                            <div><strong class="text-white">Design d'intérieur</strong><p class="text-sm text-gray-400">Conception et visualisation d'espaces</p></div>
                         </li>
                     </ul>
-
                     <h3 class="text-xl md:text-2xl font-bold mb-4 text-white">Compétences techniques</h3>
                     <div class="flex flex-wrap gap-4 md:gap-6 items-center">
-                        <div class="skill-icon">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/blender/blender-original.svg" alt="Blender" class="h-10 w-auto">
-                        </div>
-                        <div class="skill-icon">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/72/3ds_Max_Logo.svg" alt="3ds Max" class="h-8 w-auto invert">
-                        </div>
-                        <div class="skill-icon">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a1/Corona_Renderer_logo.svg" alt="Corona" class="h-7 w-auto">
-                        </div>
-                        <div class="skill-icon">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-original.svg" alt="Photoshop" class="h-10 w-auto">
-                        </div>
-                        <div class="skill-icon">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/illustrator/illustrator-original.svg" alt="Illustrator" class="h-10 w-auto">
-                        </div>
-                        <div class="skill-icon">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/75/Substance_Painter_Logo.svg" alt="Substance Painter" class="h-7 w-auto">
-                        </div>
-                        <div class="skill-icon">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/3/38/AutoCAD_logo.svg" alt="AutoCAD" class="h-7 w-auto">
-                        </div>
+                        <div class="skill-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/blender/blender-original.svg" alt="Blender" class="h-10 w-auto"></div>
+                        <div class="skill-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/7/72/3ds_Max_Logo.svg" alt="3ds Max" class="h-8 w-auto invert"></div>
+                        <div class="skill-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a1/Corona_Renderer_logo.svg" alt="Corona" class="h-7 w-auto"></div>
+                        <div class="skill-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-original.svg" alt="Photoshop" class="h-10 w-auto"></div>
+                        <div class="skill-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/illustrator/illustrator-original.svg" alt="Illustrator" class="h-10 w-auto"></div>
+                        <div class="skill-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/7/75/Substance_Painter_Logo.svg" alt="Substance Painter" class="h-7 w-auto"></div>
+                        <div class="skill-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/3/38/AutoCAD_logo.svg" alt="AutoCAD" class="h-7 w-auto"></div>
                     </div>
                 </div>
             </div>
@@ -346,7 +368,6 @@
                     <p class="gold-text tracking-[0.3em] text-xs mb-4 uppercase">Contact</p>
                     <h2 class="text-3xl md:text-5xl font-bold mb-6">Travaillons Ensemble</h2>
                     <p class="text-gray-400 mb-6">Disponible pour projets ponctuels ou réguliers — collaboration à distance dans le monde entier.</p>
-                    
                     <div class="space-y-4">
                         <div class="flex items-center gap-4">
                             <div class="w-9 h-9 rounded-full gold-bg/10 flex items-center justify-center flex-shrink-0">
@@ -408,14 +429,38 @@
                 </div>
                 <span class="font-bold tracking-wider text-sm">RADO NASOLO RANDRIANARIMANANA</span>
             </a>
-            <p class="text-xs text-gray-500">© 2026 — Retouche Photo & Modélisation 3D & Design. Tous droits réservés.</p>
+            <p class="text-xs text-gray-500">© 2026 — Retouche Photo & Modélisation 3D. Tous droits réservés.</p>
         </div>
     </footer>
 
     <script>
         lucide.createIcons();
 
-        // 🎠 DIAPORAMA RECTANGULAIRE
+        // === MENU BURGER ===
+        const menuToggle = document.getElementById('menuToggle');
+        const closeMenu = document.getElementById('closeMenu');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuOverlay = document.getElementById('menuOverlay');
+
+        function openMenu() {
+            mobileMenu.classList.add('open');
+            menuOverlay.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeMenuFn() {
+            mobileMenu.classList.remove('open');
+            menuOverlay.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+        menuToggle.addEventListener('click', openMenu);
+        closeMenu.addEventListener('click', closeMenuFn);
+        menuOverlay.addEventListener('click', closeMenuFn);
+        // Fermer au clic sur un lien
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', closeMenuFn);
+        });
+
+        // === DIAPORAMA — Animation 3s ===
         const track = document.getElementById('sliderTrack');
         const dots = document.querySelectorAll('.slider-dot');
         const prevBtn = document.getElementById('prevSlide');
@@ -447,12 +492,12 @@
             dot.addEventListener('click', () => goToSlide(parseInt(dot.dataset.index)));
         });
 
-        // Défilement automatique toutes les 7 secondes
-        let autoPlay = setInterval(() => goToSlide(current + 1), 7000);
+        // Défilement automatique toutes les 3 secondes
+        let autoPlay = setInterval(() => goToSlide(current + 1), 3000);
         [prevBtn, nextBtn, ...dots].forEach(el => {
             el.addEventListener('click', () => {
                 clearInterval(autoPlay);
-                autoPlay = setInterval(() => goToSlide(current + 1), 7000);
+                autoPlay = setInterval(() => goToSlide(current + 1), 3000);
             });
         });
 
