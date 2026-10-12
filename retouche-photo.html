@@ -3,141 +3,186 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Retouche Photo — Rado Nasolo</title>
+    <meta name="description" content="Retouche Photo — Portraits, E-commerce, Joaillerie par Rado Nasolo Randrianarimanana.">
+    <meta name="keywords" content="retouche photo, portrait, e-commerce, joaillerie, montage photo, Madagascar">
+    <title>Retouche Photo | Rado Nasolo Randrianarimanana</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style type="text/tailwindcss">
         @layer base {
-            :root { --gold: #D4AF37; --dark: #070707; }
+            :root {
+                --gold: #D4AF37;
+                --dark: #070707;
+            }
             html { scroll-behavior: smooth; }
-            body { font-family: 'Inter', sans-serif; background: #070707; color: white; }
-            h1, h2 { font-family: 'Playfair Display', serif; }
+            body { font-family: 'Inter', sans-serif; background-color: var(--dark); color: white; }
+            h1, h2, h3 { font-family: 'Playfair Display', serif; }
         }
-        .gold-text { color: var(--gold); }
-        .gold-bg { background-color: var(--gold); }
-        .back-btn {
-            display:inline-flex; align-items:center; gap:0.5rem;
-            padding:0.75rem 1.5rem; border-radius:9999px; border:1px solid rgba(255,255,255,0.15);
-            transition:all 0.3s ease; color:inherit; text-decoration:none;
+        @layer components {
+            .gold-text { color: var(--gold); }
+            .gold-bg { background-color: var(--gold); }
+            .btn-primary {
+                background: linear-gradient(135deg, #D4AF37 0%, #B8941F 100%);
+                color: black; font-weight: 600; padding: 0.75rem 2rem; border-radius: 9999px;
+                transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 0.15em; font-size: 0.8rem;
+            }
+            .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(212,175,55,0.35); }
+            .btn-outline {
+                border-radius: 9999px; border: 1px solid rgba(255,255,255,0.3); padding: 0.75rem 2rem;
+                transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 0.15em; font-size: 0.8rem; background: transparent;
+            }
+            .btn-outline:hover { border-color: var(--gold); color: var(--gold); background: rgba(212,175,55,0.05); }
+            .nav-link { position: relative; @apply px-2 py-2 transition-colors; }
+            .nav-link::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px; background: var(--gold); transition: width 0.3s ease; }
+            .nav-link:hover::after { width: 100%; }
+            .nav-link:hover, .nav-link.active { @apply gold-text; }
+            .mobile-menu { transform: translateX(100%); transition: transform 0.3s ease; }
+            .mobile-menu.open { transform: translateX(0); }
+            .gallery-item {
+                overflow: hidden; border-radius: 0.75rem; background: #111; border: 1px solid rgba(255,255,255,0.1); transition: all 0.3s ease;
+            }
+            .gallery-item:hover { border-color: rgba(212,175,55,0.4); transform: translateY(-5px); }
+            .gallery-item img { transition: transform 0.5s ease; }
+            .gallery-item:hover img { transform: scale(1.05); }
         }
-        .back-btn:hover { border-color:var(--gold); color:var(--gold); background:rgba(212,175,55,0.05); }
-        .gallery-item { position:relative; overflow:hidden; border-radius:0.75rem; }
-        .gallery-item img { transition:transform 0.5s ease; }
-        .gallery-item:hover img { transform:scale(1.08); }
-        .gallery-overlay {
-            position:absolute; inset:0;
-            background:linear-gradient(to top, rgba(0,0,0,0.92), transparent);
-            opacity:0; transition:0.4s; display:flex; align-items:flex-end; padding:1.5rem;
-        }
-        .gallery-item:hover .gallery-overlay { opacity:1; }
-        .filter-btn { transition:all 0.3s ease; }
-        .filter-btn.active { border-color:#D4AF37; color:#D4AF37; background:rgba(212,175,55,0.05); }
     </style>
 </head>
 <body class="antialiased">
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-black/60 backdrop-blur-xl border-b border-white/5">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="index.html" class="back-btn">
-                <i data-lucide="arrow-left" class="w-4 h-4"></i>
-                Retour à l'accueil
+    <nav class="fixed w-full z-50 bg-black/70 backdrop-blur-xl border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-2">
+                <div class="w-8 h-8 gold-bg flex items-center justify-center rounded-full"><span class="text-black font-bold text-sm">RN</span></div>
+                <span class="font-bold tracking-wider text-sm hidden sm:inline">RADO NASOLO RD</span>
             </a>
-            <div class="hidden md:flex gap-8 text-sm tracking-wider">
-                <a href="retouche-photo.html" class="gold-text">Retouche Photo</a>
-                <a href="modelisation-3d.html" class="hover:gold-text transition-colors">Modélisation 3D</a>
+            <div class="hidden md:flex items-center gap-8 text-sm tracking-wider">
+                <a href="index.html" class="nav-link">Accueil</a>
+                <a href="retouche-photo.html" class="nav-link active gold-text">Retouche Photo</a>
+                <a href="modelisation-3d.html" class="nav-link">Modélisation 3D</a>
+                <a href="#contact" class="nav-link">Contact</a>
             </div>
+            <button id="menuToggle" class="md:hidden w-10 h-10 flex items-center justify-center border border-white/20 rounded-full hover:border-gold hover:text-gold transition-colors">
+                <i data-lucide="menu" class="w-5 h-5"></i>
+            </button>
+        </div>
+        <div id="mobileMenu" class="mobile-menu fixed top-0 right-0 h-screen w-4/5 max-w-xs bg-black/95 backdrop-blur-2xl border-l border-white/10 z-50 p-6 md:hidden">
+            <div class="flex justify-between items-center mb-8">
+                <span class="font-bold tracking-wider gold-text">Menu</span>
+                <button id="closeMenu" class="w-8 h-8 flex items-center justify-center hover:text-gold transition-colors"><i data-lucide="x" class="w-5 h-5"></i></button>
+            </div>
+            <nav class="flex flex-col gap-5 text-lg tracking-wider">
+                <a href="index.html" class="py-2 border-b border-white/5 hover:gold-text transition-colors">Accueil</a>
+                <a href="retouche-photo.html" class="py-2 border-b border-white/5 gold-text font-medium">Retouche Photo</a>
+                <a href="modelisation-3d.html" class="py-2 border-b border-white/5 hover:gold-text transition-colors">Modélisation 3D</a>
+                <a href="#contact" class="py-2 hover:gold-text transition-colors">Contact</a>
+            </nav>
         </div>
     </nav>
+    <div id="menuOverlay" class="fixed inset-0 bg-black/60 z-40 hidden md:hidden"></div>
 
-    <main class="pt-28 pb-24 px-6">
+    <header class="pt-32 pb-16 px-4 sm:px-6 max-w-7xl mx-auto text-center">
+        <p class="gold-text tracking-[0.3em] text-xs mb-4 uppercase">Expertise 01</p>
+        <h1 class="text-4xl md:text-6xl font-bold mb-6">Retouche Photo</h1>
+        <p class="text-gray-400 text-lg max-w-2xl mx-auto">Portraits — E-commerce — Joaillerie — Montage photo — Détourage. Retouche professionnelle depuis 2015.</p>
+    </header>
+
+    <section class="px-4 sm:px-6 max-w-7xl mx-auto pb-20">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="gallery-item">
+                <img src="https://raw.githubusercontent.com/Radonasolord/portfolio/main/Portrait/2.jpg" alt="Portrait retouché" class="w-full h-64 object-cover">
+                <div class="p-4"><h3 class="font-bold mb-1">Portrait</h3><p class="text-gray-400 text-sm">Harmonisation des tons, lissage naturel, mise en valeur</p></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://raw.githubusercontent.com/Radonasolord/portfolio/main/Ecommerce/Montage1.jpg" alt="E-commerce" class="w-full h-64 object-cover">
+                <div class="p-4"><h3 class="font-bold mb-1">E-commerce</h3><p class="text-gray-400 text-sm">Fond neutre, netteté, couleurs fidèles</p></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://raw.githubusercontent.com/Radonasolord/portfolio/main/Portrait/3.jpg" alt="Montage photo" class="w-full h-64 object-cover">
+                <div class="p-4"><h3 class="font-bold mb-1">Montage & Composition</h3><p class="text-gray-400 text-sm">Assemblage d'éléments, intégration réaliste</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-20 px-4 sm:px-6 bg-neutral-900/40">
         <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <p class="gold-text tracking-[0.3em] text-xs mb-4 uppercase">Portfolio</p>
-                <h1 class="text-4xl md:text-5xl font-bold mb-6">Retouche Photo</h1>
-                <p class="text-gray-400 max-w-2xl mx-auto">Portraits, e-commerce, joaillerie, détourage — chaque image optimisée avec soin.</p>
-            </div>
-
-            <!-- Filtres -->
-            <div class="flex flex-wrap justify-center gap-3 mb-12">
-                <button class="filter-btn active px-5 py-2 border rounded-full text-sm uppercase tracking-wider" data-filter="all">Tous</button>
-                <button class="filter-btn px-5 py-2 border border-white/10 rounded-full text-sm uppercase tracking-wider hover:border-gold hover:gold-text" data-filter="portrait">Portrait</button>
-                <button class="filter-btn px-5 py-2 border border-white/10 rounded-full text-sm uppercase tracking-wider hover:border-gold hover:gold-text" data-filter="ecommerce">E-commerce</button>
-                <button class="filter-btn px-5 py-2 border border-white/10 rounded-full text-sm uppercase tracking-wider hover:border-gold hover:gold-text" data-filter="joaillerie">Joaillerie</button>
-                <button class="filter-btn px-5 py-2 border border-white/10 rounded-full text-sm uppercase tracking-wider hover:border-gold hover:gold-text" data-filter="detourage">Détourage</button>
-            </div>
-
-            <!-- Galerie -->
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="gallery">
-                <!-- Portrait -->
-                <div class="gallery-item aspect-[4/5]" data-cat="portrait">
-                    <img src="https://raw.githubusercontent.com/Radonasolord/portfolio/main/Portrait/2.jpg" alt="Portrait" class="w-full h-full object-cover">
-                    <div class="gallery-overlay"><div><h4 class="font-bold text-lg">Portrait</h4><p class="text-sm text-gray-300 mt-1">Retouche et montage</p></div></div>
+            <div class="grid lg:grid-cols-2 gap-12">
+                <div>
+                    <p class="gold-text tracking-[0.3em] text-xs mb-4 uppercase">Contact</p>
+                    <h2 class="text-3xl md:text-5xl font-bold mb-6">Travaillons Ensemble</h2>
+                    <p class="text-gray-400 mb-6">Vous avez un projet de retouche ou de montage ? N'hésitez pas à me décrire vos besoins.</p>
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-4">
+                            <div class="w-9 h-9 rounded-full gold-bg/10 flex items-center justify-center flex-shrink-0"><i data-lucide="mail" class="w-4 h-4 gold-text"></i></div>
+                            <div><div class="text-xs text-gray-500">Email</div><div class="font-medium text-sm">sarobidinrado@gmail.com</div></div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-9 h-9 rounded-full gold-bg/10 flex items-center justify-center flex-shrink-0"><i data-lucide="map-pin" class="w-4 h-4 gold-text"></i></div>
+                            <div><div class="text-xs text-gray-500">Localisation</div><div class="font-medium text-sm">Antananarivo, Madagascar (GMT+3)</div></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="gallery-item aspect-[4/5]" data-cat="portrait">
-                    <img src="https://raw.githubusercontent.com/Radonasolord/portfolio/main/Portrait/3.jpg" alt="Portrait" class="w-full h-full object-cover">
-                    <div class="gallery-overlay"><div><h4 class="font-bold text-lg">Portrait</h4><p class="text-sm text-gray-300 mt-1">Suppression d'objets et correction</p></div></div>
-                </div>
-                <div class="gallery-item aspect-[4/5]" data-cat="portrait">
-                    <img src="https://raw.githubusercontent.com/Radonasolord/portfolio/main/Portrait/4.jpg" alt="Portrait" class="w-full h-full object-cover">
-                    <div class="gallery-overlay"><div><h4 class="font-bold text-lg">Portrait Beauté</h4><p class="text-sm text-gray-300 mt-1">Lissage, harmonisation</p></div></div>
-                </div>
-                <div class="gallery-item aspect-[4/5]" data-cat="portrait">
-                    <img src="https://raw.githubusercontent.com/Radonasolord/portfolio/main/Portrait/5.jpg" alt="Portrait" class="w-full h-full object-cover">
-                    <div class="gallery-overlay"><div><h4 class="font-bold text-lg">Fond & Nettoyage</h4><p class="text-sm text-gray-300 mt-1">Suppression fond, fond blanc</p></div></div>
-                </div>
-
-                <!-- E-commerce -->
-                <div class="gallery-item aspect-[4/5]" data-cat="ecommerce">
-                    <img src="https://raw.githubusercontent.com/Radonasolord/portfolio/main/Ecommerce/Montage1.jpg" alt="Produit" class="w-full h-full object-cover">
-                    <div class="gallery-overlay"><div><h4 class="font-bold text-lg">Ghost Mannequin</h4><p class="text-sm text-gray-300 mt-1">Détourage, montage, fond blanc</p></div></div>
-                </div>
-                <div class="gallery-item aspect-[4/5]" data-cat="ecommerce">
-                    <img src="https://raw.githubusercontent.com/Radonasolord/portfolio/main/Ecommerce/Montage2.jpg" alt="Produit" class="w-full h-full object-cover">
-                    <div class="gallery-overlay"><div><h4 class="font-bold text-lg">Ghost Mannequin</h4><p class="text-sm text-gray-300 mt-1">Recadrage et uniformisation</p></div></div>
-                </div>
-                <div class="gallery-item aspect-[4/5]" data-cat="ecommerce">
-                    <img src="https://raw.githubusercontent.com/Radonasolord/portfolio/main/Ecommerce/Montage3.jpg" alt="Produit" class="w-full h-full object-cover">
-                    <div class="gallery-overlay"><div><h4 class="font-bold text-lg">Ghost Mannequin</h4><p class="text-sm text-gray-300 mt-1">Assemblage et rendu final</p></div></div>
-                </div>
-
-                <!-- Joaillerie -->
-                <div class="gallery-item aspect-[4/5]" data-cat="joaillerie">
-                    <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&q=80" alt="Bijou" class="w-full h-full object-cover">
-                    <div class="gallery-overlay"><div><h4 class="font-bold text-lg">Bague — Focus Stacking</h4><p class="text-sm text-gray-300 mt-1">Netteté totale, rendu des pierres</p></div></div>
-                </div>
-
-                <!-- Détourage -->
-                <div class="gallery-item aspect-[4/5]" data-cat="detourage">
-                    <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&q=80" alt="Produit" class="w-full h-full object-cover">
-                    <div class="gallery-overlay"><div><h4 class="font-bold text-lg">Détourage & Fond Blanc</h4><p class="text-sm text-gray-300 mt-1">Contours précis, ombre portée</p></div></div>
+                <div id="formContainer" class="bg-white/5 border border-white/10 p-6 md:p-8 rounded-2xl transition-all duration-500">
+                    <form id="contactForm" action="https://formspree.io/f/xwlkpjzw" method="POST" class="space-y-4">
+                        <div><label class="block text-sm mb-2 text-gray-400">Nom</label><input type="text" name="name" required class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:border-[#D4AF37] focus:outline-none transition-colors"></div>
+                        <div><label class="block text-sm mb-2 text-gray-400">Email</label><input type="email" name="email" required class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:border-[#D4AF37] focus:outline-none transition-colors"></div>
+                        <div><label class="block text-sm mb-2 text-gray-400">Type de projet</label>
+                            <select name="projet" class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:border-[#D4AF37] focus:outline-none transition-colors">
+                                <option value="Retouche Photo" selected>Retouche Photo</option>
+                                <option value="Modélisation 3D">Modélisation 3D</option>
+                                <option value="Plan 2D vers 3D">Plan 2D vers 3D</option>
+                                <option value="Design d'intérieur">Design d'intérieur</option>
+                                <option value="Autre">Autre</option>
+                            </select>
+                        </div>
+                        <div><label class="block text-sm mb-2 text-gray-400">Message</label><textarea name="message" rows="4" required class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:border-[#D4AF37] focus:outline-none transition-colors" placeholder="Décrivez votre projet..."></textarea></div>
+                        <button type="submit" class="btn-primary w-full">Envoyer la Demande</button>
+                    </form>
+                    <div id="successMessage" class="hidden text-center py-8">
+                        <div class="w-16 h-16 rounded-full gold-bg/10 flex items-center justify-center mx-auto mb-6"><i data-lucide="check-circle" class="w-8 h-8 gold-text"></i></div>
+                        <h3 class="text-2xl font-bold mb-3">Demande envoyée avec succès</h3>
+                        <p class="text-gray-300 mb-2">Merci de m'avoir contacté.</p>
+                        <p class="text-gray-400 text-sm">Je prendrai connaissance de votre projet et vous répondrai dans les plus brefs délais, généralement sous 24 à 48 heures ouvrées.</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </main>
+    </section>
 
-    <footer class="border-t border-white/5 py-8 text-center text-sm text-gray-500">
-        <p>© 2026 Rado Nasolo — Retouche Photo & Modélisation 3D</p>
+    <footer class="border-t border-white/5 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row justify-between items-center gap-3">
+            <a href="index.html" class="flex items-center gap-2">
+                <div class="w-7 h-7 gold-bg flex items-center justify-center rounded-full"><span class="text-black font-bold text-xs">RN</span></div>
+                <span class="font-bold tracking-wider text-sm">RADO NASOLO RANDRIANARIMANANA</span>
+            </a>
+            <p class="text-xs text-gray-500">© 2026 — Retouche Photo & Modélisation 3D. Tous droits réservés.</p>
+        </div>
     </footer>
 
     <script>
         lucide.createIcons();
-        // Filtres
-        const btns = document.querySelectorAll('.filter-btn');
-        const items = document.querySelectorAll('#gallery .gallery-item');
-        btns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const filter = btn.dataset.filter;
-                btns.forEach(b => {
-                    b.classList.remove('active','border-gold','gold-text');
-                    b.classList.add('border-white/10');
-                });
-                btn.classList.add('active','border-gold','gold-text');
-                btn.classList.remove('border-white/10');
-                items.forEach(item => {
-                    item.style.display = (filter === 'all' || item.dataset.cat === filter) ? 'block' : 'none';
-                });
-            });
+        const menuToggle = document.getElementById('menuToggle');
+        const closeMenu = document.getElementById('closeMenu');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuOverlay = document.getElementById('menuOverlay');
+        function openMenu() { mobileMenu.classList.add('open'); menuOverlay.classList.remove('hidden'); document.body.style.overflow = 'hidden'; }
+        function closeMenuFn() { mobileMenu.classList.remove('open'); menuOverlay.classList.add('hidden'); document.body.style.overflow = ''; }
+        menuToggle.addEventListener('click', openMenu);
+        closeMenu.addEventListener('click', closeMenuFn);
+        menuOverlay.addEventListener('click', closeMenuFn);
+        mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenuFn));
+
+        const contactForm = document.getElementById('contactForm');
+        const successMessage = document.getElementById('successMessage');
+        contactForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const formData = new FormData(contactForm);
+            try {
+                const response = await fetch(contactForm.action, { method: 'POST', body: formData, headers: { 'Accept': 'application/json' } });
+                if (response.ok) {
+                    contactForm.style.opacity = '0'; contactForm.style.transform = 'translateY(10px)';
+                    setTimeout(() => { contactForm.classList.add('hidden'); successMessage.classList.remove('hidden'); }, 300);
+                } else { alert("Une erreur est survenue, merci de réessayer."); }
+            } catch (error) { alert("Erreur de connexion, merci de vérifier votre réseau."); }
         });
     </script>
 </body>
