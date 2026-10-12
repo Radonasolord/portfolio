@@ -5,184 +5,588 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Retouche Photo — Portraits, E-commerce, Joaillerie par Rado Nasolo Randrianarimanana.">
     <meta name="keywords" content="retouche photo, portrait, e-commerce, joaillerie, montage photo, Madagascar">
-    <title>Retouche Photo | Rado Nasolo Randrianarimanana</title>
+    <title>Retouche Photo | Rado Nasolo Rd</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style type="text/tailwindcss">
         @layer base {
             :root {
                 --gold: #D4AF37;
-                --dark: #070707;
+                --gold-light: #F4E8C1;
+                --dark: #0a0a0a;
+                --charcoal: #1a1a1a;
             }
-            html { scroll-behavior: smooth; }
-            body { font-family: 'Inter', sans-serif; background-color: var(--dark); color: white; }
-            h1, h2, h3 { font-family: 'Playfair Display', serif; }
+            body {
+                font-family: 'Inter', sans-serif;
+                background-color: var(--dark);
+                color: white;
+            }
+            h1, h2, h3, .serif {
+                font-family: 'Playfair Display', serif;
+            }
         }
         @layer components {
             .gold-text { color: var(--gold); }
             .gold-bg { background-color: var(--gold); }
-            .btn-primary {
-                background: linear-gradient(135deg, #D4AF37 0%, #B8941F 100%);
-                color: black; font-weight: 600; padding: 0.75rem 2rem; border-radius: 9999px;
-                transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 0.15em; font-size: 0.8rem;
+            .gold-border { border-color: var(--gold); }
+            
+            .service-card {
+                background: linear-gradient(135deg, rgba(26,26,26,0.9) 0%, rgba(10,10,10,0.9) 100%);
+                border: 1px solid rgba(212,175,55,0.2);
+                transition: all 0.4s ease;
             }
-            .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(212,175,55,0.35); }
-            .btn-outline {
-                border-radius: 9999px; border: 1px solid rgba(255,255,255,0.3); padding: 0.75rem 2rem;
-                transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 0.15em; font-size: 0.8rem; background: transparent;
+            .service-card:hover {
+                border-color: var(--gold);
+                transform: translateY(-5px);
+                box-shadow: 0 20px 40px rgba(212,175,55,0.1);
             }
-            .btn-outline:hover { border-color: var(--gold); color: var(--gold); background: rgba(212,175,55,0.05); }
-            .nav-link { position: relative; @apply px-2 py-2 transition-colors; }
-            .nav-link::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px; background: var(--gold); transition: width 0.3s ease; }
-            .nav-link:hover::after { width: 100%; }
-            .nav-link:hover, .nav-link.active { @apply gold-text; }
-            .mobile-menu { transform: translateX(100%); transition: transform 0.3s ease; }
-            .mobile-menu.open { transform: translateX(0); }
+            
+            .nav-link { position: relative; }
+            .nav-link::after {
+                content: '';
+                position: absolute;
+                bottom: -4px;
+                left: 0;
+                width: 0;
+                height: 1px;
+                background: var(--gold);
+                transition: width 0.3s ease;
+            }
+            .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+            .nav-link:hover, .nav-link.active { color: var(--gold); }
+            
             .gallery-item {
-                overflow: hidden; border-radius: 0.75rem; background: #111; border: 1px solid rgba(255,255,255,0.1); transition: all 0.3s ease;
+                position: relative;
+                overflow: hidden;
             }
-            .gallery-item:hover { border-color: rgba(212,175,55,0.4); transform: translateY(-5px); }
-            .gallery-item img { transition: transform 0.5s ease; }
+            .gallery-item img { transition: transform 0.6s ease; }
             .gallery-item:hover img { transform: scale(1.05); }
+            .gallery-overlay {
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
+                opacity: 0;
+                transition: opacity 0.3s ease;
+                display: flex;
+                align-items: flex-end;
+                padding: 1.5rem;
+            }
+            .gallery-item:hover .gallery-overlay { opacity: 1; }
+            
+            .btn-primary {
+                background: linear-gradient(135deg, var(--gold) 0%, #B8941F 100%);
+                color: black;
+                font-weight: 600;
+                padding: 0.875rem 2rem;
+                border-radius: 0;
+                transition: all 0.3s ease;
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+                font-size: 0.875rem;
+            }
+            .btn-primary:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 10px 30px rgba(212,175,55,0.3);
+            }
+            
+            .text-reveal {
+                animation: fadeInUp 0.8s ease forwards;
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            @keyframes fadeInUp {
+                to { opacity: 1; transform: translateY(0); }
+            }
+            
+            .mobile-menu {
+                transform: translateX(100%);
+                transition: transform 0.3s ease;
+            }
+            .mobile-menu.open { transform: translateX(0); }
+            
+            .grain {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                pointer-events: none;
+                z-index: 1000;
+                opacity: 0.03;
+                background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            }
         }
     </style>
 </head>
 <body class="antialiased">
-    <nav class="fixed w-full z-50 bg-black/70 backdrop-blur-xl border-b border-white/5">
-        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
-            <a href="index.html" class="flex items-center gap-2">
-                <div class="w-8 h-8 gold-bg flex items-center justify-center rounded-full"><span class="text-black font-bold text-sm">RN</span></div>
-                <span class="font-bold tracking-wider text-sm hidden sm:inline">RADO NASOLO RD</span>
-            </a>
-            <div class="hidden md:flex items-center gap-8 text-sm tracking-wider">
-                <a href="index.html" class="nav-link">Accueil</a>
-                <a href="retouche-photo.html" class="nav-link active gold-text">Retouche Photo</a>
-                <a href="modelisation-3d.html" class="nav-link">Modélisation 3D</a>
-                <a href="#contact" class="nav-link">Contact</a>
+    <div class="grain"></div>
+    
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center gap-3">
+                    <div class="w-10 h-10 gold-bg flex items-center justify-center">
+                        <span class="text-black font-bold text-lg">RN</span>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-bold tracking-wider">RADO NASOLO</h1>
+                        <p class="text-xs text-gray-400 tracking-widest uppercase">Retoucheur Photo</p>
+                    </div>
+                </a>
+                
+                <!-- Menu Desktop -->
+                <div class="hidden md:flex gap-8 text-sm tracking-wider">
+                    <a href="index.html" class="nav-link hover:gold-text transition-colors">Accueil</a>
+                    <a href="retouche-photo.html" class="nav-link active gold-text">Retouche Photo</a>
+                    <a href="modelisation-3d.html" class="nav-link hover:gold-text transition-colors">Modélisation 3D</a>
+                    <a href="#contact" class="nav-link hover:gold-text transition-colors">Contact</a>
+                </div>
+                
+                <!-- Bouton Menu Mobile -->
+                <button id="menuToggle" class="md:hidden w-10 h-10 flex items-center justify-center border border-white/20 hover:border-gold hover:gold-text transition-colors">
+                    <i data-lucide="menu" class="w-5 h-5"></i>
+                </button>
             </div>
-            <button id="menuToggle" class="md:hidden w-10 h-10 flex items-center justify-center border border-white/20 rounded-full hover:border-gold hover:text-gold transition-colors">
-                <i data-lucide="menu" class="w-5 h-5"></i>
-            </button>
-        </div>
-        <div id="mobileMenu" class="mobile-menu fixed top-0 right-0 h-screen w-4/5 max-w-xs bg-black/95 backdrop-blur-2xl border-l border-white/10 z-50 p-6 md:hidden">
-            <div class="flex justify-between items-center mb-8">
-                <span class="font-bold tracking-wider gold-text">Menu</span>
-                <button id="closeMenu" class="w-8 h-8 flex items-center justify-center hover:text-gold transition-colors"><i data-lucide="x" class="w-5 h-5"></i></button>
-            </div>
-            <nav class="flex flex-col gap-5 text-lg tracking-wider">
-                <a href="index.html" class="py-2 border-b border-white/5 hover:gold-text transition-colors">Accueil</a>
-                <a href="retouche-photo.html" class="py-2 border-b border-white/5 gold-text font-medium">Retouche Photo</a>
-                <a href="modelisation-3d.html" class="py-2 border-b border-white/5 hover:gold-text transition-colors">Modélisation 3D</a>
-                <a href="#contact" class="py-2 hover:gold-text transition-colors">Contact</a>
-            </nav>
         </div>
     </nav>
-    <div id="menuOverlay" class="fixed inset-0 bg-black/60 z-40 hidden md:hidden"></div>
+    
+    <!-- Menu Mobile -->
+    <div id="menuOverlay" class="fixed inset-0 bg-black/70 z-40 hidden md:hidden"></div>
+    <div id="mobileMenu" class="mobile-menu fixed top-0 right-0 h-screen w-4/5 max-w-xs bg-black/95 backdrop-blur-2xl border-l border-white/10 z-50 p-6 md:hidden">
+        <div class="flex justify-between items-center mb-8">
+            <span class="font-bold tracking-wider gold-text">Menu</span>
+            <button id="closeMenu" class="w-8 h-8 flex items-center justify-center hover:text-gold transition-colors">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+        </div>
+        <nav class="flex flex-col gap-5 text-lg tracking-wider">
+            <a href="index.html" class="py-2 border-b border-white/5 hover:gold-text transition-colors">Accueil</a>
+            <a href="retouche-photo.html" class="py-2 border-b border-white/5 gold-text font-medium">Retouche Photo</a>
+            <a href="modelisation-3d.html" class="py-2 border-b border-white/5 hover:gold-text transition-colors">Modélisation 3D</a>
+            <a href="#contact" class="py-2 hover:gold-text transition-colors">Contact</a>
+        </nav>
+    </div>
 
-    <header class="pt-32 pb-16 px-4 sm:px-6 max-w-7xl mx-auto text-center">
-        <p class="gold-text tracking-[0.3em] text-xs mb-4 uppercase">Expertise 01</p>
-        <h1 class="text-4xl md:text-6xl font-bold mb-6">Retouche Photo</h1>
-        <p class="text-gray-400 text-lg max-w-2xl mx-auto">Portraits — E-commerce — Joaillerie — Montage photo — Détourage. Retouche professionnelle depuis 2015.</p>
-    </header>
-
-    <section class="px-4 sm:px-6 max-w-7xl mx-auto pb-20">
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div class="gallery-item">
-                <img src="https://raw.githubusercontent.com/Radonasolord/portfolio/main/Portrait/2.jpg" alt="Portrait retouché" class="w-full h-64 object-cover">
-                <div class="p-4"><h3 class="font-bold mb-1">Portrait</h3><p class="text-gray-400 text-sm">Harmonisation des tons, lissage naturel, mise en valeur</p></div>
-            </div>
-            <div class="gallery-item">
-                <img src="https://raw.githubusercontent.com/Radonasolord/portfolio/main/Ecommerce/Montage1.jpg" alt="E-commerce" class="w-full h-64 object-cover">
-                <div class="p-4"><h3 class="font-bold mb-1">E-commerce</h3><p class="text-gray-400 text-sm">Fond neutre, netteté, couleurs fidèles</p></div>
-            </div>
-            <div class="gallery-item">
-                <img src="https://raw.githubusercontent.com/Radonasolord/portfolio/main/Portrait/3.jpg" alt="Montage photo" class="w-full h-64 object-cover">
-                <div class="p-4"><h3 class="font-bold mb-1">Montage & Composition</h3><p class="text-gray-400 text-sm">Assemblage d'éléments, intégration réaliste</p></div>
-            </div>
+    <!-- Hero Section -->
+    <section class="pt-36 pb-20 px-6">
+        <div class="max-w-5xl mx-auto text-center">
+            <p class="text-reveal gold-text tracking-[0.3em] text-sm mb-4 uppercase" style="animation-delay: 0.1s">Expertise 01</p>
+            <h1 class="text-reveal text-4xl md:text-6xl font-bold mb-6" style="animation-delay: 0.2s">
+                Retouche <span class="gold-text italic">Photo</span>
+            </h1>
+            <p class="text-reveal text-gray-300 text-lg max-w-2xl mx-auto" style="animation-delay: 0.3s">
+                Portraits — E-commerce — Joaillerie — Montage photo — Détourage.<br>
+                Retouche haut de gamme depuis 2015.
+            </p>
         </div>
     </section>
-
-    <section id="contact" class="py-20 px-4 sm:px-6 bg-neutral-900/40">
+    
+    <!-- Portfolio Gallery -->
+    <section class="pb-24 px-6">
         <div class="max-w-7xl mx-auto">
-            <div class="grid lg:grid-cols-2 gap-12">
-                <div>
-                    <p class="gold-text tracking-[0.3em] text-xs mb-4 uppercase">Contact</p>
-                    <h2 class="text-3xl md:text-5xl font-bold mb-6">Travaillons Ensemble</h2>
-                    <p class="text-gray-400 mb-6">Vous avez un projet de retouche ou de montage ? N'hésitez pas à me décrire vos besoins.</p>
-                    <div class="space-y-4">
-                        <div class="flex items-center gap-4">
-                            <div class="w-9 h-9 rounded-full gold-bg/10 flex items-center justify-center flex-shrink-0"><i data-lucide="mail" class="w-4 h-4 gold-text"></i></div>
-                            <div><div class="text-xs text-gray-500">Email</div><div class="font-medium text-sm">sarobidinrado@gmail.com</div></div>
-                        </div>
-                        <div class="flex items-center gap-4">
-                            <div class="w-9 h-9 rounded-full gold-bg/10 flex items-center justify-center flex-shrink-0"><i data-lucide="map-pin" class="w-4 h-4 gold-text"></i></div>
-                            <div><div class="text-xs text-gray-500">Localisation</div><div class="font-medium text-sm">Antananarivo, Madagascar (GMT+3)</div></div>
+            <div class="text-center mb-12">
+                <p class="gold-text tracking-[0.3em] text-sm mb-4 uppercase">Réalisations</p>
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Mes Travaux de Retouche</h2>
+                <div class="flex flex-wrap justify-center gap-3 mt-8">
+                    <button onclick="filterGallery('all')" class="filter-btn active px-6 py-2 border border-gold gold-text text-sm uppercase tracking-wider hover:gold-bg hover:text-black transition-all" data-filter="all">Tous</button>
+                    <button onclick="filterGallery('portrait')" class="filter-btn px-6 py-2 border border-white/20 text-sm uppercase tracking-wider hover:border-gold hover:gold-text transition-all" data-filter="portrait">Portrait</button>
+                    <button onclick="filterGallery('ecommerce')" class="filter-btn px-6 py-2 border border-white/20 text-sm uppercase tracking-wider hover:border-gold hover:gold-text transition-all" data-filter="ecommerce">E-commerce</button>
+                    <button onclick="filterGallery('joaillerie')" class="filter-btn px-6 py-2 border border-white/20 text-sm uppercase tracking-wider hover:border-gold hover:gold-text transition-all" data-filter="joaillerie">Joaillerie</button>
+                    <button onclick="filterGallery('detourage')" class="filter-btn px-6 py-2 border border-white/20 text-sm uppercase tracking-wider hover:border-gold hover:gold-text transition-all" data-filter="detourage">Détourage</button>
+                </div>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="gallery-grid">
+                <div class="gallery-item aspect-[4/5]" data-category="portrait">
+                    <img src="https://raw.github.com/Radonasolord/portfolio/main/Portrait/2.jpg" alt="Portrait" class="w-full h-full object-cover">
+                    <div class="gallery-overlay">
+                        <div>
+                            <h4 class="text-lg font-bold">Portrait</h4>
+                            <p class="text-sm text-gray-300">Retouche et mise en valeur</p>
                         </div>
                     </div>
                 </div>
-                <div id="formContainer" class="bg-white/5 border border-white/10 p-6 md:p-8 rounded-2xl transition-all duration-500">
-                    <form id="contactForm" action="https://formspree.io/f/xwlkpjzw" method="POST" class="space-y-4">
-                        <div><label class="block text-sm mb-2 text-gray-400">Nom</label><input type="text" name="name" required class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:border-[#D4AF37] focus:outline-none transition-colors"></div>
-                        <div><label class="block text-sm mb-2 text-gray-400">Email</label><input type="email" name="email" required class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:border-[#D4AF37] focus:outline-none transition-colors"></div>
-                        <div><label class="block text-sm mb-2 text-gray-400">Type de projet</label>
-                            <select name="projet" class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:border-[#D4AF37] focus:outline-none transition-colors">
-                                <option value="Retouche Photo" selected>Retouche Photo</option>
-                                <option value="Modélisation 3D">Modélisation 3D</option>
-                                <option value="Plan 2D vers 3D">Plan 2D vers 3D</option>
-                                <option value="Design d'intérieur">Design d'intérieur</option>
+                <div class="gallery-item aspect-[4/5]" data-category="portrait">
+                    <img src="https://raw.github.com/Radonasolord/portfolio/main/Portrait/3.jpg" alt="Portrait" class="w-full h-full object-cover">
+                    <div class="gallery-overlay">
+                        <div>
+                            <h4 class="text-lg font-bold">Portrait</h4>
+                            <p class="text-sm text-gray-300">Correction et nettoyage</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item aspect-[4/5]" data-category="portrait">
+                    <img src="https://raw.github.com/Radonasolord/portfolio/main/Portrait/4.jpg" alt="Portrait" class="w-full h-full object-cover">
+                    <div class="gallery-overlay">
+                        <div>
+                            <h4 class="text-lg font-bold">Portrait Beauté</h4>
+                            <p class="text-sm text-gray-300">Lissage naturel et harmonisation</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item aspect-[4/5]" data-category="portrait">
+                    <img src="https://raw.github.com/Radonasolord/portfolio/main/Portrait/5.jpg" alt="Portrait" class="w-full h-full object-cover">
+                    <div class="gallery-overlay">
+                        <div>
+                            <h4 class="text-lg font-bold">Fond Blanc</h4>
+                            <p class="text-sm text-gray-300">Suppression de fond et uniformisation</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item aspect-[4/5]" data-category="ecommerce">
+                    <img src="https://raw.github.com/Radonasolord/portfolio/main/Ecommerce/Détourage+retouche.jpg" alt="Produit" class="w-full h-full object-cover">
+                    <div class="gallery-overlay">
+                        <div>
+                            <h4 class="text-lg font-bold">Mannequin + Fond Blanc</h4>
+                            <p class="text-sm text-gray-300">Détourage et retouche</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item aspect-[4/5]" data-category="ecommerce">
+                    <img src="https://raw.github.com/Radonasolord/portfolio/main/Ecommerce/Montage1.jpg" alt="Produit" class="w-full h-full object-cover">
+                    <div class="gallery-overlay">
+                        <div>
+                            <h4 class="text-lg font-bold">Montage Ghost</h4>
+                            <p class="text-sm text-gray-300">Détourage et composition</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item aspect-[4/5]" data-category="ecommerce">
+                    <img src="https://raw.github.com/Radonasolord/portfolio/main/Ecommerce/Montage3.jpg" alt="Produit" class="w-full h-full object-cover">
+                    <div class="gallery-overlay">
+                        <div>
+                            <h4 class="text-lg font-bold">Montage Ghost</h4>
+                            <p class="text-sm text-gray-300">Assemblage et fond blanc</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item aspect-[4/5]" data-category="ecommerce">
+                    <img src="https://raw.github.com/Radonasolord/portfolio/main/Ecommerce/Montage2.jpg" alt="Produit" class="w-full h-full object-cover">
+                    <div class="gallery-overlay">
+                        <div>
+                            <h4 class="text-lg font-bold">Montage Ghost</h4>
+                            <p class="text-sm text-gray-300">Recadrage et harmonisation</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item aspect-[4/5]" data-category="ecommerce">
+                    <img src="https://raw.github.com/Radonasolord/portfolio/main/Ecommerce/Virage%20couleur%20et%20retouche.jpg" alt="Produit" class="w-full h-full object-cover">
+                    <div class="gallery-overlay">
+                        <div>
+                            <h4 class="text-lg font-bold">Virage Couleur</h4>
+                            <p class="text-sm text-gray-300">Correction et retouche</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item aspect-[4/5]" data-category="detourage">
+                    <img src="https://raw.github.com/Radonasolord/portfolio/main/Ecommerce/détourage%20+%20retouche.jpg" alt="Produit" class="w-full h-full object-cover">
+                    <div class="gallery-overlay">
+                        <div>
+                            <h4 class="text-lg font-bold">Détourage + Ombre</h4>
+                            <p class="text-sm text-gray-300">Extraction et création d'ombre réaliste</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item aspect-[4/5]" data-category="joaillerie">
+                    <img src="https://raw.github.com/Radonasolord/portfolio/main/Joaillerie%20/Jouaillerie.jpg" alt="Joaillerie" class="w-full h-full object-cover">
+                    <div class="gallery-overlay">
+                        <div>
+                            <h4 class="text-lg font-bold">Bague Diamant</h4>
+                            <p class="text-sm text-gray-300">Focus stacking et netteté</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Services Section -->
+    <section class="py-24 px-6 bg-neutral-900/50">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <p class="gold-text tracking-[0.3em] text-sm mb-4 uppercase">Prestations</p>
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Ce que je réalise</h2>
+                <div class="w-24 h-0.5 gold-bg mx-auto"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Portrait -->
+                <div class="service-card p-8 group">
+                    <div class="w-14 h-14 gold-bg/10 rounded-full flex items-center justify-center mb-6 group-hover:gold-bg transition-all duration-300">
+                        <i data-lucide="user" class="w-7 h-7 gold-text group-hover:text-black"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Portrait & Beauté</h3>
+                    <p class="text-gray-400 mb-4 leading-relaxed">
+                        Retouche haut de gamme : lissage de peau naturel, correction des teintes, mise en valeur des visages.
+                    </p>
+                    <ul class="text-sm text-gray-500 space-y-2">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Amélioration sans dénaturer</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Suppression d'objets indésirables</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Harmonisation lumière & couleurs</li>
+                    </ul>
+                </div>
+                <!-- E-commerce -->
+                <div class="service-card p-8 group">
+                    <div class="w-14 h-14 gold-bg/10 rounded-full flex items-center justify-center mb-6 group-hover:gold-bg transition-all duration-300">
+                        <i data-lucide="shopping-bag" class="w-7 h-7 gold-text group-hover:text-black"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">E-commerce</h3>
+                    <p class="text-gray-400 mb-4 leading-relaxed">
+                        Images prêtes pour la vente : fond blanc, détourage précis, couleurs fidèles au produit.
+                    </p>
+                    <ul class="text-sm text-gray-500 space-y-2">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Fond blanc standardisé</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Montage "Ghost mannequin"</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Recadrage homogène par lot</li>
+                    </ul>
+                </div>
+                <!-- Joaillerie -->
+                <div class="service-card p-8 group">
+                    <div class="w-14 h-14 gold-bg/10 rounded-full flex items-center justify-center mb-6 group-hover:gold-bg transition-all duration-300">
+                        <i data-lucide="gem" class="w-7 h-7 gold-text group-hover:text-black"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Joaillerie</h3>
+                    <p class="text-gray-400 mb-4 leading-relaxed">
+                        Mise en valeur de bijoux : netteté parfaite, reflets contrôlés, rendu des métaux et pierres.
+                    </p>
+                    <ul class="text-sm text-gray-500 space-y-2">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Focus stacking</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Suppression des reflets parasites</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Fond blanc & ombre réaliste</li>
+                    </ul>
+                </div>
+                <!-- Détourage -->
+                <div class="service-card p-8 group">
+                    <div class="w-14 h-14 gold-bg/10 rounded-full flex items-center justify-center mb-6 group-hover:gold-bg transition-all duration-300">
+                        <i data-lucide="scissors" class="w-7 h-7 gold-text group-hover:text-black"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Détourage</h3>
+                    <p class="text-gray-400 mb-4 leading-relaxed">
+                        Extraction précise de sujets sur fond transparent — contours complexes, cheveux fins, textures délicates.
+                    </p>
+                    <ul class="text-sm text-gray-500 space-y-2">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Détourage simple & complexe</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Masques de fusion</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Création d'ombres naturelles</li>
+                    </ul>
+                </div>
+                <!-- Montage Photo -->
+                <div class="service-card p-8 group">
+                    <div class="w-14 h-14 gold-bg/10 rounded-full flex items-center justify-center mb-6 group-hover:gold-bg transition-all duration-300">
+                        <i data-lucide="image" class="w-7 h-7 gold-text group-hover:text-black"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Montage Photo</h3>
+                    <p class="text-gray-400 mb-4 leading-relaxed">
+                        Assemblage d'éléments, création de scènes, remplacement de fond pour des communications visuelles percutantes.
+                    </p>
+                    <ul class="text-sm text-gray-500 space-y-2">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Composition multi-images</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Harmonisation des lumières</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Intégration réaliste</li>
+                    </ul>
+                </div>
+                <!-- Devis -->
+                <div class="service-card p-8 group">
+                    <div class="w-14 h-14 gold-bg/10 rounded-full flex items-center justify-center mb-6 group-hover:gold-bg transition-all duration-300">
+                        <i data-lucide="file-text" class="w-7 h-7 gold-text group-hover:text-black"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Demander un Devis</h3>
+                    <p class="text-gray-400 mb-4 leading-relaxed">
+                        Tarif adapté selon la complexité et la quantité. Réponse rapide sous 24h.
+                    </p>
+                    <a href="#contact" class="btn-primary inline-block text-center w-full mt-2">
+                        Me Contacter
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-16">
+                <div>
+                    <p class="gold-text tracking-[0.3em] text-sm mb-4 uppercase">Contact</p>
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6">Parlons de Votre Projet</h2>
+                    <p class="text-gray-400 mb-8 leading-relaxed">
+                        Vous avez des photos à retoucher, des produits à mettre en valeur ou un montage à réaliser ? Décrivez-moi votre besoin.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 gold-bg/10 rounded-full flex items-center justify-center">
+                                <i data-lucide="mail" class="w-5 h-5 gold-text"></i>
+                            </div>
+                            <div>
+                                <div class="text-sm text-gray-500">Email</div>
+                                <div class="font-medium">sarobidinrado@gmail.com</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 gold-bg/10 rounded-full flex items-center justify-center">
+                                <i data-lucide="map-pin" class="w-5 h-5 gold-text"></i>
+                            </div>
+                            <div>
+                                <div class="text-sm text-gray-500">Localisation</div>
+                                <div class="font-medium">Antananarivo, Madagascar (GMT+3)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-card p-8">
+                    <form id="contactForm" action="https://formspree.io/f/xwlkpjzw" method="POST" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm mb-2 text-gray-400">Nom</label>
+                                <input type="text" name="name" required class="w-full bg-black/50 border border-white/10 px-4 py-3 focus:border-gold focus:outline-none transition-colors" placeholder="Votre nom">
+                            </div>
+                            <div>
+                                <label class="block text-sm mb-2 text-gray-400">Email</label>
+                                <input type="email" name="email" required class="w-full bg-black/50 border border-white/10 px-4 py-3 focus:border-gold focus:outline-none transition-colors" placeholder="votre@email.com">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm mb-2 text-gray-400">Type de projet</label>
+                            <select name="project_type" class="w-full bg-black/50 border border-white/10 px-4 py-3 focus:border-gold focus:outline-none transition-colors">
+                                <option value="Portrait / Beauté" selected>Portrait / Beauté</option>
+                                <option value="E-commerce">E-commerce</option>
+                                <option value="Joaillerie">Joaillerie</option>
+                                <option value="Montage photo">Montage photo</option>
+                                <option value="Détourage">Détourage</option>
                                 <option value="Autre">Autre</option>
                             </select>
                         </div>
-                        <div><label class="block text-sm mb-2 text-gray-400">Message</label><textarea name="message" rows="4" required class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:border-[#D4AF37] focus:outline-none transition-colors" placeholder="Décrivez votre projet..."></textarea></div>
-                        <button type="submit" class="btn-primary w-full">Envoyer la Demande</button>
+                        <div>
+                            <label class="block text-sm mb-2 text-gray-400">Message</label>
+                            <textarea name="message" rows="4" required class="w-full bg-black/50 border border-white/10 px-4 py-3 focus:border-gold focus:outline-none transition-colors" placeholder="Décrivez vos photos, le type de retouche souhaité..."></textarea>
+                        </div>
+                        <button type="submit" id="submitBtn" class="btn-primary w-full flex justify-center items-center gap-2">
+                            Envoyer la Demande
+                            <i data-lucide="send" class="w-4 h-4"></i>
+                        </button>
+                        <p id="formStatus" class="text-sm text-center font-medium mt-3"></p>
                     </form>
-                    <div id="successMessage" class="hidden text-center py-8">
-                        <div class="w-16 h-16 rounded-full gold-bg/10 flex items-center justify-center mx-auto mb-6"><i data-lucide="check-circle" class="w-8 h-8 gold-text"></i></div>
-                        <h3 class="text-2xl font-bold mb-3">Demande envoyée avec succès</h3>
-                        <p class="text-gray-300 mb-2">Merci de m'avoir contacté.</p>
-                        <p class="text-gray-400 text-sm">Je prendrai connaissance de votre projet et vous répondrai dans les plus brefs délais, généralement sous 24 à 48 heures ouvrées.</p>
-                    </div>
                 </div>
             </div>
         </div>
     </section>
-
-    <footer class="border-t border-white/5 py-8">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row justify-between items-center gap-3">
-            <a href="index.html" class="flex items-center gap-2">
-                <div class="w-7 h-7 gold-bg flex items-center justify-center rounded-full"><span class="text-black font-bold text-xs">RN</span></div>
-                <span class="font-bold tracking-wider text-sm">RADO NASOLO RANDRIANARIMANANA</span>
+    
+    <!-- Footer -->
+    <footer class="border-t border-white/10 py-12 px-6">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <a href="index.html" class="flex items-center gap-3">
+                <div class="w-8 h-8 gold-bg flex items-center justify-center">
+                    <span class="text-black font-bold text-sm">RN</span>
+                </div>
+                <span class="font-bold tracking-wider">RADO NASOLO RD</span>
             </a>
-            <p class="text-xs text-gray-500">© 2026 — Retouche Photo & Modélisation 3D. Tous droits réservés.</p>
+            <div class="text-sm text-gray-500">
+                © 2026 Retouche Photo — Tous droits réservés.
+            </div>
         </div>
     </footer>
 
     <script>
         lucide.createIcons();
+        
+        // Menu Mobile
         const menuToggle = document.getElementById('menuToggle');
         const closeMenu = document.getElementById('closeMenu');
         const mobileMenu = document.getElementById('mobileMenu');
         const menuOverlay = document.getElementById('menuOverlay');
-        function openMenu() { mobileMenu.classList.add('open'); menuOverlay.classList.remove('hidden'); document.body.style.overflow = 'hidden'; }
-        function closeMenuFn() { mobileMenu.classList.remove('open'); menuOverlay.classList.add('hidden'); document.body.style.overflow = ''; }
+        
+        function openMenu() {
+            mobileMenu.classList.add('open');
+            menuOverlay.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeMenuFn() {
+            mobileMenu.classList.remove('open');
+            menuOverlay.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
         menuToggle.addEventListener('click', openMenu);
         closeMenu.addEventListener('click', closeMenuFn);
         menuOverlay.addEventListener('click', closeMenuFn);
         mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenuFn));
-
-        const contactForm = document.getElementById('contactForm');
-        const successMessage = document.getElementById('successMessage');
-        contactForm.addEventListener('submit', async function(e) {
+        
+        // Filtre Galerie
+        function filterGallery(category) {
+            const items = document.querySelectorAll('.gallery-item');
+            const buttons = document.querySelectorAll('.filter-btn');
+            
+            buttons.forEach(btn => {
+                if (btn.dataset.filter === category) {
+                    btn.classList.add('active', 'border-gold', 'gold-text');
+                    btn.classList.remove('border-white/20');
+                } else {
+                    btn.classList.remove('active', 'border-gold', 'gold-text');
+                    btn.classList.add('border-white/20');
+                }
+            });
+            
+            items.forEach(item => {
+                if (category === 'all' || item.dataset.category === category) {
+                    item.style.display = 'block';
+                    setTimeout(() => {
+                        item.style.opacity = '1';
+                        item.style.transform = 'scale(1)';
+                    }, 10);
+                } else {
+                    item.style.opacity = '0';
+                    item.style.transform = 'scale(0.9)';
+                    setTimeout(() => {
+                        item.style.display = 'none';
+                    }, 300);
+                }
+            });
+        }
+        
+        // Formulaire
+        document.getElementById('contactForm').addEventListener('submit', async function(e) {
             e.preventDefault();
-            const formData = new FormData(contactForm);
+            const btn = document.getElementById('submitBtn');
+            const status = document.getElementById('formStatus');
+            btn.innerHTML = 'Envoi en cours...';
+            
+            const formData = new FormData(this);
+            
             try {
-                const response = await fetch(contactForm.action, { method: 'POST', body: formData, headers: { 'Accept': 'application/json' } });
+                const response = await fetch(this.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: { 'Accept': 'application/json' }
+                });
+                
                 if (response.ok) {
-                    contactForm.style.opacity = '0'; contactForm.style.transform = 'translateY(10px)';
-                    setTimeout(() => { contactForm.classList.add('hidden'); successMessage.classList.remove('hidden'); }, 300);
-                } else { alert("Une erreur est survenue, merci de réessayer."); }
-            } catch (error) { alert("Erreur de connexion, merci de vérifier votre réseau."); }
+                    status.textContent = "Message envoyé avec succès ! Je vous répondrai rapidement.";
+                    status.style.color = "#d4af37";
+                    this.reset();
+                } else {
+                    status.textContent = "Une erreur est survenue, veuillez réessayer.";
+                    status.style.color = "red";
+                }
+            } catch (error) {
+                status.textContent = "Erreur de connexion.";
+                status.style.color = "red";
+            } finally {
+                btn.innerHTML = 'Envoyer la Demande <i data-lucide="send" class="w-4 h-4"></i>';
+                if (window.lucide) lucide.createIcons();
+            }
+        });
+        
+        // Scroll fluide
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
         });
     </script>
 </body>
