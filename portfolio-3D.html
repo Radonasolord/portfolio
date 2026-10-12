@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rado Nasolo Rd | Modélisation 3D & Visualisation Architecture</title>
+    <!-- Incluez vos liens CSS habituels (ex: Tailwind CSS ou style.css) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-black text-white">
+
+    <!-- En-tête / Navigation -->
+    <header class="py-6 border-b border-gray-800">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div>
+                <h1 class="text-2xl font-bold tracking-wide">Rado Nasolo Rd</h1>
+                <p class="text-sm text-gray-400">Modéleur 3D & Post-production Architecture Visualisation</p>
+            </div>
+            <!-- Navigation entre les deux pages -->
+            <nav class="flex gap-6 text-sm font-medium">
+                <a href="index.html" class="text-gray-400 hover:text-white transition">Retouche Photo</a>
+                <a href="3d.html" class="text-amber-400 border-b-2 border-amber-400 pb-1">Modélisation 3D & Archviz</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Section Filtres Portfolio 3D -->
+    <section class="py-12 container mx-auto px-4">
+        <div class="text-center mb-8">
+            <span class="text-xs uppercase tracking-widest text-amber-500 font-semibold">Sélection</span>
+            <h2 class="text-3xl font-serif mt-1">Portfolio Modélisation 3D</h2>
+        </div>
+
+        <!-- Boutons de filtre 3D -->
+        <div class="flex flex-wrap justify-center gap-3 mb-10">
+            <button class="px-4 py-2 text-xs font-semibold tracking-wider border border-gray-700 rounded hover:border-amber-400 transition uppercase bg-gray-900" data-filter="tous">Tous</button>
+            <button class="px-4 py-2 text-xs font-semibold tracking-wider border border-gray-700 rounded hover:border-amber-400 transition uppercase" data-filter="architecture">Architecture / Archviz</button>
+            <button class="px-4 py-2 text-xs font-semibold tracking-wider border border-gray-700 rounded hover:border-amber-400 transition uppercase" data-filter="mobilier">Mobilier & Props</button>
+            <button class="px-4 py-2 text-xs font-semibold tracking-wider border border-gray-700 rounded hover:border-amber-400 transition uppercase" data-filter="web-ar">Web & AR (GLB/glTF)</button>
+        </div>
+
+        <!-- Galerie des projets 3D -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <!-- Exemple Projets Architecture -->
+            <div class="gallery-item aspect-[4/3] relative overflow-hidden group rounded-lg bg-gray-900" data-category="architecture">
+                <img src="3D/Architecture/projet_1.jpg" alt="Rendu Architecture 3D" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                <div class="gallery-overlay absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
+                    <div>
+                        <h4 class="text-lg font-bold">Visualisation Résidentielle</h4>
+                        <p class="text-sm text-gray-300">Modélisation & Rendu Archviz</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Exemple Projet Mobilier -->
+            <div class="gallery-item aspect-[4/3] relative overflow-hidden group rounded-lg bg-gray-900" data-category="mobilier">
+                <img src="3D/Mobilier/chaise.jpg" alt="Asset 3D Mobilier" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                <div class="gallery-overlay absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
+                    <div>
+                        <h4 class="text-lg font-bold">Mobilier E-Commerce</h4>
+                        <p class="text-sm text-gray-300">Texturation PBR & Variations</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Exemple Projet Web / AR -->
+            <div class="gallery-item aspect-[4/3] relative overflow-hidden group rounded-lg bg-gray-900" data-category="web-ar">
+                <img src="3D/WebAR/asset_lowpoly.jpg" alt="Asset 3D AR" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                <div class="gallery-overlay absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
+                    <div>
+                        <h4 class="text-lg font-bold">Asset Temps Réel</h4>
+                        <p class="text-sm text-gray-300">Optimisé GLB / glTF pour configurateur Web</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Pied de page -->
+    <footer class="py-8 border-t border-gray-800 text-center text-sm text-gray-500">
+        <p>&copy; Rado Nasolo Rd - Modélisation 3D & Post-Production Visualisation</p>
+    </footer>
+
+</body>
+</html>
