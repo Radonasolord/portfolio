@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Portfolio officiel de Rado Nasolo Randrianarimanana — Retouche Photo & Modélisation 3D à Madagascar.">
-    <meta name="keywords" content="Rado Nasolo, Randrianarimanana, retouche photo, modélisation 3D, design d'intérieur, Blender, 3ds Max, Madagascar, portfolio">
+    <meta name="keywords" content="Rado Nasolo, Randrianarimanana, retouche photo, modélisation 3D, plan 2D vers 3D, design d'intérieur, Blender, 3ds Max, Madagascar, portfolio">
     <title>Rado Nasolo Randrianarimanana | Retouche Photo — Modélisation 3D</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -36,7 +36,7 @@
             }
             .nav-link {
                 position: relative;
-                @apply px-1 py-2 transition-colors;
+                @apply px-2 py-2 transition-colors text-sm;
             }
             .nav-link::after {
                 content: '';
@@ -54,12 +54,12 @@
                 background: linear-gradient(135deg, #D4AF37 0%, #B8941F 100%);
                 color: black;
                 font-weight: 600;
-                padding: 0.875rem 2.25rem;
+                padding: 0.75rem 1.5rem;
                 border-radius: 9999px;
                 transition: all 0.3s ease;
                 text-transform: uppercase;
                 letter-spacing: 0.15em;
-                font-size: 0.875rem;
+                font-size: 0.8rem;
             }
             .btn-primary:hover {
                 transform: translateY(-2px);
@@ -68,11 +68,11 @@
             .btn-outline {
                 border-radius: 9999px;
                 border: 1px solid rgba(255,255,255,0.2);
-                padding: 0.875rem 2.25rem;
+                padding: 0.75rem 1.5rem;
                 transition: all 0.3s ease;
                 text-transform: uppercase;
                 letter-spacing: 0.15em;
-                font-size: 0.875rem;
+                font-size: 0.8rem;
             }
             .btn-outline:hover {
                 border-color: var(--gold);
@@ -104,10 +104,33 @@
                 opacity: 1;
                 transform: translateY(0);
             }
-            /* === DIAPORAMA STYLE BUNKR === */
-            .slider-container { position: relative; overflow: hidden; }
+            /* === DIAPORAMA STYLE BUNKR — FORMAT RECTANGULAIRE === */
+            .slider-bunkr { position: relative; overflow: hidden; }
             .slider-track { display: flex; transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
             .slider-slide { flex-shrink: 0; width: 100%; }
+            .slide-card {
+                position: relative;
+                aspect-ratio: 16 / 9; /* Format rectangulaire */
+                overflow: hidden;
+                border-radius: 0.75rem;
+                background: #111;
+            }
+            .slide-card img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform 0.7s ease;
+            }
+            .slide-card:hover img { transform: scale(1.05); }
+            .slide-overlay {
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.3) 60%, transparent 100%);
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+                padding: 2rem;
+            }
             .slider-dot { transition: all 0.3s ease; }
             .slider-dot.active { background: var(--gold); width: 2rem; }
             .skill-icon { transition: transform 0.3s ease; filter: grayscale(30%) brightness(0.9); }
@@ -117,126 +140,123 @@
 </head>
 <body class="antialiased">
 
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-black/60 backdrop-blur-xl border-b border-white/5">
-        <div class="max-w-7xl mx-auto px-6 py-4">
-            <div class="flex justify-between items-center">
-                <a href="index.html" class="flex items-center gap-3 group">
-                    <div class="w-10 h-10 gold-bg flex items-center justify-center rounded-full group-hover:scale-110 transition-transform duration-300">
-                        <span class="text-black font-bold text-lg">RN</span>
+    <!-- Navigation — TOUJOURS VISIBLE SUR MOBILE -->
+    <nav class="fixed w-full z-50 bg-black/70 backdrop-blur-xl border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-3 py-3">
+            <div class="flex justify-between items-center gap-2">
+                <a href="index.html" class="flex items-center gap-2 shrink-0">
+                    <div class="w-8 h-8 gold-bg flex items-center justify-center rounded-full">
+                        <span class="text-black font-bold text-sm">RN</span>
                     </div>
-                    <div>
-                        <h1 class="text-lg font-bold tracking-wider">RADO NASOLO</h1>
-                        <p class="text-xs text-gray-400 tracking-widest">Retouche — 3D — Design</p>
+                    <div class="hidden sm:block">
+                        <h1 class="text-sm font-bold tracking-wider">RADO NASOLO</h1>
                     </div>
                 </a>
-                <div class="hidden md:flex items-center gap-8 text-sm tracking-wider">
-                    <a href="#accueil" class="nav-link gold-text">Accueil</a>
-                    <a href="#apropos" class="nav-link">À propos</a>
-                    <a href="retouche-photo.html" class="nav-link">Retouche Photo</a>
-                    <a href="modelisation-3d.html" class="nav-link">Modélisation 3D</a>
-                    <a href="#contact" class="nav-link">Contact</a>
+                <div class="flex items-center gap-1 sm:gap-4 text-xs sm:text-sm tracking-wider">
+                    <a href="#accueil" class="nav-link gold-text px-1">Accueil</a>
+                    <a href="#apropos" class="nav-link px-1">À propos</a>
+                    <a href="retouche-photo.html" class="nav-link gold-text font-medium px-2">Retouche Photo</a>
+                    <a href="modelisation-3d.html" class="nav-link font-medium px-2">Modélisation 3D</a>
+                    <a href="#contact" class="nav-link px-1 hidden sm:inline">Contact</a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- 🎠 DIAPORAMA STYLE BUNKR -->
-    <section id="accueil" class="relative pt-20">
-        <div class="slider-container h-[85vh] md:h-screen">
-            <div class="slider-track h-full" id="sliderTrack">
-                <!-- Diapositive 1 -->
-                <div class="slider-slide relative h-full">
-                    <div class="absolute inset-0 bg-black/50 z-10"></div>
-                    <img src="https://raw.githubusercontent.com/Radonasolord/portfolio/main/Portrait/5.jpg" 
-                         alt="Rado Nasolo — Modélisation 3D" 
-                         class="w-full h-full object-cover">
-                    <div class="absolute inset-0 z-20 flex items-center justify-center text-center px-6">
-                        <div class="max-w-5xl">
-                            <p class="gold-text tracking-[0.3em] text-xs mb-4 uppercase">
-                                Post Production 3D / Modélisateur 3D / Retoucheur Photo
-                            </p>
-                            <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-                                Rado Nasolo<br>
-                                <span class="gradient-text">Randrianarimanana</span>
-                            </h1>
-                            <p class="text-gray-300 text-lg md:text-xl max-w-2xl mx-auto mb-10">
-                                Donnez vie à vos images et vos espaces — de la retouche photo à la modélisation 3D complète.
-                            </p>
-                            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                                <a href="retouche-photo.html" class="btn-primary">Retouche Photo</a>
-                                <a href="modelisation-3d.html" class="btn-outline">Modélisation 3D</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Diapositive 2 — Remplacez l'URL par VOTRE image -->
-                <div class="slider-slide relative h-full">
-                    <div class="absolute inset-0 bg-black/60 z-10"></div>
-                    <img src="https://raw.githubusercontent.com/Radonasolord/portfolio/main/Portrait/2.jpg" 
-                         alt="Réalisations — Retouche Photo" 
-                         class="w-full h-full object-cover">
-                    <div class="absolute inset-0 z-20 flex items-center justify-center text-center px-6">
-                        <div class="max-w-3xl">
-                            <h2 class="text-3xl md:text-5xl font-bold mb-4">Retouche Professionnelle</h2>
-                            <p class="text-gray-300 text-lg mb-8">Portraits — E-commerce — Joaillerie — Montage</p>
-                            <a href="retouche-photo.html" class="btn-primary">Découvrir</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Diapositive 3 — Remplacez l'URL par VOTRE image -->
-                <div class="slider-slide relative h-full">
-                    <div class="absolute inset-0 bg-black/60 z-10"></div>
-                    <img src="https://raw.githubusercontent.com/Radonasolord/portfolio/main/Portrait/3.jpg" 
-                         alt="Modélisation 3D & Design" 
-                         class="w-full h-full object-cover">
-                    <div class="absolute inset-0 z-20 flex items-center justify-center text-center px-6">
-                        <div class="max-w-3xl">
-                            <h2 class="text-3xl md:text-5xl font-bold mb-4">Modélisation 3D & Design</h2>
-                            <p class="text-gray-300 text-lg mb-8">Objets — Intérieurs — Rendu photoréaliste</p>
-                            <a href="modelisation-3d.html" class="btn-primary">Voir les créations</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Diapositive 4 — Ajoutez la vôtre -->
-                <div class="slider-slide relative h-full">
-                    <div class="absolute inset-0 bg-black/60 z-10"></div>
-                    <img src="https://raw.githubusercontent.com/Radonasolord/portfolio/main/Ecommerce/Montage1.jpg" 
-                         alt="Design d'intérieur" 
-                         class="w-full h-full object-cover">
-                    <div class="absolute inset-0 z-20 flex items-center justify-center text-center px-6">
-                        <div class="max-w-3xl">
-                            <h2 class="text-3xl md:text-5xl font-bold mb-4">Design d'Intérieur</h2>
-                            <p class="text-gray-300 text-lg mb-8">Concevez vos espaces avec précision et élégance</p>
-                            <a href="#contact" class="btn-primary">Me contacter</a>
-                        </div>
-                    </div>
-                </div>
+    <!-- 🎠 HERO + DIAPORAMA RECTANGULAIRE -->
+    <section id="accueil" class="pt-24 pb-20 px-4 sm:px-6">
+        <div class="max-w-7xl mx-auto">
+            <!-- Titre principal -->
+            <div class="mb-10 text-reveal">
+                <p class="gold-text tracking-[0.3em] text-xs mb-3 uppercase">
+                    Post Production 3D / Modélisateur 3D / Retoucheur Photo
+                </p>
+                <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight">
+                    Rado Nasolo<br>
+                    <span class="gradient-text">Randrianarimanana</span>
+                </h1>
+                <p class="text-gray-400 text-base md:text-lg max-w-2xl">
+                    Donnez vie à vos images et vos espaces — de la retouche photo à la modélisation 3D complète.
+                </p>
             </div>
-        </div>
 
-        <!-- Contrôles du diaporama -->
-        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex items-center gap-4">
-            <button id="prevSlide" class="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center hover:border-gold hover:text-gold transition-colors">
-                <i data-lucide="chevron-left" class="w-5 h-5"></i>
-            </button>
-            <div class="flex gap-2" id="sliderDots">
-                <button class="slider-dot active w-6 h-1.5 rounded-full bg-white/40" data-index="0"></button>
-                <button class="slider-dot w-1.5 h-1.5 rounded-full bg-white/40" data-index="1"></button>
-                <button class="slider-dot w-1.5 h-1.5 rounded-full bg-white/40" data-index="2"></button>
-                <button class="slider-dot w-1.5 h-1.5 rounded-full bg-white/40" data-index="3"></button>
+            <!-- Diaporama rectangulaire style Bunkr -->
+            <div class="slider-bunkr mb-8">
+                <div class="slider-track" id="sliderTrack">
+                    <!-- Diapositive 1 — Retouche Photo -->
+                    <div class="slider-slide px-1">
+                        <a href="retouche-photo.html" class="block slide-card">
+                            <img src="https://raw.githubusercontent.com/Radonasolord/portfolio/main/Portrait/2.jpg" 
+                                 alt="Retouche Photo — Portraits, E-commerce, Joaillerie"
+                                 loading="lazy">
+                            <div class="slide-overlay">
+                                <p class="text-xs uppercase tracking-widest text-gray-400 mb-2">Expertise 01</p>
+                                <h3 class="text-2xl md:text-3xl font-bold mb-2">Retouche Photo</h3>
+                                <p class="text-gray-300 mb-4 max-w-md">Portraits — E-commerce — Joaillerie — Montage photo — Détourage</p>
+                                <span class="gold-text inline-flex items-center gap-2 text-sm font-medium">
+                                    Voir le portfolio <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                                </span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Diapositive 2 — Modélisation 3D -->
+                    <div class="slider-slide px-1">
+                        <a href="modelisation-3d.html" class="block slide-card">
+                            <img src="https://raw.githubusercontent.com/Radonasolord/portfolio/main/Portrait/3.jpg" 
+                                 alt="Modélisation 3D — Objets, Intérieurs, Rendu"
+                                 loading="lazy">
+                            <div class="slide-overlay">
+                                <p class="text-xs uppercase tracking-widest text-gray-400 mb-2">Expertise 02</p>
+                                <h3 class="text-2xl md:text-3xl font-bold mb-2">Modélisation 3D</h3>
+                                <p class="text-gray-300 mb-4 max-w-md">Objets — Décors — Espaces architecturaux — Design d'intérieur — Rendu photoréaliste</p>
+                                <span class="gold-text inline-flex items-center gap-2 text-sm font-medium">
+                                    Découvrir <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                                </span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Diapositive 3 — Plan 2D → 3D -->
+                    <div class="slider-slide px-1">
+                        <a href="modelisation-3d.html#transformation" class="block slide-card">
+                            <img src="https://raw.githubusercontent.com/Radonasolord/portfolio/main/Ecommerce/Montage1.jpg" 
+                                 alt="Transformation Plan 2D vers 3D"
+                                 loading="lazy">
+                            <div class="slide-overlay">
+                                <p class="text-xs uppercase tracking-widest text-gray-400 mb-2">Expertise 03</p>
+                                <h3 class="text-2xl md:text-3xl font-bold mb-2">Plan 2D → 3D</h3>
+                                <p class="text-gray-300 mb-4 max-w-md">Transformation de photos, croquis ou plans en modèles 3D exploitables — Rendu final</p>
+                                <span class="gold-text inline-flex items-center gap-2 text-sm font-medium">
+                                    En savoir plus <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                                </span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
             </div>
-            <button id="nextSlide" class="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center hover:border-gold hover:text-gold transition-colors">
-                <i data-lucide="chevron-right" class="w-5 h-5"></i>
-            </button>
+
+            <!-- Contrôles du diaporama -->
+            <div class="flex items-center justify-between">
+                <button id="prevSlide" class="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center hover:border-gold hover:text-gold transition-colors">
+                    <i data-lucide="chevron-left" class="w-5 h-5"></i>
+                </button>
+                <div class="flex gap-2" id="sliderDots">
+                    <button class="slider-dot active w-6 h-1.5 rounded-full bg-white/40" data-index="0"></button>
+                    <button class="slider-dot w-1.5 h-1.5 rounded-full bg-white/40" data-index="1"></button>
+                    <button class="slider-dot w-1.5 h-1.5 rounded-full bg-white/40" data-index="2"></button>
+                </div>
+                <button id="nextSlide" class="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center hover:border-gold hover:text-gold transition-colors">
+                    <i data-lucide="chevron-right" class="w-5 h-5"></i>
+                </button>
+            </div>
         </div>
     </section>
 
-    <!-- 👤 SECTION À PROPOS — Style identique à votre exemple -->
-    <section id="apropos" class="py-28 bg-[#1A2421]">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid md:grid-cols-5 gap-12 items-start">
-                <!-- Image à gauche -->
+    <!-- 👤 SECTION À PROPOS -->
+    <section id="apropos" class="py-20 bg-[#1A2421]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="grid md:grid-cols-5 gap-8 md:gap-12 items-start">
                 <div class="md:col-span-2 text-reveal">
                     <div class="relative rounded-xl overflow-hidden shadow-2xl">
                         <img src="https://raw.githubusercontent.com/Radonasolord/portfolio/main/Portrait/5.jpg" 
@@ -246,147 +266,110 @@
                     </div>
                 </div>
 
-                <!-- Texte à droite -->
                 <div class="md:col-span-3 text-reveal">
-                    <h2 class="text-4xl md:text-5xl font-bold mb-8 text-[#D4AF37]">À propos de moi</h2>
+                    <h2 class="text-3xl md:text-5xl font-bold mb-6 text-[#D4AF37]">À propos de moi</h2>
                     
-                    <p class="text-gray-300 text-lg leading-relaxed mb-8">
+                    <p class="text-gray-300 text-base md:text-lg leading-relaxed mb-6">
                         Je suis <strong class="text-white">Rado Nasolo Randrianarimanana</strong>, spécialiste en <strong>modélisation 3D</strong> et <strong>design d'intérieur</strong>. Je crée des assets 3D, conçois des intérieurs réalistes et assure la post-production des rendus sur Photoshop pour des visuels propres et professionnels.
                     </p>
                     
-                    <p class="text-gray-300 text-lg leading-relaxed mb-10">
+                    <p class="text-gray-300 text-base md:text-lg leading-relaxed mb-8">
                         Mon objectif est de <strong class="text-[#D4AF37]">transformer vos idées en projets 3D précis et esthétiques</strong>.
                     </p>
 
-                    <!-- Expérience -->
-                    <h3 class="text-2xl font-bold mb-6 text-white">Expérience</h3>
-                    <ul class="space-y-4 mb-10 text-gray-300">
-                        <li class="flex flex-col sm:flex-row gap-2 sm:gap-4">
+                    <h3 class="text-xl md:text-2xl font-bold mb-4 text-white">Expérience</h3>
+                    <ul class="space-y-3 mb-8 text-gray-300 text-sm md:text-base">
+                        <li class="flex flex-col sm:flex-row gap-1 sm:gap-3">
                             <span class="text-[#D4AF37] font-semibold whitespace-nowrap">2015 – Présent</span>
                             <div>
                                 <strong class="text-white">Retoucheur photo</strong>
-                                <p class="text-sm">E-commerce, portrait, montage photo</p>
+                                <p class="text-sm text-gray-400">E-commerce, portrait, montage photo</p>
                             </div>
                         </li>
-                        <li class="flex flex-col sm:flex-row gap-2 sm:gap-4">
+                        <li class="flex flex-col sm:flex-row gap-1 sm:gap-3">
                             <span class="text-[#D4AF37] font-semibold whitespace-nowrap">2019 – Présent</span>
                             <div>
                                 <strong class="text-white">Post-production 3D</strong>
-                                <p class="text-sm">Montage photo et intégration de personnages 2D pour rendu 3D brut</p>
+                                <p class="text-sm text-gray-400">Montage photo et intégration de personnages 2D pour rendu 3D brut</p>
                             </div>
                         </li>
-                        <li class="flex flex-col sm:flex-row gap-2 sm:gap-4">
+                        <li class="flex flex-col sm:flex-row gap-1 sm:gap-3">
                             <span class="text-[#D4AF37] font-semibold whitespace-nowrap">2020 – Présent</span>
                             <div>
                                 <strong class="text-white">Modélisateur d'assets 3D</strong>
-                                <p class="text-sm">Modélisation détaillée d'objets, décors et espaces architecturaux</p>
+                                <p class="text-sm text-gray-400">Modélisation détaillée d'objets, décors et espaces architecturaux</p>
                             </div>
                         </li>
-                        <li class="flex flex-col sm:flex-row gap-2 sm:gap-4">
+                        <li class="flex flex-col sm:flex-row gap-1 sm:gap-3">
                             <span class="text-[#D4AF37] font-semibold whitespace-nowrap">2020 – Présent</span>
                             <div>
                                 <strong class="text-white">Design d'intérieur</strong>
-                                <p class="text-sm">Conception et visualisation d'espaces de vie</p>
+                                <p class="text-sm text-gray-400">Conception et visualisation d'espaces de vie</p>
                             </div>
                         </li>
                     </ul>
 
-                    <!-- Compétences techniques -->
-                    <h3 class="text-2xl font-bold mb-6 text-white">Compétences techniques</h3>
-                    <div class="flex flex-wrap gap-8 items-center">
+                    <h3 class="text-xl md:text-2xl font-bold mb-4 text-white">Compétences techniques</h3>
+                    <div class="flex flex-wrap gap-4 md:gap-6 items-center">
                         <div class="skill-icon">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/blender/blender-original.svg" alt="Blender" class="h-12 w-auto">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/blender/blender-original.svg" alt="Blender" class="h-10 w-auto">
                         </div>
                         <div class="skill-icon">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/72/3ds_Max_Logo.svg" alt="3ds Max" class="h-10 w-auto invert">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/72/3ds_Max_Logo.svg" alt="3ds Max" class="h-8 w-auto invert">
                         </div>
                         <div class="skill-icon">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a1/Corona_Renderer_logo.svg" alt="Corona" class="h-9 w-auto">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a1/Corona_Renderer_logo.svg" alt="Corona" class="h-7 w-auto">
                         </div>
                         <div class="skill-icon">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-original.svg" alt="Photoshop" class="h-12 w-auto">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-original.svg" alt="Photoshop" class="h-10 w-auto">
                         </div>
                         <div class="skill-icon">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/illustrator/illustrator-original.svg" alt="Illustrator" class="h-12 w-auto">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/illustrator/illustrator-original.svg" alt="Illustrator" class="h-10 w-auto">
                         </div>
                         <div class="skill-icon">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/75/Substance_Painter_Logo.svg" alt="Substance Painter" class="h-9 w-auto">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/75/Substance_Painter_Logo.svg" alt="Substance Painter" class="h-7 w-auto">
                         </div>
                         <div class="skill-icon">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/3/38/AutoCAD_logo.svg" alt="AutoCAD" class="h-9 w-auto">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/3/38/AutoCAD_logo.svg" alt="AutoCAD" class="h-7 w-auto">
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Domaines -->
-    <section class="py-28 px-6">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <p class="gold-text tracking-[0.3em] text-xs mb-4 uppercase">Deux expertises complémentaires</p>
-                <h2 class="text-4xl md:text-5xl font-bold mb-6">Ce que je fais</h2>
-                <div class="section-divider"></div>
-            </div>
-            
-            <div class="grid md:grid-cols-2 gap-8 lg:gap-12">
-                <a href="retouche-photo.html" class="card-hover p-8 rounded-2xl block group">
-                    <div class="w-16 h-16 rounded-full gold-bg/10 flex items-center justify-center mb-6 group-hover:gold-bg transition-all duration-300">
-                        <i data-lucide="image" class="w-8 h-8 gold-text group-hover:text-black"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-3">Retouche Photo</h3>
-                    <p class="text-gray-400 mb-6 leading-relaxed">Portraits, e-commerce, joaillerie, détourage et photomontages. Amélioration naturelle et précision professionnelle depuis 2015.</p>
-                    <span class="gold-text inline-flex items-center gap-2 text-sm font-medium">
-                        Voir le portfolio <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
-                    </span>
-                </a>
-                <a href="modelisation-3d.html" class="card-hover p-8 rounded-2xl block group">
-                    <div class="w-16 h-16 rounded-full gold-bg/10 flex items-center justify-center mb-6 group-hover:gold-bg transition-all duration-300">
-                        <i data-lucide="box" class="w-8 h-8 gold-text group-hover:text-black"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-3">Modélisation 3D & Design</h3>
-                    <p class="text-gray-400 mb-6 leading-relaxed">Création d'actifs 3D, design d'intérieurs, rendus photoréalistes. Transformation de vos concepts en visuels aboutis.</p>
-                    <span class="gold-text inline-flex items-center gap-2 text-sm font-medium">
-                        Voir le portfolio <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
-                    </span>
-                </a>
             </div>
         </div>
     </section>
 
     <!-- Contact -->
-    <section id="contact" class="py-28 px-6 bg-neutral-900/40">
+    <section id="contact" class="py-20 px-4 sm:px-6 bg-neutral-900/40">
         <div class="max-w-7xl mx-auto">
-            <div class="grid lg:grid-cols-2 gap-16">
+            <div class="grid lg:grid-cols-2 gap-12">
                 <div>
                     <p class="gold-text tracking-[0.3em] text-xs mb-4 uppercase">Contact</p>
-                    <h2 class="text-4xl md:text-5xl font-bold mb-6">Travaillons Ensemble</h2>
-                    <p class="text-gray-400 mb-8 leading-relaxed">Disponible pour projets ponctuels ou réguliers — collaboration à distance dans le monde entier.</p>
+                    <h2 class="text-3xl md:text-5xl font-bold mb-6">Travaillons Ensemble</h2>
+                    <p class="text-gray-400 mb-6">Disponible pour projets ponctuels ou réguliers — collaboration à distance dans le monde entier.</p>
                     
-                    <div class="space-y-5">
+                    <div class="space-y-4">
                         <div class="flex items-center gap-4">
-                            <div class="w-10 h-10 rounded-full gold-bg/10 flex items-center justify-center flex-shrink-0">
-                                <i data-lucide="mail" class="w-5 h-5 gold-text"></i>
+                            <div class="w-9 h-9 rounded-full gold-bg/10 flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="mail" class="w-4 h-4 gold-text"></i>
                             </div>
                             <div>
                                 <div class="text-xs text-gray-500">Email</div>
-                                <div class="font-medium">sarobidinrado@gmail.com</div>
+                                <div class="font-medium text-sm">sarobidinrado@gmail.com</div>
                             </div>
                         </div>
                         <div class="flex items-center gap-4">
-                            <div class="w-10 h-10 rounded-full gold-bg/10 flex items-center justify-center flex-shrink-0">
-                                <i data-lucide="map-pin" class="w-5 h-5 gold-text"></i>
+                            <div class="w-9 h-9 rounded-full gold-bg/10 flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="map-pin" class="w-4 h-4 gold-text"></i>
                             </div>
                             <div>
                                 <div class="text-xs text-gray-500">Localisation</div>
-                                <div class="font-medium">Antananarivo, Madagascar (GMT+3)</div>
+                                <div class="font-medium text-sm">Antananarivo, Madagascar (GMT+3)</div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="card-hover p-8 rounded-2xl">
-                    <form action="https://formspree.io/f/xwlkpjzw" method="POST" class="space-y-5">
+                <div class="card-hover p-6 md:p-8 rounded-2xl">
+                    <form action="https://formspree.io/f/xwlkpjzw" method="POST" class="space-y-4">
                         <div>
                             <label class="block text-sm mb-2 text-gray-400">Nom</label>
                             <input type="text" name="name" required class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:border-[#D4AF37] focus:outline-none" placeholder="Votre nom">
@@ -400,13 +383,14 @@
                             <select name="projet" class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:border-[#D4AF37] focus:outline-none">
                                 <option value="Retouche Photo">Retouche Photo</option>
                                 <option value="Modélisation 3D">Modélisation 3D</option>
+                                <option value="Plan 2D vers 3D">Plan 2D vers 3D</option>
                                 <option value="Design d'intérieur">Design d'intérieur</option>
                                 <option value="Autre">Autre</option>
                             </select>
                         </div>
                         <div>
                             <label class="block text-sm mb-2 text-gray-400">Message</label>
-                            <textarea name="message" rows="5" required class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:border-[#D4AF37] focus:outline-none" placeholder="Décrivez votre projet..."></textarea>
+                            <textarea name="message" rows="4" required class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:border-[#D4AF37] focus:outline-none" placeholder="Décrivez votre projet..."></textarea>
                         </div>
                         <button type="submit" class="btn-primary w-full">Envoyer la Demande</button>
                     </form>
@@ -416,29 +400,28 @@
     </section>
 
     <!-- Footer -->
-    <footer class="border-t border-white/5 py-10">
-        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
-            <a href="index.html" class="flex items-center gap-3">
-                <div class="w-8 h-8 gold-bg flex items-center justify-center rounded-full">
-                    <span class="text-black font-bold text-sm">RN</span>
+    <footer class="border-t border-white/5 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row justify-between items-center gap-3">
+            <a href="index.html" class="flex items-center gap-2">
+                <div class="w-7 h-7 gold-bg flex items-center justify-center rounded-full">
+                    <span class="text-black font-bold text-xs">RN</span>
                 </div>
-                <span class="font-bold tracking-wider">RADO NASOLO RANDRIANARIMANANA</span>
+                <span class="font-bold tracking-wider text-sm">RADO NASOLO RANDRIANARIMANANA</span>
             </a>
-            <p class="text-sm text-gray-500">© 2026 — Retouche Photo & Modélisation 3D & Design. Tous droits réservés.</p>
+            <p class="text-xs text-gray-500">© 2026 — Retouche Photo & Modélisation 3D & Design. Tous droits réservés.</p>
         </div>
     </footer>
 
     <script>
         lucide.createIcons();
 
-        // 🎠 DIAPORAMA — Style Bunkr
+        // 🎠 DIAPORAMA RECTANGULAIRE
         const track = document.getElementById('sliderTrack');
-        const slides = document.querySelectorAll('.slider-slide');
         const dots = document.querySelectorAll('.slider-dot');
         const prevBtn = document.getElementById('prevSlide');
         const nextBtn = document.getElementById('nextSlide');
         let current = 0;
-        const total = slides.length;
+        const total = 3;
 
         function goToSlide(index) {
             if (index < 0) index = total - 1;
@@ -446,11 +429,12 @@
             current = index;
             track.style.transform = `translateX(-${current * 100}%)`;
             dots.forEach((dot, i) => {
-                dot.classList.toggle('active', i === current);
                 if (i === current) {
+                    dot.classList.add('active');
                     dot.style.width = '2rem';
                     dot.style.background = '#D4AF37';
                 } else {
+                    dot.classList.remove('active');
                     dot.style.width = '0.375rem';
                     dot.style.background = 'rgba(255,255,255,0.4)';
                 }
@@ -463,12 +447,12 @@
             dot.addEventListener('click', () => goToSlide(parseInt(dot.dataset.index)));
         });
 
-        // Défilement automatique toutes les 6 secondes
-        let autoPlay = setInterval(() => goToSlide(current + 1), 6000);
+        // Défilement automatique toutes les 7 secondes
+        let autoPlay = setInterval(() => goToSlide(current + 1), 7000);
         [prevBtn, nextBtn, ...dots].forEach(el => {
             el.addEventListener('click', () => {
                 clearInterval(autoPlay);
-                autoPlay = setInterval(() => goToSlide(current + 1), 6000);
+                autoPlay = setInterval(() => goToSlide(current + 1), 7000);
             });
         });
 
