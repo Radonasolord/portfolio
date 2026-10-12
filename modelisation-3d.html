@@ -122,11 +122,10 @@
 <body class="antialiased">
     <div class="grain"></div>
     
-    <!-- Navigation identique à la page d'accueil -->
+    <!-- Navigation -->
     <nav class="fixed w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
         <div class="max-w-7xl mx-auto px-6 py-4">
             <div class="flex justify-between items-center">
-                <!-- Logo → lien vers Accueil -->
                 <a href="index.html" class="flex items-center gap-3">
                     <div class="w-10 h-10 gold-bg flex items-center justify-center">
                         <span class="text-black font-bold text-lg">RN</span>
@@ -137,15 +136,14 @@
                     </div>
                 </a>
                 
-                <!-- Menu Bureau -->
                 <div class="hidden md:flex gap-8 text-sm tracking-wider">
                     <a href="index.html" class="nav-link hover:gold-text transition-colors">Accueil</a>
                     <a href="retouche-photo.html" class="nav-link hover:gold-text transition-colors">Retouche Photo</a>
                     <a href="modelisation-3d.html" class="nav-link active gold-text">Modélisation 3D</a>
+                    <a href="rendu-archiviz.html" class="nav-link hover:gold-text transition-colors">Rendu ArchiViz</a>
                     <a href="#contact" class="nav-link hover:gold-text transition-colors">Contact</a>
                 </div>
                 
-                <!-- Bouton Menu Mobile -->
                 <button id="menuToggle" class="md:hidden w-10 h-10 flex items-center justify-center border border-white/20 hover:border-gold hover:gold-text transition-colors">
                     <i data-lucide="menu" class="w-5 h-5"></i>
                 </button>
@@ -166,6 +164,7 @@
             <a href="index.html" class="py-2 border-b border-white/5 hover:gold-text transition-colors">Accueil</a>
             <a href="retouche-photo.html" class="py-2 border-b border-white/5 hover:gold-text transition-colors">Retouche Photo</a>
             <a href="modelisation-3d.html" class="py-2 border-b border-white/5 gold-text font-medium">Modélisation 3D</a>
+            <a href="rendu-archiviz.html" class="py-2 border-b border-white/5 hover:gold-text transition-colors">Rendu ArchiViz</a>
             <a href="#contact" class="py-2 hover:gold-text transition-colors">Contact</a>
         </nav>
     </div>
@@ -179,7 +178,7 @@
             </h1>
             <p class="text-reveal text-gray-300 text-lg max-w-2xl mx-auto" style="animation-delay: 0.3s">
                 Produits — Visualisation — Architecture — Rendu photoréaliste.<br>
-                Création de modèles et d'images de synthèse de haute qualité.
+                Donnez forme à vos idées avec des modèles et des images de synthèse de haute qualité.
             </p>
         </div>
     </section>
@@ -201,7 +200,7 @@
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="gallery-grid">
                 <!-- Image 1 → Remplace après upload GitHub -->
                 <div class="gallery-item aspect-[4/5]" data-category="produit">
-                    <img src="https://raw.github.com/Radonasolord/portfolio/Modélisation 3d/modélisation Lit.jpg" alt="Modèle produit 3D" class="w-full h-full object-cover">
+                    <img src="https://raw.github.com/Radonasolord/portfolio/main/3D/NOM_DU_FICHIER_1.jpg" alt="Modèle produit 3D" class="w-full h-full object-cover">
                     <div class="gallery-overlay">
                         <div>
                             <h4 class="text-lg font-bold">Nom du projet</h4>
@@ -229,7 +228,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- Duplique le bloc ci-dessus pour ajouter d'autres images -->
+                <!-- Duplique pour ajouter d'autres images -->
             </div>
         </div>
     </section>
@@ -251,11 +250,11 @@
                     </div>
                     <h3 class="text-2xl font-bold mb-3">Modélisation Produit</h3>
                     <p class="text-gray-400 mb-4 leading-relaxed">
-                        Création de modèles 3D fidèles à partir de photos, croquis ou plans. Rendu studio pour vos fiches produit.
+                        Création de modèles 3D fidèles à partir de photos, croquis ou plans. Rendu studio pour vos fiches produit, catalogues ou présentations.
                     </p>
                     <ul class="text-sm text-gray-500 space-y-2">
                         <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Modélisation sur mesure</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Texturage réaliste</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Texturage & matériaux fidèles</li>
                         <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Rendu haute résolution</li>
                     </ul>
                 </div>
@@ -266,12 +265,12 @@
                     </div>
                     <h3 class="text-2xl font-bold mb-3">Visualisation Architecture</h3>
                     <p class="text-gray-400 mb-4 leading-relaxed">
-                        Mise en valeur de projets immobiliers et d'espaces. Rendu intérieur/extérieur avec ambiance lumineuse.
+                        Mise en valeur de projets immobiliers et d'espaces. Rendu intérieur/extérieur avec ambiance lumineuse réaliste.
                     </p>
                     <ul class="text-sm text-gray-500 space-y-2">
                         <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Plans → rendu image</li>
                         <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Ambiance jour & nuit</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Perspectives réalistes</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Perspectives personnalisées</li>
                     </ul>
                 </div>
                 <!-- Rendu Photoréaliste -->
@@ -281,27 +280,27 @@
                     </div>
                     <h3 class="text-2xl font-bold mb-3">Rendu Photoréaliste</h3>
                     <p class="text-gray-400 mb-4 leading-relaxed">
-                        Éclairage studio, matériaux PBR, post-traitement pour un rendu indiscernable d'une photo.
+                        Éclairage studio, matériaux détaillés et post-traitement pour un rendu qui se confond avec la photo.
                     </p>
                     <ul class="text-sm text-gray-500 space-y-2">
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Lumières & ombres naturelles</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Métal, verre, plastique, tissu</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Arrière-plan personnalisé</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Lumière naturelle & artificielle</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Réflections & ombres précises</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Images HD / 4K</li>
                     </ul>
                 </div>
-                <!-- Post-production -->
+                <!-- Objets & Divers -->
                 <div class="service-card p-8 group">
                     <div class="w-14 h-14 gold-bg/10 rounded-full flex items-center justify-center mb-6 group-hover:gold-bg transition-all duration-300">
-                        <i data-lucide="image" class="w-7 h-7 gold-text group-hover:text-black"></i>
+                        <i data-lucide="shapes" class="w-7 h-7 gold-text group-hover:text-black"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-3">Post-production</h3>
+                    <h3 class="text-2xl font-bold mb-3">Objets & Divers</h3>
                     <p class="text-gray-400 mb-4 leading-relaxed">
-                        Amélioration des rendus 3D : netteté, contraste, ambiance, correction colorimétrique.
+                        Modélisation de tout type d'objet : design, décoration, concept, prototype visuel.
                     </p>
                     <ul class="text-sm text-gray-500 space-y-2">
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Harmonisation des couleurs</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Ajout d'effets atmosphériques</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Lot d'images homogènes</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>À partir de croquis ou photo</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Modèle exploitable</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Fichier livré</li>
                     </ul>
                 </div>
                 <!-- Logiciels -->
@@ -311,11 +310,11 @@
                     </div>
                     <h3 class="text-2xl font-bold mb-3">Logiciels</h3>
                     <p class="text-gray-400 mb-4 leading-relaxed">
-                        Maîtrise des outils professionnels pour une qualité constante et des fichiers exploitables.
+                        Outils professionnels pour une précision et un rendu de qualité.
                     </p>
                     <ul class="text-sm text-gray-500 space-y-2">
                         <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Blender</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>3ds Max</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Substance Painter</li>
                         <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 gold-text"></i>Photoshop / GIMP</li>
                     </ul>
                 </div>
@@ -326,7 +325,7 @@
                     </div>
                     <h3 class="text-2xl font-bold mb-3">Demander un Devis</h3>
                     <p class="text-gray-400 mb-4 leading-relaxed">
-                        Tarif selon la complexité, la durée et le nombre d'images. Réponse rapide.
+                        Tarif selon la complexité, le niveau de détail et le nombre de vues. Réponse rapide et claire.
                     </p>
                     <a href="#contact" class="btn-primary inline-block text-center w-full mt-2">
                         Me Contacter
@@ -344,7 +343,7 @@
                     <p class="gold-text tracking-[0.3em] text-sm mb-4 uppercase">Contact</p>
                     <h2 class="text-4xl md:text-5xl font-bold mb-6">Parlons de Votre Projet</h2>
                     <p class="text-gray-400 mb-8 leading-relaxed">
-                        Vous avez un produit à modéliser, un espace à visualiser ou un rendu à réaliser ? Décrivez-moi votre besoin.
+                        Vous avez un produit, un projet ou une idée à visualiser en 3D ? Envoyez-moi vos documents, photos ou croquis, et je vous accompagne de la conception au rendu final.
                     </p>
                     
                     <div class="space-y-6">
@@ -384,14 +383,14 @@
                             <label class="block text-sm mb-2 text-gray-400">Type de projet</label>
                             <select name="project_type" class="w-full bg-black/50 border border-white/10 px-4 py-3 focus:border-gold focus:outline-none transition-colors">
                                 <option value="Modélisation Produit">Modélisation Produit</option>
-                                <option value="Architecture">Architecture</option>
+                                <option value="Visualisation Architecture">Visualisation Architecture</option>
                                 <option value="Rendu 3D">Rendu 3D</option>
                                 <option value="Autre" selected>Autre</option>
                             </select>
                         </div>
                         <div>
                             <label class="block text-sm mb-2 text-gray-400">Message</label>
-                            <textarea name="message" rows="4" required class="w-full bg-black/50 border border-white/10 px-4 py-3 focus:border-gold focus:outline-none transition-colors" placeholder="Décrivez votre projet 3D..."></textarea>
+                            <textarea name="message" rows="4" required class="w-full bg-black/50 border border-white/10 px-4 py-3 focus:border-gold focus:outline-none transition-colors" placeholder="Décrivez votre projet, joignez photos ou croquis..."></textarea>
                         </div>
                         <button type="submit" id="submitBtn" class="btn-primary w-full flex justify-center items-center gap-2">
                             Envoyer la Demande
@@ -422,7 +421,6 @@
     <script>
         lucide.createIcons();
         
-        // Menu Mobile
         const menuToggle = document.getElementById('menuToggle');
         const closeMenu = document.getElementById('closeMenu');
         const mobileMenu = document.getElementById('mobileMenu');
@@ -443,7 +441,6 @@
         menuOverlay.addEventListener('click', closeMenuFn);
         mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenuFn));
         
-        // Filtrage galerie
         function filterGallery(category) {
             const items = document.querySelectorAll('.gallery-item');
             const buttons = document.querySelectorAll('.filter-btn');
@@ -475,7 +472,6 @@
             });
         }
         
-        // Soumission formulaire
         document.getElementById('contactForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             const btn = document.getElementById('submitBtn');
@@ -483,14 +479,12 @@
             btn.innerHTML = 'Envoi en cours...';
             
             const formData = new FormData(this);
-            
             try {
                 const response = await fetch(this.action, {
                     method: 'POST',
                     body: formData,
                     headers: { 'Accept': 'application/json' }
                 });
-                
                 if (response.ok) {
                     status.textContent = "Message envoyé avec succès ! Je vous répondrai rapidement.";
                     status.style.color = "#d4af37";
@@ -499,23 +493,20 @@
                     status.textContent = "Une erreur est survenue, veuillez réessayer.";
                     status.style.color = "red";
                 }
-            } catch (error) {
+            } catch {
                 status.textContent = "Erreur de connexion.";
                 status.style.color = "red";
             } finally {
                 btn.innerHTML = 'Envoyer la Demande <i data-lucide="send" class="w-4 h-4"></i>';
-                if (window.lucide) lucide.createIcons();
+                lucide.createIcons();
             }
         });
         
-        // Défilement fluide
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
         });
     </script>
