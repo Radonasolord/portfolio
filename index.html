@@ -95,6 +95,25 @@
                 opacity: 0.03;
                 background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
             }
+            
+            .slider-container {
+                position: absolute;
+                inset: 0;
+                overflow: hidden;
+            }
+            .slider-img {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                opacity: 0;
+                transition: opacity 0.5s ease;
+                object-fit: contain;
+                object-position: center;
+                background-color: #111;
+            }
+            .slider-img.active {
+                opacity: 0.9;
+            }
         }
     </style>
 </head>
@@ -165,7 +184,7 @@
         </div>
     </section>
     
-    <!-- Section Expertises / Sliders dans les cartes -->
+    <!-- Section Expertises -->
     <section id="expertises" class="py-24 px-6 bg-neutral-900/50">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16">
@@ -175,30 +194,24 @@
             </div>
             
             <div class="grid md:grid-cols-3 gap-8">
-                <!-- Carte 1 : Retouche Photo → Dossier Portrait -->
+                <!-- Carte 1 : Retouche Photo -->
                 <a href="retouche-photo.html" class="service-card p-0 group block overflow-hidden relative">
                     <div class="h-72 overflow-hidden relative">
-                        <div class="slider-bg slider-portrait absolute inset-0"></div>
-                        <div class="absolute inset-0 bg-black/70 z-10 flex flex-col justify-end p-8">
-                            <h3 class="text-2xl font-bold mb-3 gold-text">Retouche Photo</h3>
-                            <p class="text-gray-300 mb-4 leading-relaxed text-sm">
-                                Amélioration, nettoyage, harmonisation et mise en valeur de vos photos.
-                            </p>
-                            <span class="gold-text text-sm uppercase tracking-wider">Voir la page →</span>
+                        <div class="slider-container slider-portrait"></div>
+                        <div class="absolute inset-0 bg-black/50 z-10 flex flex-col justify-end p-8">
+                            <h3 class="text-2xl font-bold gold-text mb-1">Retouche Photo</h3>
+                            <span class="gold-text text-sm uppercase tracking-wider">VOIR LA PAGE →</span>
                         </div>
                     </div>
                 </a>
                 
-                <!-- Carte 2 : Modélisation 3D -->
+                <!-- Carte 2 : Modélisation 3D — NOMS CORRIGÉS ✅ -->
                 <a href="modelisation-3d.html" class="service-card p-0 group block overflow-hidden relative">
                     <div class="h-72 overflow-hidden relative">
-                        <div class="slider-bg slider-modelisation absolute inset-0"></div>
-                        <div class="absolute inset-0 bg-black/70 z-10 flex flex-col justify-end p-8">
-                            <h3 class="text-2xl font-bold mb-3 gold-text">Modélisation 3D</h3>
-                            <p class="text-gray-300 mb-4 leading-relaxed text-sm">
-                                Produits, objets et rendus 3D photoréalistes sur mesure.
-                            </p>
-                            <span class="gold-text text-sm uppercase tracking-wider">Voir la page →</span>
+                        <div class="slider-container slider-modelisation"></div>
+                        <div class="absolute inset-0 bg-black/50 z-10 flex flex-col justify-end p-8">
+                            <h3 class="text-2xl font-bold gold-text mb-1">Modélisation 3D</h3>
+                            <span class="gold-text text-sm uppercase tracking-wider">VOIR LA PAGE →</span>
                         </div>
                     </div>
                 </a>
@@ -206,13 +219,10 @@
                 <!-- Carte 3 : Rendu ArchiViz -->
                 <a href="rendu-archiviz.html" class="service-card p-0 group block overflow-hidden relative">
                     <div class="h-72 overflow-hidden relative">
-                        <div class="slider-bg slider-archiviz absolute inset-0"></div>
-                        <div class="absolute inset-0 bg-black/70 z-10 flex flex-col justify-end p-8">
-                            <h3 class="text-2xl font-bold mb-3 gold-text">Rendu ArchiViz</h3>
-                            <p class="text-gray-300 mb-4 leading-relaxed text-sm">
-                                Transformation de plans 2D en modèles 3D — Intérieur & Extérieur.
-                            </p>
-                            <span class="gold-text text-sm uppercase tracking-wider">Voir la page →</span>
+                        <div class="slider-container slider-archiviz"></div>
+                        <div class="absolute inset-0 bg-black/50 z-10 flex flex-col justify-end p-8">
+                            <h3 class="text-2xl font-bold gold-text mb-1">Rendu ArchiViz</h3>
+                            <span class="gold-text text-sm uppercase tracking-wider">VOIR LA PAGE →</span>
                         </div>
                     </div>
                 </a>
@@ -327,48 +337,63 @@
         menuOverlay.addEventListener('click', closeMenuFn);
         mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenuFn));
         
-        // ===== CONFIGURATION DES IMAGES =====
-        // ⚠️ Renomme tes images : 1.jpg, 2.jpg, 3.jpg... dans chaque dossier
+        // ===== NOMS DES FICHIERS CORRIGÉS D'APRÈS TON DOSSIER ✅ =====
         const config = {
             portrait: {
                 dossier: "https://raw.githubusercontent.com/Radonasolord/portfolio/main/Portrait/",
-                nbImages: 3  // ← Mets le nombre d'images dans Portrait
+                fichiers: ["2.jpg", "3.jpg", "4.jpg", "5.jpg", "7.jpg"]
             },
             modelisation: {
+                // IMPORTANT : dossier en "Modélisation 3d" (minuscule d) comme dans ton repo
                 dossier: "https://raw.githubusercontent.com/Radonasolord/portfolio/main/Mod%C3%A9lisation%203d/",
-                nbImages: 3  // ← Mets le nombre d'images dans Modélisation 3d
+                fichiers: [
+                    "Modélisation Lit.jpg",
+                    "Modélisation mobilier.jpg",
+                    "Modélisation mobilier sofa.jpg",
+                    "Modélisation produit.jpg",
+                    "Modélisation produit 2.jpg",
+                    "Modélisation produit2.jpg",
+                    "Portfolio 3D 2.jpg",
+                    "Portfolio 3D 3.jpg"
+                ]
             },
             archiviz: {
                 dossier: "https://raw.githubusercontent.com/Radonasolord/portfolio/main/Rendu%20archiviz/",
-                nbImages: 3  // ← Mets le nombre d'images dans Rendu archiviz
+                fichiers: [
+                    "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg",
+                    "6.jpg", "7.jpg", "12.jpg", "13.jpg", "14.jpg"
+                ]
             }
         };
-        // ======================================
+        // ===============================================================
 
-        function initSliderParDossier(containerClass, dossierUrl, nbImages) {
+        function initSlider(containerClass, dossierUrl, fichiers) {
             const container = document.querySelector(containerClass);
-            if (!container || nbImages === 0) return;
+            if (!container || fichiers.length === 0) return;
 
-            const images = [];
-            for (let i = 1; i <= nbImages; i++) {
-                images.push(dossierUrl + i + ".jpg");
-            }
+            container.innerHTML = '';
+            fichiers.forEach(nomFichier => {
+                const img = document.createElement('img');
+                img.src = dossierUrl + encodeURIComponent(nomFichier);
+                img.alt = nomFichier.replace('.jpg', '');
+                img.className = 'slider-img';
+                container.appendChild(img);
+            });
 
+            const images = container.querySelectorAll('.slider-img');
             let index = 0;
-            function afficherImage() {
-                container.innerHTML = `
-                    <img src="${images[index]}" alt="" class="w-full h-full object-cover transition-opacity duration-700" style="opacity:0.7;">
-                `;
-                index = (index + 1) % nbImages;
-            }
-            afficherImage();
-            setInterval(afficherImage, 3000); // Change toutes les 3 secondes
+            images[0].classList.add('active');
+
+            setInterval(() => {
+                images[index].classList.remove('active');
+                index = (index + 1) % images.length;
+                images[index].classList.add('active');
+            }, 1000);
         }
 
-        // Lancement des sliders
-        initSliderParDossier('.slider-portrait', config.portrait.dossier, config.portrait.nbImages);
-        initSliderParDossier('.slider-modelisation', config.modelisation.dossier, config.modelisation.nbImages);
-        initSliderParDossier('.slider-archiviz', config.archiviz.dossier, config.archiviz.nbImages);
+        initSlider('.slider-portrait', config.portrait.dossier, config.portrait.fichiers);
+        initSlider('.slider-modelisation', config.modelisation.dossier, config.modelisation.fichiers);
+        initSlider('.slider-archiviz', config.archiviz.dossier, config.archiviz.fichiers);
         
         // Formulaire
         document.getElementById('contactForm').addEventListener('submit', async function(e) {
