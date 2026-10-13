@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Retouche Photo — Amélioration, nettoyage et mise en valeur par Rado Nasolo.">
-    <meta name="keywords" content="retouche photo, amélioration, nettoyage, photos, Madagascar">
+    <meta name="keywords" content="retouche photo, portrait, ecommerce, joaillerie, détourage, Madagascar">
     <title>Retouche Photo | Rado Nasolo Rd</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -56,11 +56,33 @@
             .nav-link:hover::after, .nav-link.active::after { width: 100%; }
             .nav-link:hover, .nav-link.active { color: var(--gold); }
             
+            .filter-btn {
+                border: 1px solid rgba(255,255,255,0.2);
+                padding: 0.5rem 1.5rem;
+                transition: all 0.3s ease;
+                background: transparent;
+                color: white;
+            }
+            .filter-btn:hover, .filter-btn.active {
+                background-color: var(--gold);
+                border-color: var(--gold);
+                color: black;
+            }
+            
             .gallery-item {
                 position: relative;
                 overflow: hidden;
+                transition: all 0.3s ease;
             }
-            .gallery-item img { transition: transform 0.6s ease; }
+            .gallery-item.hidden-item { display: none; }
+            .gallery-item img { 
+                transition: transform 0.6s ease;
+                width: 100%;
+                height: 300px;
+                object-fit: contain;
+                background-color: #111;
+                opacity: 0.9;
+            }
             .gallery-item:hover img { transform: scale(1.05); }
             .gallery-overlay {
                 position: absolute;
@@ -189,46 +211,21 @@
             <div class="text-center mb-12">
                 <p class="gold-text tracking-[0.3em] text-sm mb-4 uppercase">Réalisations</p>
                 <h2 class="text-3xl md:text-4xl font-bold mb-6">Mes Travaux de Retouche</h2>
+                
+                <!-- BOUTONS EXACTEMENT COMME TU AS DESSINÉ -->
                 <div class="flex flex-wrap justify-center gap-3 mt-8">
-                    <button onclick="filterGallery('all')" class="filter-btn active px-6 py-2 border border-gold gold-text text-sm uppercase tracking-wider hover:gold-bg hover:text-black transition-all" data-filter="all">Tous</button>
-                    <button onclick="filterGallery('portrait')" class="filter-btn px-6 py-2 border border-white/20 text-sm uppercase tracking-wider hover:border-gold hover:gold-text transition-all" data-filter="portrait">Portrait</button>
-                    <button onclick="filterGallery('produit')" class="filter-btn px-6 py-2 border border-white/20 text-sm uppercase tracking-wider hover:border-gold hover:gold-text transition-all" data-filter="produit">Produit</button>
-                    <button onclick="filterGallery('paysage')" class="filter-btn px-6 py-2 border border-white/20 text-sm uppercase tracking-wider hover:border-gold hover:gold-text transition-all" data-filter="paysage">Paysage</button>
-                    <button onclick="filterGallery('restauration')" class="filter-btn px-6 py-2 border border-white/20 text-sm uppercase tracking-wider hover:border-gold hover:gold-text transition-all" data-filter="restauration">Restauration</button>
+                    <button class="filter-btn active px-6 py-2 text-sm uppercase tracking-wider" data-filter="all">TOUS</button>
+                    <button class="filter-btn px-6 py-2 text-sm uppercase tracking-wider" data-filter="portrait">PORTRAIT</button>
+                    <button class="filter-btn px-6 py-2 text-sm uppercase tracking-wider" data-filter="ecommerce">E-COMMERCE</button>
+                    <button class="filter-btn px-6 py-2 text-sm uppercase tracking-wider" data-filter="joaillerie">JOAILLERIE</button>
+                    <button class="filter-btn px-6 py-2 text-sm uppercase tracking-wider" data-filter="detourage">DÉTOURAGE À LA PLUME</button>
                 </div>
             </div>
+            
+            <!-- GALERIE D'IMAGES -->
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="gallery-grid">
-                <!-- Image 1 → Remplace après upload GitHub -->
-                <div class="gallery-item aspect-[4/5]" data-category="portrait">
-                    <img src="https://raw.github.com/Radonasolord/portfolio/main/retouche/NOM_DU_FICHIER_1.jpg" alt="Portrait retouché" class="w-full h-full object-cover">
-                    <div class="gallery-overlay">
-                        <div>
-                            <h4 class="text-lg font-bold">Portrait</h4>
-                            <p class="text-sm text-gray-300">Lissage, lumière, couleurs</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Image 2 → Remplace après upload GitHub -->
-                <div class="gallery-item aspect-[4/5]" data-category="produit">
-                    <img src="https://raw.github.com/Radonasolord/portfolio/main/retouche/NOM_DU_FICHIER_2.jpg" alt="Photo produit retouchée" class="w-full h-full object-cover">
-                    <div class="gallery-overlay">
-                        <div>
-                            <h4 class="text-lg font-bold">Photo Produit</h4>
-                            <p class="text-sm text-gray-300">Fond nettoyé, rendu professionnel</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Image 3 → Remplace après upload GitHub -->
-                <div class="gallery-item aspect-[4/5]" data-category="restauration">
-                    <img src="https://raw.github.com/Radonasolord/portfolio/main/retouche/NOM_DU_FICHIER_3.jpg" alt="Photo restaurée" class="w-full h-full object-cover">
-                    <div class="gallery-overlay">
-                        <div>
-                            <h4 class="text-lg font-bold">Restauration</h4>
-                            <p class="text-sm text-gray-300">Réparation et amélioration</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Duplique pour ajouter d'autres images -->
+                <!-- Les images s'affichent ici automatiquement -->
+                <div class="col-span-full text-center text-gray-500 py-12">Chargement des images...</div>
             </div>
         </div>
     </section>
@@ -382,10 +379,11 @@
                         <div>
                             <label class="block text-sm mb-2 text-gray-400">Type de projet</label>
                             <select name="project_type" class="w-full bg-black/50 border border-white/10 px-4 py-3 focus:border-gold focus:outline-none transition-colors">
-                                <option value="Amélioration photo">Amélioration photo</option>
-                                <option value="Retouche portrait">Retouche portrait</option>
-                                <option value="Restauration">Restauration</option>
-                                <option value="Autre" selected>Autre</option>
+                                <option value="Portrait">Portrait</option>
+                                <option value="E-commerce">E-commerce</option>
+                                <option value="Joaillerie">Joaillerie</option>
+                                <option value="Détourage à la plume">Détourage à la plume</option>
+                                <option value="Autre">Autre</option>
                             </select>
                         </div>
                         <div>
@@ -421,6 +419,7 @@
     <script>
         lucide.createIcons();
         
+        // Menu mobile
         const menuToggle = document.getElementById('menuToggle');
         const closeMenu = document.getElementById('closeMenu');
         const mobileMenu = document.getElementById('mobileMenu');
@@ -439,39 +438,89 @@
         menuToggle.addEventListener('click', openMenu);
         closeMenu.addEventListener('click', closeMenuFn);
         menuOverlay.addEventListener('click', closeMenuFn);
-        mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenuFn));
-        
-        function filterGallery(category) {
-            const items = document.querySelectorAll('.gallery-item');
-            const buttons = document.querySelectorAll('.filter-btn');
+
+        // ===== CONFIGURATION AVEC TES NOMS DE FICHIERS EXACTS =====
+        const base = "https://raw.githubusercontent.com/Radonasolord/portfolio/main/";
+
+        const config = {
+            portrait: {
+                dossier: base + "Portrait/",
+                fichiers: [
+                    "2.jpg", "3.jpg", "4.jpg", "5.jpg", "7.jpg",
+                    "Détourage + Montage.jpg"
+                ]
+            },
+            ecommerce: {
+                dossier: base + "Ecommerce/",
+                fichiers: [
+                    "Détourage + retouche.jpg", "Détourage+retouche.jpg",
+                    "Montage1.jpg", "Montage2.jpg", "Montage3.jpg",
+                    "Virage couleur et retouche.jpg"
+                ]
+            },
+            joaillerie: {
+                dossier: base + "Joaillerie/",
+                fichiers: [
+                    "Joaillerie.jpg", "Joaillerie2.jpg", "Joaillerie3.jpg",
+                    "Joaillerie4.jpg", "Joaillerie5.jpg", "Joaillerie6.jpg"
+                ]
+            },
+            detourage: {
+                dossier: base + "images/",
+                fichiers: [
+                    "Détourage à la plume 3.jpg", "Détourage à la plume.jpg",
+                    "Détourage à la plume2.jpg"
+                ]
+            }
+        };
+
+        // Rendu de la galerie
+        function renderGallery(filter) {
+            const container = document.getElementById('gallery-grid');
+            let html = '';
             
-            buttons.forEach(btn => {
-                if (btn.dataset.filter === category) {
-                    btn.classList.add('active', 'border-gold', 'gold-text');
-                    btn.classList.remove('border-white/20');
-                } else {
-                    btn.classList.remove('active', 'border-gold', 'gold-text');
-                    btn.classList.add('border-white/20');
-                }
-            });
+            for (const [categorie, data] of Object.entries(config)) {
+                if (filter !== 'all' && filter !== categorie) continue;
+                
+                data.fichiers.forEach(fichier => {
+                    const src = data.dossier + encodeURIComponent(fichier);
+                    html += `
+                    <div class="gallery-item rounded-lg overflow-hidden shadow-lg">
+                        <img src="${src}" alt="${fichier.replace(/\.(jpg|jpeg|png)$/i, '')}" loading="lazy">
+                        <div class="gallery-overlay">
+                            <div>
+                                <h4 class="text-lg font-bold gold-text">${categorie.charAt(0).toUpperCase() + categorie.slice(1)}</h4>
+                                <p class="text-sm text-gray-300 mt-1">${fichier.replace(/\.(jpg|jpeg|png)$/i, '')}</p>
+                            </div>
+                        </div>
+                    </div>`;
+                });
+            }
             
-            items.forEach(item => {
-                if (category === 'all' || item.dataset.category === category) {
-                    item.style.display = 'block';
-                    setTimeout(() => {
-                        item.style.opacity = '1';
-                        item.style.transform = 'scale(1)';
-                    }, 10);
-                } else {
-                    item.style.opacity = '0';
-                    item.style.transform = 'scale(0.9)';
-                    setTimeout(() => {
-                        item.style.display = 'none';
-                    }, 300);
-                }
-            });
+            if (!html) {
+                html = `<div class="col-span-full text-center text-gray-500 py-12">Aucune image disponible</div>`;
+            }
+            
+            container.innerHTML = html;
         }
-        
+
+        // Gestion des boutons de filtre
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => {
+                    b.classList.remove('active', 'gold-bg', 'border-gold');
+                    b.style.color = 'white';
+                });
+                btn.classList.add('active', 'gold-bg', 'border-gold');
+                btn.style.color = 'black';
+                renderGallery(btn.dataset.filter);
+            });
+        });
+
+        // Affichage initial — TOUTES les images
+        renderGallery('all');
+
+        // Formulaire
         document.getElementById('contactForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             const btn = document.getElementById('submitBtn');
@@ -500,14 +549,6 @@
                 btn.innerHTML = 'Envoyer la Demande <i data-lucide="send" class="w-4 h-4"></i>';
                 lucide.createIcons();
             }
-        });
-        
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            });
         });
     </script>
 </body>
