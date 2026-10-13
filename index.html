@@ -27,7 +27,6 @@
         @layer components {
             .gold-text { color: var(--gold); }
             .gold-bg { background-color: var(--gold); }
-            .gold-border { border-color: var(--gold); }
             
             .service-card {
                 background: linear-gradient(135deg, rgba(26,26,26,0.9) 0%, rgba(10,10,10,0.9) 100%);
@@ -205,7 +204,7 @@
                     </div>
                 </a>
                 
-                <!-- Carte 2 : Modélisation 3D — NOMS CORRIGÉS ✅ -->
+                <!-- Carte 2 : Modélisation 3D — SANS LES IMAGES QUI NE MARCHENT PAS ✅ -->
                 <a href="modelisation-3d.html" class="service-card p-0 group block overflow-hidden relative">
                     <div class="h-72 overflow-hidden relative">
                         <div class="slider-container slider-modelisation"></div>
@@ -337,24 +336,19 @@
         menuOverlay.addEventListener('click', closeMenuFn);
         mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenuFn));
         
-        // ===== NOMS DES FICHIERS CORRIGÉS D'APRÈS TON DOSSIER ✅ =====
+        // ===== 4 IMAGES SUPPRIMÉES — seules celles qui fonctionnent restent ✅ =====
         const config = {
             portrait: {
                 dossier: "https://raw.githubusercontent.com/Radonasolord/portfolio/main/Portrait/",
                 fichiers: ["2.jpg", "3.jpg", "4.jpg", "5.jpg", "7.jpg"]
             },
             modelisation: {
-                // IMPORTANT : dossier en "Modélisation 3d" (minuscule d) comme dans ton repo
                 dossier: "https://raw.githubusercontent.com/Radonasolord/portfolio/main/Mod%C3%A9lisation%203d/",
+                // Supprimé : Modélisation Lit.jpg / Modélisation produit 2.jpg / Portfolio 3D 2.jpg / Portfolio 3D 3.jpg
                 fichiers: [
-                    "Modélisation Lit.jpg",
                     "Modélisation mobilier.jpg",
                     "Modélisation mobilier sofa.jpg",
-                    "Modélisation produit.jpg",
-                    "Modélisation produit 2.jpg",
-                    "Modélisation produit2.jpg",
-                    "Portfolio 3D 2.jpg",
-                    "Portfolio 3D 3.jpg"
+                    "Modélisation produit.jpg"
                 ]
             },
             archiviz: {
@@ -365,7 +359,7 @@
                 ]
             }
         };
-        // ===============================================================
+        // ==========================================================================
 
         function initSlider(containerClass, dossierUrl, fichiers) {
             const container = document.querySelector(containerClass);
